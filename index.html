@@ -1,1197 +1,246 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-  <meta charset="UTF-8">  
-  <title>Sougata Bhunia | Semiconductor Metrology & Nanoengineering</title>  
-  <meta name="viewport" content="width=device-width, initial-scale=1">  
-  <meta name="description"  
-        content="Portfolio of Sougata Bhunia, TEEP Research Intern at NTHU and incoming PhD student at National Taiwan University, focusing on semiconductor metrology, optical profiling and nanoengineering.">  
-  
-  <!-- Google Fonts -->  
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">  
-  
-  <style>  
-    :root {  
-      --bg-main: #020617;  
-      --accent: #38bdf8;  
-      --accent-soft: rgba(56,189,248,0.12);  
-      --accent-strong: #0ea5e9;  
-      --text-main: #e5e7eb;  
-      --text-muted: #9ca3af;  
-      --border-soft: rgba(148,163,184,0.4);  
-      --link: #38bdf8;  
-      --link-hover: #7dd3fc;  
-      --card-bg: rgba(15,23,42,0.96);  
-    }  
-  
-    * {  
-      box-sizing: border-box;  
-      scroll-behavior: smooth;  
-    }  
-  
-    body {  
-      margin: 0;  
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;  
-      background:  
-        radial-gradient(circle at top left, #0f172a 0, #020617 45%, #000000 100%);  
-      color: var(--text-main);  
-      line-height: 1.6;  
-    }  
-  
-    a {  
-      color: var(--link);  
-      text-decoration: none;  
-    }  
-  
-    a:hover {  
-      color: var(--link-hover);  
-      text-decoration: underline;  
-    }  
-  
-    /* Header / Nav */  
-    header {  
-      position: sticky;  
-      top: 0;  
-      z-index: 50;  
-      backdrop-filter: blur(18px);  
-      background: linear-gradient(to bottom,  
-        rgba(15,23,42,0.98),  
-        rgba(15,23,42,0.88),  
-        transparent  
-      );  
-      border-bottom: 1px solid rgba(15,23,42,0.95);  
-    }  
-  
-    .nav-container {  
-      max-width: 1120px;  
-      margin: 0 auto;  
-      padding: 0.65rem 1.25rem;  
-      display: flex;  
-      align-items: center;  
-      justify-content: space-between;  
-    }  
-  
-    .brand {  
-      display: flex;  
-      flex-direction: column;  
-      gap: 0.12rem;  
-    }  
-  
-    .brand-name {  
-      font-weight: 600;  
-      letter-spacing: 0.04em;  
-      text-transform: uppercase;  
-      font-size: 0.92rem;  
-      color: #f9fafb;  
-    }  
-  
-    .brand-sub {  
-      font-size: 0.75rem;  
-      color: var(--text-muted);  
-    }  
-  
-    nav ul {  
-      display: flex;  
-      gap: 1.4rem;  
-      list-style: none;  
-      margin: 0;  
-      padding: 0;  
-      font-size: 0.88rem;  
-    }  
-  
-    nav a {  
-      color: var(--text-muted);  
-      text-decoration: none;  
-      padding-bottom: 0.1rem;  
-      border-bottom: 1px solid transparent;  
-    }  
-  
-    nav a:hover {  
-      color: #f9fafb;  
-      border-bottom-color: var(--accent);  
-    }  
-  
-    .nav-toggle {  
-      display: none;  
-      background: none;  
-      border-radius: 0.375rem;  
-      border: 1px solid var(--border-soft);  
-      color: var(--text-main);  
-      padding: 0.25rem 0.6rem;  
-      font-size: 0.8rem;  
-    }  
-  
-    /* Layout */  
-    main {  
-      max-width: 1120px;  
-      margin: 0 auto;  
-      padding: 1.6rem 1.25rem 3.2rem 1.25rem;  
-    }  
-  
-    section {  
-      padding: 3rem 0 2rem 0;  
-      border-bottom: 1px solid rgba(15,23,42,0.9);  
-    }  
-  
-    .section-header {  
-      margin-bottom: 1.5rem;  
-    }  
-  
-    .section-kicker {  
-      text-transform: uppercase;  
-      letter-spacing: 0.16em;  
-      font-size: 0.72rem;  
-      color: var(--accent);  
-      font-weight: 500;  
-      margin-bottom: 0.3rem;  
-    }  
-  
-    .section-title {  
-      font-family: "Merriweather", serif;  
-      font-weight: 600;  
-      font-size: 1.6rem;  
-      margin: 0;  
-    }  
-  
-    .section-subtitle {  
-      font-size: 0.95rem;  
-      color: var(--text-muted);  
-      margin-top: 0.35rem;  
-      max-width: 40rem;  
-    }  
-  
-    /* Hero */  
-    .hero {  
-      display: grid;  
-      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.2fr);  
-      gap: 2.6rem;  
-      align-items: center;  
-      padding-top: 2.4rem;  
-    }  
-  
-    .hero-badge {  
-      display: inline-flex;  
-      align-items: center;  
-      gap: 0.4rem;  
-      background: var(--accent-soft);  
-      border-radius: 999px;  
-      padding: 0.2rem 0.8rem;  
-      font-size: 0.78rem;  
-      color: var(--accent-strong);  
-      border: 1px solid rgba(56,189,248,0.5);  
-      margin-bottom: 0.85rem;  
-    }  
-  
-    .hero-badge-dot {  
-      width: 6px;  
-      height: 6px;  
-      border-radius: 999px;  
-      background: var(--accent-strong);  
-      box-shadow: 0 0 8px rgba(56,189,248,0.9);  
-    }  
-  
-    .hero-title {  
-      font-family: "Merriweather", serif;  
-      font-size: 2.25rem;  
-      margin: 0 0 0.3rem 0;  
-    }  
-  
-    .hero-title span {  
-      color: var(--accent-strong);  
-    }  
-  
-    .hero-tagline {  
-      font-size: 1rem;  
-      color: var(--text-muted);  
-      margin-bottom: 1rem;  
-    }  
-  
-    .hero-text {  
-      font-size: 0.95rem;  
-      color: var(--text-main);  
-      margin-bottom: 1.15rem;  
-    }  
-  
-    .hero-actions {  
-      display: flex;  
-      flex-wrap: wrap;  
-      gap: 0.7rem;  
-      margin-bottom: 0.9rem;  
-    }  
-  
-    .btn {  
-      display: inline-flex;  
-      align-items: center;  
-      justify-content: center;  
-      padding: 0.55rem 1.2rem;  
-      font-size: 0.9rem;  
-      border-radius: 999px;  
-      border: 1px solid transparent;  
-      cursor: pointer;  
-      text-decoration: none;  
-      white-space: nowrap;  
-    }  
-  
-    .btn-primary {  
-      background: var(--accent);  
-      color: #0b1120;  
-      border-color: var(--accent);  
-      font-weight: 500;  
-      box-shadow:  
-        0 18px 40px rgba(15,23,42,0.9),  
-        0 0 0 1px rgba(56,189,248,0.3);  
-      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;  
-    }  
-  
-    .btn-primary:hover {  
-      background: #0ea5e9;  
-      border-color: #0ea5e9;  
-      text-decoration: none;  
-      transform: translateY(-1px);  
-      box-shadow:  
-        0 22px 45px rgba(15,23,42,0.95),  
-        0 0 0 1px rgba(56,189,248,0.45);  
-    }  
-  
-    .btn-ghost {  
-      background: rgba(15,23,42,0.9);  
-      color: var(--text-main);  
-      border-color: var(--border-soft);  
-      box-shadow:  
-        0 12px 30px rgba(15,23,42,0.9),  
-        0 0 0 1px rgba(15,23,42,0.9);  
-      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out;  
-    }  
-  
-    .btn-ghost:hover {  
-      border-color: var(--accent);  
-      text-decoration: none;  
-      transform: translateY(-1px);  
-      box-shadow:  
-        0 18px 42px rgba(15,23,42,0.96),  
-        0 0 0 1px rgba(56,189,248,0.35);  
-    }  
-  
-    .hero-meta {  
-      font-size: 0.85rem;  
-      color: var(--text-muted);  
-    }  
-  
-    .hero-meta strong {  
-      color: var(--text-main);  
-      font-weight: 500;  
-    }  
-  
-    /* 3D-style cards */  
-    .card,  
-    .hero-panel {  
-      position: relative;  
-      border-radius: 1rem;  
-      border: 1px solid var(--border-soft);  
-      padding: 1.15rem 1.15rem 1.05rem 1.15rem;  
-      background: linear-gradient(145deg,#020617,#020617,#0f172a);  
-      box-shadow:  
-        0 18px 40px rgba(15,23,42,0.9),  
-        0 0 0 1px rgba(15,23,42,0.8);  
-      overflow: hidden;  
-      transform: translateY(0) translateZ(0);  
-      transition:  
-        transform 0.18s ease-out,  
-        box-shadow 0.18s ease-out,  
-        border-color 0.18s ease-out,  
-        background 0.18s ease-out;  
-    }  
-  
-    .card::before,  
-    .hero-panel::before {  
-      content: "";  
-      position: absolute;  
-      inset: 0;  
-      background: radial-gradient(circle at top left,  
-        rgba(56,189,248,0.22),  
-        transparent 55%);  
-      opacity: 0.0;  
-      pointer-events: none;  
-      transition: opacity 0.2s ease-out;  
-    }  
-  
-    .card:hover,  
-    .hero-panel:hover {  
-      transform: translateY(-6px) translateZ(0);  
-      box-shadow:  
-        0 28px 60px rgba(15,23,42,0.98),  
-        0 0 0 1px rgba(56,189,248,0.35);  
-      border-color: rgba(56,189,248,0.5);  
-      background: radial-gradient(circle at top left,#020617,#020617,#020617);  
-    }  
-  
-    .card:hover::before,  
-    .hero-panel:hover::before {  
-      opacity: 1;  
-    }  
-  
-    .hero-panel {  
-      background: linear-gradient(150deg,#020617,#020617,#0b1120);  
-    }  
-  
-    /* Grids / structures */  
-    .hero-panel-title {  
-      font-size: 0.9rem;  
-      font-weight: 500;  
-      margin-bottom: 0.5rem;  
-    }  
-  
-    .hero-panel-item {  
-      margin-bottom: 0.8rem;  
-    }  
-  
-    .hero-panel-item-title {  
-      font-size: 0.78rem;  
-      color: var(--text-muted);  
-      text-transform: uppercase;  
-      letter-spacing: 0.09em;  
-      margin-bottom: 0.08rem;  
-    }  
-  
-    .hero-panel-item-text {  
-      font-size: 0.9rem;  
-    }  
-  
-    .two-col {  
-      display: grid;  
-      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1.15fr);  
-      gap: 2rem;  
-    }  
-  
-    .card-header {  
-      font-weight: 500;  
-      font-size: 0.9rem;  
-      margin-bottom: 0.4rem;  
-    }  
-  
-    .card-meta {  
-      font-size: 0.8rem;  
-      color: var(--text-muted);  
-      margin-bottom: 0.4rem;  
-    }  
-  
-    .card-list {  
-      padding-left: 1.1rem;  
-      margin: 0.2rem 0 0.5rem 0;  
-      font-size: 0.9rem;  
-    }  
-  
-    .card-list li {  
-      margin-bottom: 0.3rem;  
-    }  
-  
-    .contact-list {  
-      list-style: none;  
-      padding: 0;  
-      margin: 0;  
-      font-size: 0.9rem;  
-    }  
-  
-    .contact-list li {  
-      margin-bottom: 0.45rem;  
-    }  
-  
-    /* Timeline */  
-    .timeline {  
-      list-style: none;  
-      margin: 0;  
-      padding: 0;  
-      border-left: 1px solid var(--border-soft);  
-    }  
-  
-    .timeline-item {  
-      padding-left: 1rem;  
-      margin-bottom: 1.2rem;  
-      position: relative;  
-    }  
-  
-    .timeline-item::before {  
-      content: "";  
-      position: absolute;  
-      left: -6px;  
-      top: 0.25rem;  
-      width: 9px;  
-      height: 9px;  
-      border-radius: 999px;  
-      background: var(--accent-strong);  
-      box-shadow: 0 0 10px rgba(56,189,248,0.9);  
-    }  
-  
-    .timeline-title {  
-      font-size: 0.95rem;  
-      font-weight: 500;  
-    }  
-  
-    .timeline-meta {  
-      font-size: 0.8rem;  
-      color: var(--text-muted);  
-    }  
-  
-    .timeline-detail {  
-      font-size: 0.88rem;  
-      margin-top: 0.25rem;  
-    }  
-  
-    /* Tags */  
-    .tag-row {  
-      display: flex;  
-      flex-wrap: wrap;  
-      gap: 0.4rem;  
-      margin-top: 0.35rem;  
-    }  
-  
-    .tag {  
-      font-size: 0.75rem;  
-      border-radius: 999px;  
-      padding: 0.16rem 0.65rem;  
-      border: 1px solid rgba(148,163,184,0.55);  
-      color: var(--text-muted);  
-      background: rgba(15,23,42,0.96);  
-      backdrop-filter: blur(4px);  
-    }  
-  
-    /* Table */  
-    .table-wrapper {  
-      border-radius: 1rem;  
-      border: 1px solid var(--border-soft);  
-      overflow: hidden;  
-      background: var(--card-bg);  
-      box-shadow:  
-        0 18px 40px rgba(15,23,42,0.9),  
-        0 0 0 1px rgba(15,23,42,0.85);  
-    }  
-  
-    table {  
-      width: 100%;  
-      border-collapse: collapse;  
-      font-size: 0.88rem;  
-    }  
-  
-    thead {  
-      background: rgba(15,23,42,1);  
-    }  
-  
-    th, td {  
-      padding: 0.55rem 0.7rem;  
-      border-bottom: 1px solid rgba(30,41,59,0.9);  
-      vertical-align: top;  
-      text-align: left;  
-    }  
-  
-    th {  
-      font-weight: 500;  
-      font-size: 0.8rem;  
-      text-transform: uppercase;  
-      letter-spacing: 0.08em;  
-      color: var(--text-muted);  
-    }  
-  
-    tbody tr:last-child td {  
-      border-bottom: none;  
-    }  
-  
-    /* Contact grid */  
-    .contact-grid {  
-      display: grid;  
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.15fr);  
-      gap: 2rem;  
-    }  
-  
-    footer {  
-      border-top: 1px solid rgba(15,23,42,1);  
-      padding: 1.1rem 1.25rem 1.4rem 1.25rem;  
-      font-size: 0.8rem;  
-      color: var(--text-muted);  
-      text-align: center;  
-      background: #020617;  
-    }  
-  
-    /* Responsive */  
-    @media (max-width: 880px) {  
-      nav ul {  
-        display: none;  
-        flex-direction: column;  
-        padding-top: 0.7rem;  
-        padding-bottom: 0.5rem;  
-      }  
-  
-      nav ul.show {  
-        display: flex;  
-      }  
-  
-      .nav-toggle {  
-        display: inline-flex;  
-      }  
-  
-      .hero {  
-        grid-template-columns: minmax(0, 1fr);  
-      }  
-  
-      .hero-panel {  
-        margin-top: 1.6rem;  
-      }  
-  
-      .two-col {  
-        grid-template-columns: minmax(0, 1fr);  
-      }  
-  
-      .contact-grid {  
-        grid-template-columns: minmax(0, 1fr);  
-      }  
-    }  
-  
-    @media (max-width: 540px) {  
-      .hero-title {  
-        font-size: 1.9rem;  
-      }  
-  
-      .section-title {  
-        font-size: 1.35rem;  
-      }  
-    }  
-  </style>  
-</head>  
-<body>  
-  
-<header>  
-  <div class="nav-container">  
-    <div class="brand">  
-      <span class="brand-name">Sougata Bhunia</span>  
-      <span class="brand-sub">  
-        TEEP Research Intern, NTHU · Incoming PhD Student, National Taiwan University  
-      </span>  
-    </div>  
-    <button class="nav-toggle" type="button" aria-label="Toggle navigation">Menu</button>  
-    <nav aria-label="Primary">  
-      <ul id="nav-links">  
-        <li><a href="#home">Home</a></li>  
-        <li><a href="#about">Profile</a></li>  
-        <li><a href="#research">Research Focus</a></li>  
-        <li><a href="#experience">Experience</a></li>  
-        <li><a href="#education">Education</a></li>  
-        <li><a href="#projects">Projects</a></li>  
-        <li><a href="#skills">Skills</a></li>  
-        <li><a href="#certificates">Certificates</a></li>  
-        <li><a href="#contact">CV & Contact</a></li>  
-      </ul>  
-    </nav>  
-  </div>  
-</header>  
-  
-<main>  
-  
-  <!-- HERO -->  
-  <section id="home">  
-    <div class="hero">  
-      <div>  
-        <div class="hero-badge">  
-          <span class="hero-badge-dot"></span>  
-          <span>TEEP Research Intern, NTHU · Incoming PhD at NTU (Feb 2026)</span>  
-        </div>  
-  
-        <h1 class="hero-title">  
-          Sougata Bhunia<br>  
-          <span>Semiconductor Metrology & Nanoengineering</span>  
-        </h1>  
-  
-        <p class="hero-tagline">  
-          Optical metrology, 3D surface profiling, and instrumentation for next-generation semiconductor devices.  
-        </p>  
-  
-        <p class="hero-text">  
-          I work at the intersection of semiconductor metrology, optical interferometry and nanoengineering.  
-          Currently, I am a TEEP Research Intern at the College of Semiconductor Research, National Tsing Hua  
-          University (NTHU), Taiwan, where I focus on semiconductor process flows and the link between material  
-          properties and device performance. From February 2026, I will join National Taiwan University (NTU)  
-          as an incoming PhD student in Mechanical Engineering (Nanoengineering &amp; Nanoscience), working on  
-          advanced semiconductor metrology and instrumentation.  
-        </p>  
-  
-        <p class="hero-text">  
-          My background combines an M.Sc. in Electronics Science from Jadavpur University with hands-on training in  
-          high-entropy perovskite oxides, thin-film characterization and nanoelectronics workflows. I am particularly  
-          interested in white-light interferometry, computational imaging and high-precision 3D surface profiling for  
-          wafer and device inspection.  
-        </p>  
-  
-        <div class="hero-actions">  
-          <!-- CV link – you can change if you have a newer CV -->  
-          <a class="btn btn-primary"  
-             href="https://drive.google.com/file/d/1BJS3tckP7zWaBkxk527N3ry1ikpvYiMC/view?usp=drivesdk"  
-             target="_blank" rel="noopener">  
-            Download CV (PDF)  
-          </a>  
-          <a class="btn btn-ghost" href="https://scholar.google.com/citations?hl=en&user=-owKAGYAAAAJ"  
-             target="_blank" rel="noopener">  
-            Google Scholar  
-          </a>  
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/sougata-bhunia85"  
-             target="_blank" rel="noopener">  
-            LinkedIn  
-          </a>  
-        </div>  
-  
-        <p class="hero-meta">  
-          <strong>Current status:</strong> TEEP Research Intern, National Tsing Hua University (Semiconductor Research);  
-          Incoming PhD student (NTU, Taiwan) from Feb 2026<br>  
-          <strong>Open to:</strong> collaborative research, industry-academia projects, and future post-PhD R&amp;D roles in  
-          semiconductor metrology, optical inspection and instrumentation.  
-        </p>  
-      </div>  
-  
-      <aside class="hero-panel" aria-label="Snapshot">  
-        <div class="hero-panel-title">At a Glance</div>  
-  
-        <div class="hero-panel-item">  
-          <div class="hero-panel-item-title">Core Areas</div>  
-          <div class="hero-panel-item-text">  
-            Optical metrology · White-light interferometry · 3D surface profiling · Semiconductor process metrology  
-          </div>  
-        </div>  
-  
-        <div class="hero-panel-item">  
-          <div class="hero-panel-item-title">Current &amp; Next</div>  
-          <div class="hero-panel-item-text">  
-            TEEP Intern, College of Semiconductor Research, NTHU<br>  
-            Incoming PhD, Mechanical Engineering (Nanoengineering &amp; Nanoscience), NTU  
-          </div>  
-        </div>  
-  
-        <div class="hero-panel-item">  
-          <div class="hero-panel-item-title">Previous Training</div>  
-          <div class="hero-panel-item-text">  
-            M.Sc. Electronics Science, Jadavpur University (High-entropy oxides &amp; characterization)<br>  
-            INUP Nanoelectronics training, IIT Kharagpur  
-          </div>  
-        </div>  
-  
-        <div class="hero-panel-item">  
-          <div class="hero-panel-item-title">Location</div>  
-          <div class="hero-panel-item-text">  
-            Taipei &amp; Hsinchu, Taiwan (originally from West Bengal, India)  
-          </div>  
-        </div>  
-  
-        <div class="hero-panel-item">  
-          <div class="hero-panel-item-title">Contact</div>  
-          <div class="hero-panel-item-text">  
-            <a href="mailto:sougata.jadavpur.university605@gmail.com">  
-              sougata.jadavpur.university605@gmail.com  
-            </a>  
-          </div>  
-        </div>  
-      </aside>  
-    </div>  
-  </section>  
-  
-  <!-- ABOUT -->  
-  <section id="about">  
-    <div class="section-header">  
-      <div class="section-kicker">Profile</div>  
-      <h2 class="section-title">About Me</h2>  
-      <p class="section-subtitle">  
-        A brief overview for supervisors, collaborators and industry partners.  
-      </p>  
-    </div>  
-  
-    <div class="two-col">  
-      <div>  
-        <p>  
-          I completed my M.Sc. in Electronics Science at Jadavpur University, where I worked on the synthesis and  
-          characterization of lead-free high-entropy perovskite oxides using sol–gel techniques. My training combines  
-          semiconductor device fundamentals, advanced materials characterization and scientific data analysis using  
-          Python and MATLAB.  
-        </p>  
-        <p>  
-          As a TEEP Research Intern at the College of Semiconductor Research, National Tsing Hua University, I work  
-          on semiconductor material synthesis routes, process flow integration and the relationship between growth  
-          conditions, material properties and device performance. This experience bridges lab-scale experimentation  
-          with practical semiconductor process thinking.  
-        </p>  
-        <p>  
-          From February 2026, I will pursue a PhD at National Taiwan University in Mechanical Engineering  
-          (Nanoengineering &amp; Nanoscience), focusing on semiconductor metrology and instrumentation. My long-term  
-          goal is to contribute to high-precision measurement systems and inspection tools for advanced semiconductor  
-          manufacturing.  
-        </p>  
-      </div>  
-  
-      <div class="card">  
-        <div class="card-header">Quick Facts</div>  
-        <ul class="contact-list">  
-          <li><strong>Name:</strong> Sougata Bhunia</li>  
-          <li><strong>Fields:</strong> Semiconductor metrology, optical interferometry, nanoengineering</li>  
-          <li><strong>Current Role:</strong> TEEP Research Intern, NTHU</li>  
-          <li><strong>Next Role:</strong> PhD Student (Mechanical Engineering, NTU) from Feb 2026</li>  
-          <li><strong>Background:</strong> M.Sc. Electronics Science (Jadavpur University), B.Sc. Physics (University of Calcutta)</li>  
-          <li><strong>Languages:</strong> English, Bengali, Hindi</li>  
-        </ul>  
-      </div>  
-    </div>  
-  </section>  
-  
-  <!-- RESEARCH FOCUS -->  
-  <section id="research">  
-    <div class="section-header">  
-      <div class="section-kicker">Focus</div>  
-      <h2 class="section-title">Research Focus</h2>  
-      <p class="section-subtitle">  
-        Key themes I am interested in developing during my PhD and beyond.  
-      </p>  
-    </div>  
-  
-    <div class="two-col">  
-      <div class="card">  
-        <div class="card-header">Optical Metrology &amp; 3D Surface Profiling</div>  
-        <div class="card-meta">  
-          White-light interferometry, wafer and device inspection  
-        </div>  
-        <ul class="card-list">  
-          <li>Development and optimization of white-light interferometry (WLI) systems for high-precision 3D surface profiling.</li>  
-          <li>Thin-film thickness measurement and surface defect detection for semiconductor and MEMS devices.</li>  
-          <li>Integration of optical setups with precision stages and detectors for robust measurement workflows.</li>  
-        </ul>  
-        <div class="tag-row">  
-          <span class="tag">WLI</span>  
-          <span class="tag">3D profiling</span>  
-          <span class="tag">Thin films</span>  
-          <span class="tag">Semiconductor inspection</span>  
-        </div>  
-      </div>  
-  
-      <div>  
-        <div class="card">  
-          <div class="card-header">Computational Imaging &amp; Signal Processing</div>  
-          <div class="card-meta">  
-            Physics-based modeling for metrology  
-          </div>  
-          <ul class="card-list">  
-            <li>Phase retrieval and axial resolution enhancement for complex and high-aspect-ratio surfaces.</li>  
-            <li>Numerical modeling of optical systems to understand trade-offs in design and performance.</li>  
-            <li>Data processing pipelines in Python/MATLAB for interferometric and imaging measurements.</li>  
-          </ul>  
-        </div>  
-  
-        <div class="card" style="margin-top:1rem;">  
-          <div class="card-header">Nanomaterials &amp; Device Characterization</div>  
-          <div class="card-meta">  
-            High-entropy oxides and thin-film systems  
-          </div>  
-          <ul class="card-list">  
-            <li>Sol–gel synthesis and characterization of lead-free high-entropy perovskite oxides.</li>  
-            <li>Use of XRD, FESEM/EDS, UV–Vis, FTIR, TGA/DSC to correlate structure, morphology and optical properties.</li>  
-            <li>Exploring links between material properties and device-relevant metrics for thermoelectric and related applications.</li>  
-          </ul>  
-        </div>  
-      </div>  
-    </div>  
-  </section>  
-  
-  <!-- EXPERIENCE -->  
-  <section id="experience">  
-    <div class="section-header">  
-      <div class="section-kicker">Work</div>  
-      <h2 class="section-title">Experience</h2>  
-      <p class="section-subtitle">  
-        Research and teaching experience that shape my approach to scientific work.  
-      </p>  
-    </div>  
-  
-    <div class="two-col">  
-      <div>  
-        <div class="card">  
-          <div class="card-header">Research Experience</div>  
-  
-          <div class="card-meta">  
-            TEEP Research Intern · College of Semiconductor Research, NTHU · Aug 2025 – Dec 2025  
-          </div>  
-          <ul class="card-list">  
-            <li>Developing semiconductor material synthesis routes and device process flows integrating growth, patterning and electrical testing.</li>  
-            <li>Investigating how synthesis conditions influence material properties and ultimately device performance and reliability.</li>  
-            <li>Collaborating with cross-disciplinary teams to align materials engineering with process integration in semiconductor devices.</li>  
-          </ul>  
-  
-          <div class="card-meta" style="margin-top:0.6rem;">  
-            M.Sc. Thesis Research · Jadavpur University · Aug 2024 – Jul 2025  
-          </div>  
-          <ul class="card-list">  
-            <li>Developed lead-free high-entropy perovskite oxides using sol–gel synthesis for thermoelectric and hydrogen-evolution applications.</li>  
-            <li>Performed structural (XRD), morphological (FESEM), elemental (EDS) and optical (UV–Vis, FTIR) analysis.</li>  
-            <li>Conducted thermal studies using TGA/DSC and processed data using Origin, Match! and X’Pert HighScore.</li>  
-          </ul>  
-  
-          <div class="card-meta" style="margin-top:0.6rem;">  
-            INUP Hands-on Nanoelectronics Training · IIT Kharagpur · Feb 2025  
-          </div>  
-          <ul class="card-list">  
-            <li>Hands-on exposure to semiconductor device fabrication in a cleanroom environment.</li>  
-            <li>Got experience with lithography, thin-film deposition and device characterization workflows.</li>  
-            <li>Worked with nanoscale measurement tools such as profilometers and probe stations in guided sessions.</li>  
-          </ul>  
-        </div>  
-      </div>  
-  
-      <div>  
-        <div class="card">  
-          <div class="card-header">Teaching Experience</div>  
-  
-          <div class="card-meta">  
-            Physics Mentor (Home Tutoring) · Educatree Pvt. Ltd. · Aug 2023 – Aug 2025  
-          </div>  
-          <ul class="card-list">  
-            <li>Taught senior secondary Physics with a focus on structured problem-solving and concept clarity.</li>  
-            <li>Guided students preparing for board and entrance examinations.</li>  
-            <li>Created short notes and problem sets for regular practice.</li>  
-          </ul>  
-  
-          <div class="card-meta" style="margin-top:0.6rem;">  
-            Physics Mentor (Doubt Solving) · Physics Wallah · Dec 2024 – Aug 2025  
-          </div>  
-          <ul class="card-list">  
-            <li>Resolved subject and numerical doubts for higher-secondary students through online platforms.</li>  
-            <li>Explained solution strategies for JEE-level physics problems.</li>  
-            <li>Helped students build systematic approaches to complex problem sets.</li>  
-          </ul>  
-        </div>  
-      </div>  
-    </div>  
-  </section>  
-  
-  <!-- EDUCATION -->  
-  <section id="education">  
-    <div class="section-header">  
-      <div class="section-kicker">Background</div>  
-      <h2 class="section-title">Education</h2>  
-      <p class="section-subtitle">  
-        Academic training leading to semiconductor metrology and nanoengineering.  
-      </p>  
-    </div>  
-  
-    <div class="two-col">  
-      <div>  
-        <ul class="timeline">  
-          <li class="timeline-item">  
-            <div class="timeline-title">  
-              PhD in Mechanical Engineering (Nanoengineering &amp; Nanoscience)  
-            </div>  
-            <div class="timeline-meta">  
-              National Taiwan University · Taipei, Taiwan · Starting Feb 2026  
-            </div>  
-            <div class="timeline-detail">  
-              Incoming PhD student focusing on semiconductor metrology, optical measurement systems and instrumentation  
-              for advanced manufacturing.  
-            </div>  
-          </li>  
-  
-          <li class="timeline-item">  
-            <div class="timeline-title">  
-              M.Sc. in Electronics Science  
-            </div>  
-            <div class="timeline-meta">  
-              Jadavpur University · Kolkata, India · 2023–2025 · CGPA: 7.72/10 (provisional)  
-            </div>  
-            <div class="timeline-detail">  
-              Focus on high-entropy perovskite oxides, semiconductor devices and advanced materials characterization.<br>  
-              <strong>Thesis:</strong> Lead-free high-entropy perovskite oxide for thermoelectric and hydrogen-evolution applications.  
-            </div>  
-          </li>  
-  
-          <li class="timeline-item">  
-            <div class="timeline-title">  
-              B.Sc. (Hons.) in Physics  
-            </div>  
-            <div class="timeline-meta">  
-              St. Paul’s Cathedral Mission College, University of Calcutta · 2020–2023 · SGPA: 7.5/10  
-            </div>  
-            <div class="timeline-detail">  
-              General Physics with an emphasis on electronics and foundational skills in analysis and problem-solving.  
-            </div>  
-          </li>  
-        </ul>  
-      </div>  
-  
-      <div class="card">  
-        <div class="card-header">Selected Coursework &amp; Training</div>  
-        <ul class="card-list">  
-          <li>Semiconductor Devices and Optoelectronics</li>  
-          <li>Advanced Solid-State Physics / Electronics</li>  
-          <li>Materials Characterization Techniques (XRD, FESEM, spectroscopy)</li>  
-          <li>Numerical Methods and Scientific Computing (Python/MATLAB)</li>  
-          <li>Nanotechnology and Nanoelectronics (including INUP training)</li>  
-          <li>Optoelectronic Devices and Sensors</li>  
-        </ul>  
-        <div class="card-header" style="margin-top:0.7rem;">Academic Highlights</div>  
-        <ul class="card-list">  
-          <li>Strong continuity from Physics (B.Sc.) to Electronics Science (M.Sc.) and semiconductor metrology (PhD).</li>  
-          <li>Early exposure to high-entropy materials and characterization tools relevant to device engineering.</li>  
-        </ul>  
-      </div>  
-    </div>  
-  </section>  
-  
-  <!-- PROJECTS -->  
-  <section id="projects">  
-    <div class="section-header">  
-      <div class="section-kicker">Work</div>  
-      <h2 class="section-title">Projects &amp; Technical Repositories</h2>  
-      <p class="section-subtitle">  
-        Selected research projects and technical note repositories that reflect my learning process.  
-      </p>  
-    </div>  
-  
-    <div class="two-col">  
-      <div>  
-        <div class="card">  
-          <div class="card-header">Research Projects</div>  
-  
-          <div class="card-meta">  
-            High-Entropy Perovskite Study  
-          </div>  
-          <p style="font-size:0.9rem; margin-top:0.2rem;">  
-            Sol–gel synthesis and advanced characterization (XRD, FESEM/EDS, UV–Vis, FTIR, TGA/DSC) of lead-free  
-            high-entropy oxide materials for thermoelectric and hydrogen-evolution applications.  
-          </p>  
-          <p style="font-size:0.86rem;">  
-            <a href="https://github.com/sougataresearch/High-Entropy-Perovskite" target="_blank" rel="noopener">  
-              GitHub Repository  
-            </a>  
-          </p>  
-  
-          <div class="card-meta" style="margin-top:0.5rem;">  
-            Machine Learning in Thermal Property Exploration  
-          </div>  
-          <p style="font-size:0.9rem; margin-top:0.2rem;">  
-            Used regression methods in Python to explore thermal property trends of oxide materials based on  
-            composition and microstructural features.  
-          </p>  
-          <p style="font-size:0.86rem;">  
-            <a href="https://github.com/sougataresearch/Machine-Learning-Thermal" target="_blank" rel="noopener">  
-              GitHub Repository  
-            </a>  
-          </p>  
-        </div>  
-      </div>  
-  
-      <div>  
-        <div class="card">  
-          <div class="card-header">Technical Notes &amp; Learning Repositories</div>  
-          <ul class="card-list">  
-            <li>  
-              <strong>MOS Image Sensor Notes</strong><br>  
-              Theory and analysis of MOS-based image sensor principles and device characteristics, including CCD and CMOS imagers.<br>  
-              <a href="https://github.com/sougataresearch/MOS-Imager-Notes" target="_blank" rel="noopener">  
-                Repository  
-              </a>  
-            </li>  
-            <li>  
-              <strong>Semiconductor Fabrication Notes</strong><br>  
-              Process documentation and workflow understanding for IC and nanoelectronic device fabrication, with an emphasis on process integration.<br>  
-              <a href="https://github.com/sougataresearch/Semiconductor-Fabrication" target="_blank" rel="noopener">  
-                Repository  
-              </a>  
-            </li>  
-            <li>  
-              <strong>Material Simulation Using VASP</strong><br>  
-              Introductory DFT-based material simulation using VASP, focusing on workflow setup and interpretation of electronic structure outputs for complex oxides.<br>  
-              <a href="https://github.com/sougataresearch/Material-Simulation-VASP" target="_blank" rel="noopener">  
-                Repository  
-              </a>  
-            </li>  
-          </ul>  
-        </div>  
-      </div>  
-    </div>  
-  </section>  
-  
-  <!-- SKILLS -->  
-  <section id="skills">  
-    <div class="section-header">  
-      <div class="section-kicker">Capabilities</div>  
-      <h2 class="section-title">Skills &amp; Tools</h2>  
-      <p class="section-subtitle">  
-        Technical, analytical and computing skills relevant to metrology, nanoengineering and data analysis.  
-      </p>  
-    </div>  
-  
-    <div class="two-col">  
-      <div class="card">  
-        <div class="card-header">Technical &amp; Experimental Skills</div>  
-        <ul class="card-list">  
-          <li>Semiconductor Devices &amp; Optoelectronics (advanced understanding)</li>  
-          <li>Material Characterization: XRD, FESEM/EDS, UV–Vis, FTIR, TGA/DSC</li>  
-          <li>Thin-film and oxide material synthesis (sol–gel routes)</li>  
-          <li>Basic exposure to nanoelectronics fabrication workflows (INUP training)</li>  
-          <li>Optical setups for measurement and profiling (conceptual + early practical exposure)</li>  
-        </ul>  
-      </div>  
-  
-      <div class="card">  
-        <div class="card-header">Computational &amp; Data Skills</div>  
-        <ul class="card-list">  
-          <li><strong>Python:</strong> NumPy, Pandas, SciPy, Matplotlib for scientific data processing</li>  
-          <li><strong>MATLAB:</strong> numerical analysis and signal processing workflows</li>  
-          <li><strong>Analysis software:</strong> Origin, Match!, X’Pert HighScore</li>  
-          <li><strong>Technical Writing:</strong> LaTeX for reports, theses and presentations</li>  
-        </ul>  
-        <div class="card-header" style="margin-top:0.7rem;">Languages</div>  
-        <ul class="card-list">  
-          <li>English – Fluent</li>  
-          <li>Bengali – Fluent</li>  
-          <li>Hindi – Conversational</li>  
-        </ul>  
-      </div>  
-    </div>  
-  </section>  
-  
-  <!-- CERTIFICATES -->  
-  <section id="certificates">  
-    <div class="section-header">  
-      <div class="section-kicker">Training</div>  
-      <h2 class="section-title">Selected Certified Courses</h2>  
-      <p class="section-subtitle">  
-        Online courses complementing my formal training in semiconductor devices, nanotechnology and computation.  
-      </p>  
-    </div>  
-  
-    <div class="table-wrapper">  
-      <table>  
-        <thead>  
-          <tr>  
-            <th>Course</th>  
-            <th>Institution</th>  
-            <th>Certificate</th>  
-          </tr>  
-        </thead>  
-        <tbody>  
-          <tr>  
-            <td>MATLAB</td>  
-            <td>Vanderbilt University</td>  
-            <td>  
-              <a href="https://www.coursera.org/account/accomplishments/verify/4VLE0VBFGM9M" target="_blank" rel="noopener">  
-                4VLE0VBFGM9M  
-              </a>  
-            </td>  
-          </tr>  
-          <tr>  
-            <td>Semiconductor Characterization</td>  
-            <td>Arizona State University</td>  
-            <td>  
-              <a href="https://www.coursera.org/account/accomplishments/verify/7GBH5OY37483" target="_blank" rel="noopener">  
-                7GBH5OY37483  
-              </a>  
-            </td>  
-          </tr>  
-          <tr>  
-            <td>Nanotechnology</td>  
-            <td>Duke, UNC, NC State University</td>  
-            <td>  
-              <a href="https://www.coursera.org/account/accomplishments/records/621ZOLDPDR36" target="_blank" rel="noopener">  
-                621ZOLDPDR36  
-              </a>  
-            </td>  
-          </tr>  
-          <tr>  
-            <td>Semiconductor Fabrication</td>  
-            <td>Purdue / UT Austin / Intel</td>  
-            <td>  
-              <a href="https://www.coursera.org/account/accomplishments/records/QVNOKPZN2SQB" target="_blank" rel="noopener">  
-                QVNOKPZN2SQB  
-              </a>  
-            </td>  
-          </tr>  
-        </tbody>  
-      </table>  
-    </div>  
-  </section>  
-  
-  <!-- CONTACT -->  
-  <section id="contact">  
-    <div class="section-header">  
-      <div class="section-kicker">Contact</div>  
-      <h2 class="section-title">CV &amp; Contact</h2>  
-      <p class="section-subtitle">  
-        For supervisors, collaborators and industry partners interested in metrology and nanoengineering research.  
-      </p>  
-    </div>  
-  
-    <div class="contact-grid">  
-      <div>  
-        <div class="card">  
-          <div class="card-header">Download CV</div>  
-          <p style="font-size:0.9rem; margin-top:0.2rem;">  
-            A full CV including detailed research experience, coursework, references and academic records is available here:  
-          </p>  
-          <p>  
-            <a class="btn btn-primary"  
-               href="https://drive.google.com/file/d/1BJS3tckP7zWaBkxk527N3ry1ikpvYiMC/view?usp=drivesdk"  
-               target="_blank" rel="noopener">  
-              Open CV (PDF)  
-            </a>  
-          </p>  
-          <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.4rem;">  
-            You can update this link later if you create a dedicated PhD-version CV.  
-          </p>  
-        </div>  
-      </div>  
-  
-      <div>  
-        <div class="card">  
-          <div class="card-header">Contact Information</div>  
-          <ul class="contact-list">  
-            <li><strong>Email:</strong>  
-              <a href="mailto:sougata.jadavpur.university605@gmail.com">  
-                sougata.jadavpur.university605@gmail.com  
-              </a>  
-            </li>  
-            <li><strong>Current base:</strong> Taipei &amp; Hsinchu, Taiwan</li>  
-            <li><strong>LinkedIn:</strong>  
-              <a href="https://www.linkedin.com/in/sougata-bhunia85" target="_blank" rel="noopener">  
-                linkedin.com/in/sougata-bhunia85  
-              </a>  
-            </li>  
-            <li><strong>GitHub:</strong>  
-              <a href="https://github.com/sougataresearch" target="_blank" rel="noopener">  
-                github.com/sougataresearch  
-              </a>  
-            </li>  
-            <li><strong>Google Scholar:</strong>  
-              <a href="https://scholar.google.com/citations?hl=en&user=-owKAGYAAAAJ" target="_blank" rel="noopener">  
-                Scholar Profile  
-              </a>  
-            </li>  
-          </ul>  
-          <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.7rem;">  
-            I welcome discussions on semiconductor metrology, nanoengineering projects, and  
-            opportunities for collaboration at the interface of academia and industry.  
-          </p>  
-        </div>  
-      </div>  
-    </div>  
-  </section>  
-  
-</main>  
-  
-<footer>  
-  &copy; <span id="year"></span> Sougata Bhunia. All rights reserved.  
-</footer>  
-  
-<script>  
-  // Mobile nav toggle  
-  const navToggle = document.querySelector('.nav-toggle');  
-  const navLinks = document.getElementById('nav-links');  
-  
-  navToggle.addEventListener('click', () => {  
-    navLinks.classList.toggle('show');  
-  });  
-  
-  // Current year in footer  
-  document.getElementById('year').textContent = new Date().getFullYear();  
-</script>  
-  
-</body>  
-</html>  
+<main>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        <span>Incoming PhD Student · Semiconductor Metrology</span>
+      </div>
+
+      <h1 class="hero-title">
+        Sougata Bhunia<br>
+        <span>Optical & Interferometric Metrology</span>
+      </h1>
+
+      <p class="hero-tagline">
+        Incoming PhD student working toward optical and interferometric measurement
+        systems for semiconductor surface and thin-film characterization.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary"
+           href="https://drive.google.com/file/d/1BJS3tckP7zWaBkxk527N3ry1ikpvYiMC/view"
+           target="_blank">CV (PDF)</a>
+        <a class="btn btn-ghost"
+           href="https://scholar.google.com/citations?hl=en&user=-owKAGYAAAAJ"
+           target="_blank">Google Scholar</a>
+        <a class="btn btn-ghost"
+           href="https://github.com/sougataresearch"
+           target="_blank">GitHub</a>
+      </div>
+    </div>
+
+    <aside class="hero-panel">
+      <div class="hero-panel-title">At a Glance</div>
+
+      <div class="hero-panel-item">
+        <div class="hero-panel-item-title">Current</div>
+        <div class="hero-panel-item-text">
+          TEEP Research Intern, NTHU
+        </div>
+      </div>
+
+      <div class="hero-panel-item">
+        <div class="hero-panel-item-title">Next</div>
+        <div class="hero-panel-item-text">
+          PhD · Mechanical Engineering (Nanoengineering & Nanoscience)<br>
+          National Taiwan University · Feb 2026
+        </div>
+      </div>
+
+      <div class="hero-panel-item">
+        <div class="hero-panel-item-title">Core Direction</div>
+        <div class="hero-panel-item-text">
+          Optical metrology · Interferometry · Semiconductor surface profiling
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section id="about">
+  <div class="section-header">
+    <div class="section-kicker">Profile</div>
+    <h2 class="section-title">Background & Transition</h2>
+  </div>
+
+  <p>
+    I hold an M.Sc. in Electronics Science from Jadavpur University, following a
+    B.Sc. in Physics. My academic training combines solid-state physics,
+    semiconductor device fundamentals, and experimental materials characterization.
+  </p>
+
+  <p>
+    During my master’s work, I focused on synthesis and characterization of
+    lead-free high-entropy perovskite oxides, gaining hands-on experience with
+    XRD, FESEM/EDS, optical spectroscopy, and thermal analysis. This exposure
+    motivated a shift from materials toward measurement-centric problems.
+  </p>
+
+  <p>
+    Through semiconductor process training and current research exposure at
+    National Tsing Hua University, my interests have converged on semiconductor
+    metrology—particularly optical and interferometric methods for surface and
+    thin-film measurement.
+  </p>
+</section>
+
+<!-- RESEARCH INTERESTS -->
+<section id="research">
+  <div class="section-header">
+    <div class="section-kicker">Research</div>
+    <h2 class="section-title">Research Interests & Questions</h2>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-header">Optical & Interferometric Metrology</div>
+      <p class="card-meta">
+        Semiconductor surface and thin-film measurement
+      </p>
+      <p>
+        I am interested in optical and white-light interferometric techniques
+        for non-contact 3D surface profiling in semiconductor inspection.
+      </p>
+      <p>
+        <strong>Open question:</strong><br>
+        How can axial resolution and measurement robustness be maintained when
+        profiling rough or multilayer semiconductor surfaces?
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Computational Imaging & Signal Processing</div>
+      <p class="card-meta">
+        Physics-based data analysis for metrology
+      </p>
+      <p>
+        I aim to develop data processing and modeling approaches that improve
+        interpretation of interferometric and optical measurement data.
+      </p>
+      <p>
+        <strong>Open question:</strong><br>
+        What signal processing strategies best mitigate noise and phase ambiguity
+        in high-aspect-ratio surface measurements?
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <div class="section-kicker">Experience</div>
+    <h2 class="section-title">Research & Training</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">
+      TEEP Research Intern · College of Semiconductor Research, NTHU · 2025
+    </div>
+    <ul class="card-list">
+      <li>Participated in semiconductor material synthesis and process-flow studies under supervision.</li>
+      <li>Analyzed relationships between synthesis conditions, material properties, and device-relevant behavior.</li>
+      <li>Gained exposure to semiconductor process integration concepts.</li>
+    </ul>
+
+    <div class="card-meta" style="margin-top:0.7rem;">
+      M.Sc. Thesis Research · Jadavpur University · 2024–2025
+    </div>
+    <ul class="card-list">
+      <li>Synthesized lead-free high-entropy perovskite oxides using sol–gel methods.</li>
+      <li>Performed structural, morphological, optical, and thermal characterization.</li>
+      <li>Analyzed experimental data using Origin, Match!, and X’Pert HighScore.</li>
+    </ul>
+    <p style="font-size:0.85rem;">
+      <a href="THESIS_LINK_HERE" target="_blank">M.Sc. Thesis (PDF)</a>
+    </p>
+
+    <div class="card-meta" style="margin-top:0.7rem;">
+      INUP Nanoelectronics Training · IIT Kharagpur · 2025
+    </div>
+    <ul class="card-list">
+      <li>Guided exposure to cleanroom fabrication workflows and device characterization tools.</li>
+    </ul>
+    <p style="font-size:0.85rem;">
+      <a href="INUP_CERTIFICATE_LINK" target="_blank">INUP Certificate</a>
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <div class="section-kicker">Skills</div>
+    <h2 class="section-title">Skills & Competency Levels</h2>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-header">Hands-on</div>
+      <ul class="card-list">
+        <li>XRD, FESEM/EDS</li>
+        <li>UV–Vis, FTIR, TGA/DSC</li>
+        <li>Sol–gel thin-film synthesis</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Working Knowledge / Exposure</div>
+      <ul class="card-list">
+        <li>Python, MATLAB (scientific analysis)</li>
+        <li>Semiconductor process integration concepts</li>
+        <li>Optical interferometry (theory and early experimental exposure)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header">
+    <div class="section-kicker">Education</div>
+    <h2 class="section-title">Academic Training</h2>
+  </div>
+
+  <ul class="timeline">
+    <li class="timeline-item">
+      <div class="timeline-title">PhD · Mechanical Engineering</div>
+      <div class="timeline-meta">National Taiwan University · Starting Feb 2026</div>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-title">M.Sc. · Electronics Science</div>
+      <div class="timeline-meta">Jadavpur University · CGPA 7.72/10</div>
+      <div class="timeline-detail">
+        Thesis: Lead-free high-entropy perovskite oxides for energy-related applications.
+      </div>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-title">B.Sc. (Hons.) · Physics</div>
+      <div class="timeline-meta">University of Calcutta · SGPA 7.5/10</div>
+    </li>
+  </ul>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <div class="section-kicker">Contact</div>
+    <h2 class="section-title">Contact & CV</h2>
+  </div>
+
+  <div class="card">
+    <ul class="contact-list">
+      <li>Email: <a href="mailto:sougata.jadavpur.university605@gmail.com">sougata.jadavpur.university605@gmail.com</a></li>
+      <li>GitHub: <a href="https://github.com/sougataresearch" target="_blank">github.com/sougataresearch</a></li>
+      <li>Google Scholar: <a href="https://scholar.google.com/citations?hl=en&user=-owKAGYAAAAJ" target="_blank">Profile</a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
