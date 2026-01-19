@@ -1,462 +1,483 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sougata Bhunia | Semiconductor Metrology Research Profile</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description"
-        content="Academic research profile of Sougata Bhunia, focusing on semiconductor metrology, optical measurement, and surface characterization.">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sougata Bhunia | Academic Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+        :root {
+            --blue: #60A5FA;
+            --purple: #A78BFA;
+            --bg: #030303;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: #ffffff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: radial-gradient(circle at center, #0a0a0a 0%, #030303 100%);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        .glass:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--blue);
+            transform: translateY(-5px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-btn {
+            color: #94a3b8;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover { color: var(--blue); }
+
+        section { scroll-margin-top: 100px; }
+
+        .tag {
+            background: rgba(96, 165, 250, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            color: var(--blue);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .syllabus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 8px;
+        }
+
+        .syllabus-item {
+            font-size: 11px;
+            color: #94a3b8;
+            padding: 4px 8px;
+            border-left: 2px solid rgba(96, 165, 250, 0.3);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .guide-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 24px;
+        }
+
+        .blog-cta {
+            background: linear-gradient(45deg, #1e293b, #0f172a);
+            border: 1px solid rgba(96, 165, 250, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .blog-cta:hover {
+            border-color: var(--blue);
+            box-shadow: 0 0 30px rgba(96, 165, 250, 0.2);
+        }
+    </style>
 </head>
-
 <body>
+    <canvas id="bg-canvas"></canvas>
 
-<header>
-  <div class="nav-container">
-    <div class="brand">
-      <span class="brand-name">Sougata Bhunia</span>
-      <span class="brand-sub">
-        TEEP Research Intern, NTHU · Incoming PhD Student, National Taiwan University
-      </span>
-    </div>
-    <button class="nav-toggle" type="button" aria-label="Toggle navigation">Menu</button>
-    <nav aria-label="Primary">
-      <ul id="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">Profile</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 px-6 py-8 flex justify-center pointer-events-none">
+        <div class="glass px-10 py-4 flex gap-8 pointer-events-auto overflow-x-auto max-w-full">
+            <a href="#about" class="nav-btn">About</a>
+            <a href="#journey" class="nav-btn">Journey</a>
+            <a href="#research" class="nav-btn">Research</a>
+            <a href="#certs" class="nav-btn">Certs</a>
+            <a href="#contact" class="nav-btn">Contact</a>
+            <a href="#insight" class="nav-btn text-blue-400">Mentorship</a>
+        </div>
     </nav>
-  </div>
-</header>
 
-<main>
+    <main class="max-w-6xl mx-auto px-6 pt-32 pb-20">
+        <!-- Hero -->
+        <section id="about" class="mb-40 flex flex-col items-center text-center">
+            <div class="tag mb-6 tracking-widest">Incoming PhD @ NENS, GSAT, NTU Taiwan (Feb 2026)</div>
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter uppercase mb-6">
+                SOUGATA <span class="text-gradient">BHUNIA</span>
+            </h1>
+            <p class="text-xl text-slate-400 max-w-3xl leading-relaxed mb-10">
+                Bridging materials science with next-gen semiconductor manufacturing through 
+                <span class="text-white">High-Entropy Oxide Nanomaterials</span> and 
+                <span class="text-white">Optical Critical Dimension Metrology</span>.
+            </p>
+            
+            <div class="flex gap-4">
+                <a href="https://linkedin.com/in/sougata-bhunia85" target="_blank" class="glass p-4 flex items-center gap-2 group">
+                    <i data-lucide="linkedin" class="w-5 h-5 text-blue-400 group-hover:scale-110 transition"></i>
+                </a>
+                <a href="https://github.com/sougatabhunia85" target="_blank" class="glass p-4 flex items-center gap-2 group">
+                    <i data-lucide="github" class="w-5 h-5 text-white group-hover:scale-110 transition"></i>
+                </a>
+                <a href="mailto:d14k46004@ntu.edu.tw" class="glass p-4 flex items-center gap-2 group">
+                    <i data-lucide="mail" class="w-5 h-5 text-purple-400 group-hover:scale-110 transition"></i>
+                </a>
+            </div>
+        </section>
 
-<!-- HERO -->
-<section id="home">
-  <div class="hero">
-    <div>
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        <span>TEEP Research Intern · Incoming PhD Student (Feb 2026)</span>
-      </div>
+        <!-- Academic Journey -->
+        <section id="journey" class="mb-40">
+            <h2 class="text-xs uppercase tracking-[0.4em] text-blue-500 font-bold mb-12 flex items-center gap-2">
+                <i data-lucide="graduation-cap" class="w-4 h-4"></i> Academic Foundation
+            </h2>
+            
+            <div class="space-y-12">
+                <!-- PhD -->
+                <div class="glass p-8 relative overflow-hidden">
+                    <div class="flex flex-col md:flex-row justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold">PhD in Nanoengineering and Nanoscience</h3>
+                            <p class="text-blue-400 font-semibold">National Taiwan University (NTU) · Taipei</p>
+                        </div>
+                        <span class="tag h-fit">Feb 2026 — Present</span>
+                    </div>
+                    <p class="text-sm text-slate-400 mb-4">Precision Metrology Lab, Graduate School of Advanced Technology (GSAT). Research focuses on sub-nanometer semiconductor yield enhancement via advanced optical metrology.</p>
+                </div>
 
-      <h1 class="hero-title">
-        Sougata Bhunia<br>
-        <span>Semiconductor Metrology & Optical Measurement</span>
-      </h1>
+                <!-- MSc -->
+                <div class="glass p-8 border-l-4 border-purple-500/50">
+                    <div class="flex flex-col md:flex-row justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold">M.Sc. in Electronics Science</h3>
+                            <p class="text-purple-400 font-semibold">Jadavpur University, Dept. of Physics · Kolkata</p>
+                        </div>
+                        <span class="tag h-fit">2023 — 2025</span>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-[10px] font-black uppercase text-slate-500 mb-3 tracking-widest">Key Curriculum Highlights</h4>
+                        <div class="syllabus-grid">
+                            <div class="syllabus-item">Quantum Mechanics</div>
+                            <div class="syllabus-item">Solid State Physics</div>
+                            <div class="syllabus-item">Semiconductor Devices</div>
+                            <div class="syllabus-item">Power Electronics</div>
+                            <div class="syllabus-item">Nanoelectronics</div>
+                            <div class="syllabus-item">Microprocessors (8085)</div>
+                            <div class="syllabus-item">Introduction to Nanotechnology</div>
+                            <div class="syllabus-item">Optoelectronics</div>
+                        </div>
+                    </div>
+                </div>
 
-      <p class="hero-tagline">
-        Research interest in optical and interferometric methods for semiconductor surface and thin-film characterization.
-      </p>
+                <!-- BSc -->
+                <div class="glass p-8 border-l-4 border-slate-500/50">
+                    <div class="flex flex-col md:flex-row justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold">B.Sc. (Hons.) in Physics</h3>
+                            <p class="text-slate-400 font-semibold">St. Paul's Cathedral Mission College, University of Calcutta</p>
+                        </div>
+                        <span class="tag h-fit">2020 — 2023</span>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-[10px] font-black uppercase text-slate-500 mb-3 tracking-widest">Undergraduate Foundation</h4>
+                        <div class="syllabus-grid">
+                            <div class="syllabus-item">Classical Mechanics</div>
+                            <div class="syllabus-item">Electromagnetism</div>
+                            <div class="syllabus-item">Thermodynamics</div>
+                            <div class="syllabus-item">Statistical Mechanics</div>
+                            <div class="syllabus-item">Analog & Digital Electronics</div>
+                            <div class="syllabus-item">Nuclear Physics</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <div class="hero-actions">
-        <a class="btn btn-primary"
-           href="https://drive.google.com/file/d/1BJS3tckP7zWaBkxk527N3ry1ikpvYiMC/view"
-           target="_blank" rel="noopener">
-          CV (PDF)
-        </a>
-        <a class="btn btn-ghost"
-           href="https://scholar.google.com/citations?hl=en&user=-owKAGYAAAAJ"
-           target="_blank" rel="noopener">
-          Google Scholar
-        </a>
-        <a class="btn btn-ghost"
-           href="https://github.com/sougataresearch"
-           target="_blank" rel="noopener">
-          GitHub
-        </a>
-        <a class="btn btn-ghost"
-           href="https://www.linkedin.com/in/sougata-bhunia85"
-           target="_blank" rel="noopener">
-          LinkedIn
-        </a>
-      </div>
-    </div>
+        <!-- Research Portfolio -->
+        <section id="research" class="mb-40">
+            <h2 class="text-xs uppercase tracking-[0.4em] text-blue-500 font-bold mb-12">Research Specialization</h2>
+            
+            <div class="space-y-8">
+                <div class="glass p-10 relative group">
+                    <div class="flex flex-col lg:flex-row gap-10">
+                        <div class="lg:w-1/3">
+                            <div class="p-4 bg-blue-500/10 rounded-2xl w-fit mb-6">
+                                <i data-lucide="flask-conical" class="w-8 h-8 text-blue-400"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Master Thesis</h3>
+                            <p class="text-blue-400 text-sm font-bold mb-4 uppercase tracking-tighter">Lead-Free High-Entropy Oxides</p>
+                        </div>
+                        <div class="lg:w-2/3 text-slate-400 text-sm leading-relaxed space-y-4">
+                            <p>Synthesized novel <strong>Lead-Free High-Entropy Perovskite (HEP)</strong> nanomaterials utilizing cost-effective <strong>Sol-Gel</strong> routes. High-Entropy Oxides are a new class of materials where five or more metal cations are incorporated into a single-phase crystal structure.</p>
+                            <p>Utilized <strong>XRD Rietveld refinement</strong> and <strong>FESEM/EDS</strong> for elemental mapping. These materials show immense potential for thermoelectric and dielectric applications in future electronics.</p>
+                        </div>
+                    </div>
+                </div>
 
-    <aside class="hero-panel" aria-label="Snapshot">
-      <div class="hero-panel-title">Current Status</div>
+                <div class="glass p-10 relative group border-t-2 border-blue-500/20">
+                    <div class="flex flex-col lg:flex-row gap-10">
+                        <div class="lg:w-1/3">
+                            <div class="p-4 bg-purple-500/10 rounded-2xl w-fit mb-6">
+                                <i data-lucide="microscope" class="w-8 h-8 text-purple-400"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">PhD Research</h3>
+                            <p class="text-purple-400 text-sm font-bold mb-4 uppercase tracking-tighter">Sub-nm OCD Metrology</p>
+                        </div>
+                        <div class="lg:w-2/3 text-slate-400 text-sm leading-relaxed space-y-4">
+                            <p>Focusing on <strong>Optical Critical Dimension (OCD) Metrology</strong> at the sub-nanometer node. My research aims to improve yield through non-destructive <strong>scatterometry</strong>.</p>
+                            <p>I am developing algorithms based on <strong>Rigorous Coupled-Wave Analysis (RCWA)</strong> to characterize 3D nanostructural parameters like CD and height with picometer-level precision for GAAFET and 3D NAND.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <div class="hero-panel-item">
-        <div class="hero-panel-item-title">Present</div>
-        <div class="hero-panel-item-text">
-          TEEP Research Intern, College of Semiconductor Research, NTHU
-        </div>
-      </div>
+        <!-- Certificates -->
+        <section id="certs" class="mb-40">
+            <h2 class="text-xs uppercase tracking-[0.4em] text-blue-500 font-bold mb-12">Professional Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <a href="https://www.coursera.org/account/accomplishments/verify/4VLE0VBFGM9M" target="_blank" class="glass p-6 group">
+                    <p class="text-[10px] font-black text-blue-400 mb-2">PURDUE / INTEL</p>
+                    <h4 class="text-sm font-bold mb-4">Semiconductor Fabrication</h4>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-white transition"></i>
+                </a>
+                <a href="https://www.coursera.org/account/accomplishments/verify/7GBH5OY37483" target="_blank" class="glass p-6 group">
+                    <p class="text-[10px] font-black text-purple-400 mb-2">VANDERBILT UNIV.</p>
+                    <h4 class="text-sm font-bold mb-4">MATLAB Programming</h4>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-white transition"></i>
+                </a>
+                <a href="https://www.coursera.org/account/accomplishments/verify/621ZOLDPDR36" target="_blank" class="glass p-6 group">
+                    <p class="text-[10px] font-black text-emerald-400 mb-2">ARIZONA STATE</p>
+                    <h4 class="text-sm font-bold mb-4">Characterization</h4>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-white transition"></i>
+                </a>
+                <a href="https://www.coursera.org/account/accomplishments/verify/QVNOKPZN2SQB" target="_blank" class="glass p-6 group">
+                    <p class="text-[10px] font-black text-pink-400 mb-2">DUKE / NC STATE</p>
+                    <h4 class="text-sm font-bold mb-4">Nanotechnology</h4>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-white transition"></i>
+                </a>
+            </div>
+        </section>
 
-      <div class="hero-panel-item">
-        <div class="hero-panel-item-title">Next</div>
-        <div class="hero-panel-item-text">
-          PhD Student, Mechanical Engineering (Nanoengineering & Nanoscience), NTU
-        </div>
-      </div>
+        <!-- Contact -->
+        <section id="contact" class="mb-40">
+            <h2 class="text-xs uppercase tracking-[0.4em] text-blue-500 font-bold mb-12">Contact & References</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="glass p-8 space-y-4">
+                    <h4 class="text-xs font-bold text-blue-400 uppercase">Primary Advisor</h4>
+                    <p class="font-bold">Dr. K.K. Chattopadhyay</p>
+                    <p class="text-xs text-slate-500">Professor, Dept. of Physics, Jadavpur University</p>
+                    <a href="mailto:kkc.juphy@gmail.com" class="text-xs text-blue-500 hover:underline">kkc.juphy@gmail.com</a>
+                </div>
+                <div class="glass p-8 space-y-4">
+                    <h4 class="text-xs font-bold text-purple-400 uppercase">PhD Advisor</h4>
+                    <p class="font-bold">Prof. Liang-Chia Chen</p>
+                    <p class="text-xs text-slate-500">Distinguished Professor, NTU Taiwan</p>
+                    <a href="mailto:lcchen@ntu.edu.tw" class="text-xs text-purple-500 hover:underline">lcchen@ntu.edu.tw</a>
+                </div>
+                <div class="glass p-8 flex flex-col justify-center items-center text-center">
+                    <h4 class="text-xs font-bold text-emerald-400 uppercase mb-4">Direct Contact</h4>
+                    <a href="mailto:sougata.jadavpur.university605@gmail.com" class="text-sm font-bold hover:text-blue-400 transition mb-2">Email Me</a>
+                    <p class="text-[10px] text-slate-600 uppercase tracking-tighter">Paschim Medinipur, WB, India</p>
+                </div>
+            </div>
+        </section>
 
-      <div class="hero-panel-item">
-        <div class="hero-panel-item-title">Location</div>
-        <div class="hero-panel-item-text">
-          Taiwan · Originally from West Bengal, India
-        </div>
-      </div>
+        <!-- Mentor/Blog Section (At the very end) -->
+        <section id="insight" class="mb-20 pt-20 border-t border-white/5">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-xs uppercase tracking-[0.4em] text-blue-500 font-bold flex items-center gap-2">
+                    <i data-lucide="book-open" class="w-4 h-4"></i> The Semiconductor Guide for Juniors
+                </h2>
+                <span class="text-[10px] text-slate-600 uppercase">Mental Note: For Students Only</span>
+            </div>
+            
+            <!-- Catchy Hero Box for Section -->
+            <div class="glass p-12 mb-12 border-t-4 border-blue-500">
+                <div class="flex flex-col lg:flex-row gap-10 items-center">
+                    <div class="lg:w-2/3">
+                        <h3 class="text-4xl font-black mb-6">Why You Should Care About <span class="text-gradient">Chips</span> in 2026?</h3>
+                        <p class="text-slate-400 text-lg leading-relaxed mb-8">
+                            While Software is crowded, Hardware is the new frontier. With the world facing a "Chip War" and talent shortage, Semiconductor Engineers are the architects of the physical world. Master the physics, and you become irreplaceable.
+                        </p>
+                    </div>
+                    <div class="lg:w-1/3 w-full">
+                        <a href="https://github.com/sougatabhunia85/semiconductor-roadmap" target="_blank" class="blog-cta block p-8 rounded-3xl text-center">
+                            <i data-lucide="external-link" class="w-8 h-8 text-blue-400 mx-auto mb-4"></i>
+                            <h4 class="font-bold text-lg text-white mb-2">Full Roadmap & Blog</h4>
+                            <p class="text-xs text-slate-400">Cold Emails, CV Tips, Internships, Finding Profs & skipping IELTS/TOEFL.</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                    <div class="p-6 bg-blue-500/5 rounded-2xl border border-blue-500/10">
+                        <h4 class="font-bold text-white mb-2">High Entry Barrier</h4>
+                        <p class="text-xs text-slate-500">Once you're in, you are shielded from mass layoffs common in pure software.</p>
+                    </div>
+                    <div class="p-6 bg-purple-500/5 rounded-2xl border border-purple-500/10">
+                        <h4 class="font-bold text-white mb-2">Global Impact</h4>
+                        <p class="text-xs text-slate-500">Design the atoms that allow AI, Space Tech, and Quantum to exist.</p>
+                    </div>
+                    <div class="p-6 bg-emerald-500/5 rounded-2xl border border-emerald-500/10">
+                        <h4 class="font-bold text-white mb-2">India's Mission</h4>
+                        <p class="text-xs text-slate-500">The ISM is bringing multi-billion dollar Fabs to India—Jobs are waiting.</p>
+                    </div>
+                </div>
+            </div>
 
-      <div class="hero-panel-item">
-        <div class="hero-panel-item-title">Contact</div>
-        <div class="hero-panel-item-text">
-          <a href="mailto:sougata.jadavpur.university605@gmail.com">
-            sougata.jadavpur.university605@gmail.com
-          </a>
-        </div>
-      </div>
-    </aside>
-  </div>
-</section>
+            <!-- Blog Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="space-y-8">
+                    <div class="guide-card">
+                        <h4 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <i data-lucide="map" class="w-5 h-5 text-orange-400"></i> The Future in India (ISM)
+                        </h4>
+                        <p class="text-sm text-slate-400 mb-4">India is no longer just "designing" chips. Through the <strong>India Semiconductor Mission (ISM)</strong>, billions are flowing into Fabs in Gujarat and Assam.</p>
+                        <ul class="space-y-3 text-xs">
+                            <li class="flex gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                                <span><strong>Massive Job Boom:</strong> Tata Electronics, Micron, and CG Power are hiring.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                                <span><strong>Local Supply Chain:</strong> Chemicals, gases, and wafer startups are exploding.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="guide-card">
+                        <h4 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <i data-lucide="briefcase" class="w-5 h-5 text-blue-400"></i> Job Opportunities
+                        </h4>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-white font-bold text-xs uppercase">Design (VLSI):</p>
+                                <p class="text-[10px] text-slate-500">RTL Coding, Synthesis, DFT. Intel, NVIDIA, Qualcomm.</p>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold text-xs uppercase">Manufacturing (Fab):</p>
+                                <p class="text-[10px] text-slate-500">Process Engineering, Lithography, Etching. TSMC, Micron, Tata.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<!-- PROFILE -->
-<section id="about">
-  <div class="section-header">
-    <div class="section-kicker">Profile</div>
-    <h2 class="section-title">Academic Background</h2>
-  </div>
+                <div class="space-y-8">
+                    <div class="guide-card border-purple-500/20">
+                        <h4 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <i data-lucide="plane" class="w-5 h-5 text-purple-400"></i> How to go Abroad?
+                        </h4>
+                        <p class="text-sm text-slate-400 mb-6">If you want to reach the global top (Taiwan, USA, Europe), follow this strategy:</p>
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0 text-xs font-bold">1</div>
+                                <div><p class="text-sm font-bold">Build Foundation</p><p class="text-[11px] text-slate-500">Master Solid State Physics and Device physics early.</p></div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0 text-xs font-bold">2</div>
+                                <div><p class="text-sm font-bold">Internships (TEEP)</p><p class="text-[11px] text-slate-500">Taiwan's TEEP program is the easiest gateway for Indians.</p></div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0 text-xs font-bold">3</div>
+                                <div><p class="text-sm font-bold">Cold Email Strategy</p><p class="text-[11px] text-slate-500">Directly contact professors with your specific research fit.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl border border-white/5">
+                        <h4 class="text-white font-bold mb-2 text-sm italic">"Stop chasing only coding. Learn the Physics behind the Hardware. Master Origin, MATLAB, and LaTeX."</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="two-col">
-    <div>
-      <p>
-        My academic training began in Physics, where I developed a foundation in measurement, data analysis,
-        and electronic principles. During my undergraduate studies, I became increasingly interested in
-        how physical measurements are translated into reliable electronic and device-level information.
-      </p>
-      <p>
-        This interest motivated my transition to an M.Sc. in Electronics Science, where I worked on
-        materials relevant to electronic and energy-related devices and gained experience with experimental
-        characterization techniques and quantitative data analysis.
-      </p>
-      <p>
-        Through exposure to semiconductor processing concepts and metrology-oriented coursework and training,
-        my focus has shifted toward semiconductor measurement and inspection. This progression now continues
-        into doctoral research, where I aim to study optical and interferometric approaches to surface and
-        thin-film metrology.
-      </p>
-    </div>
+        <footer class="pt-20 border-t border-white/5 text-center text-slate-600 text-[9px] uppercase tracking-[0.4em]">
+            Sougata Bhunia // Researcher Portfolio // 2026
+        </footer>
+    </main>
 
-    <div class="card">
-      <div class="card-header">Context</div>
-      <ul class="contact-list">
-        <li><strong>Discipline path:</strong> Physics → Electronics Science → Semiconductor Metrology</li>
-        <li><strong>Current role:</strong> TEEP Research Intern, NTHU</li>
-        <li><strong>Incoming role:</strong> PhD Student, NTU (from Feb 2026)</li>
-        <li><strong>Primary interest:</strong> Optical measurement and semiconductor surface characterization</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <script>
+        lucide.createIcons();
 
-<!-- RESEARCH -->
-<section id="research">
-  <div class="section-header">
-    <div class="section-kicker">Research</div>
-    <h2 class="section-title">Research Interests & Open Questions</h2>
-  </div>
+        let scene, camera, renderer, points;
 
-  <div class="two-col">
-    <div class="card">
-      <div class="card-header">Optical and Interferometric Metrology</div>
-      <p class="card-meta">
-        Optical methods are central to non-contact, high-throughput inspection in semiconductor manufacturing.
-      </p>
-      <p>
-        A key limitation in interferometric surface profiling is maintaining axial resolution and accuracy
-        when measuring complex or high-aspect-ratio features.
-      </p>
-      <p>
-        <strong>Open question:</strong> How can interferometric surface measurements be made more robust
-        against noise and surface discontinuities commonly found in advanced semiconductor structures?
-      </p>
-    </div>
+        function init3D() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
 
-    <div class="card">
-      <div class="card-header">Computational Imaging and Signal Interpretation</div>
-      <p class="card-meta">
-        Computational approaches are increasingly used to extract physical meaning from optical measurement data.
-      </p>
-      <p>
-        Interferometric and imaging measurements often involve trade-offs between resolution, speed, and
-        signal stability.
-      </p>
-      <p>
-        <strong>Open question:</strong> What signal-processing strategies can improve measurement reliability
-        without increasing experimental complexity in optical metrology systems?
-      </p>
-    </div>
+            const geometry = new THREE.BufferGeometry();
+            const count = 1200;
+            const positions = new Float32Array(count * 3);
 
-    <div class="card">
-      <div class="card-header">Semiconductor Surfaces and Thin-Film Characterization</div>
-      <p class="card-meta">
-        Surface and thin-film properties directly influence device performance and process control.
-      </p>
-      <p>
-        Understanding how optical measurements correlate with material structure and morphology remains
-        a practical challenge.
-      </p>
-      <p>
-        <strong>Open question:</strong> How can optical surface measurements be better linked to material
-        properties relevant to semiconductor process monitoring?
-      </p>
-    </div>
-  </div>
-</section>
+            for(let i = 0; i < count * 3; i++) {
+                positions[i] = (Math.random() - 0.5) * 1200;
+            }
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-header">
-    <div class="section-kicker">Experience</div>
-    <h2 class="section-title">Research and Training</h2>
-  </div>
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            
+            const material = new THREE.PointsMaterial({
+                size: 2,
+                color: 0x60A5FA,
+                transparent: true,
+                opacity: 0.2,
+                blending: THREE.AdditiveBlending
+            });
 
-  <div class="two-col">
-    <div class="card">
-      <div class="card-header">Research Experience</div>
+            points = new THREE.Points(geometry, material);
+            scene.add(points);
+            camera.position.z = 500;
+        }
 
-      <div class="card-meta">
-        TEEP Research Intern · College of Semiconductor Research, NTHU · Aug–Dec 2025
-      </div>
-      <ul class="card-list">
-        <li>Worked on selected aspects of semiconductor material processing and device-oriented workflows.</li>
-        <li>Analyzed how variations in synthesis and processing conditions influenced measured material properties.</li>
-        <li>Observed and discussed process integration considerations relevant to semiconductor devices.</li>
-      </ul>
+        function animate() {
+            requestAnimationFrame(animate);
+            points.rotation.y += 0.0003;
+            points.rotation.x += 0.0001;
+            renderer.render(scene, camera);
+        }
 
-      <div class="card-meta" style="margin-top:0.6rem;">
-        M.Sc. Thesis Research · Jadavpur University · Aug 2024 – Jul 2025
-      </div>
-      <ul class="card-list">
-        <li>Prepared lead-free high-entropy perovskite oxide samples using sol–gel synthesis routes.</li>
-        <li>Performed structural, morphological, elemental, optical, and thermal characterization.</li>
-        <li>Analyzed experimental data to relate material composition and structure to measured properties.</li>
-      </ul>
+        window.onload = () => {
+            init3D();
+            animate();
+        }
 
-      <p style="font-size:0.85rem;">
-        <a href="[Link to thesis PDF to be added]">M.Sc. Thesis (PDF)</a>
-      </p>
-    </div>
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
 
-    <div class="card">
-      <div class="card-header">Training & Exposure</div>
-
-      <div class="card-meta">
-        INUP Nanoelectronics Training · IIT Kharagpur · Feb 2025
-      </div>
-      <ul class="card-list">
-        <li>Participated in guided cleanroom sessions covering lithography and thin-film processes.</li>
-        <li>Observed semiconductor device fabrication and basic electrical characterization workflows.</li>
-        <li>Gained introductory exposure to nanoscale measurement and profiling tools.</li>
-      </ul>
-
-      <p style="font-size:0.85rem;">
-        <a href="https://www.coursera.org/account/accomplishments/records/QVNOKPZN2SQB" target="_blank" rel="noopener">
-          Training certificate
-        </a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-header">
-    <div class="section-kicker">Skills</div>
-    <h2 class="section-title">Skills & Competency Levels</h2>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <div class="card-header">Hands-on Experience</div>
-      <ul class="card-list">
-        <li>Sol–gel synthesis of oxide materials</li>
-        <li>XRD, FESEM/EDS, UV–Vis, FTIR, TGA/DSC measurements</li>
-        <li>Experimental data organization and interpretation</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <div class="card-header">Working Knowledge</div>
-      <ul class="card-list">
-        <li>Semiconductor device fundamentals and process flow concepts</li>
-        <li>Python and MATLAB for scientific data analysis</li>
-        <li>Use of analysis software for diffraction and spectroscopy data</li>
-      </ul>
-
-      <div class="card-header" style="margin-top:0.7rem;">Exposure / Current Learning</div>
-      <ul class="card-list">
-        <li>Optical and interferometric measurement principles</li>
-        <li>Semiconductor fabrication workflows in a training environment</li>
-        <li>Signal interpretation in surface and thin-film measurements</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-header">
-    <div class="section-kicker">Projects</div>
-    <h2 class="section-title">Projects & Technical Repositories</h2>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <div class="card-header">Exploratory and Learning Projects</div>
-
-      <p>
-        <strong>High-Entropy Perovskite Study</strong><br>
-        Exploratory project documenting synthesis and characterization workflows for complex oxide materials.
-      </p>
-      <p>
-        <a href="https://github.com/sougataresearch/High-Entropy-Perovskite" target="_blank" rel="noopener">
-          Learning repository
-        </a>
-      </p>
-
-      <p>
-        <strong>Machine Learning for Thermal Data</strong><br>
-        Exploratory use of regression methods to examine trends in thermal property datasets.
-      </p>
-      <p>
-        <a href="https://github.com/sougataresearch/Machine-Learning-Thermal" target="_blank" rel="noopener">
-          Learning repository
-        </a>
-      </p>
-    </div>
-
-    <div class="card">
-      <div class="card-header">Technical Notes</div>
-      <ul class="card-list">
-        <li>
-          <strong>MOS Image Sensor Notes</strong><br>
-          Technical notes on CCD and CMOS image sensor principles.<br>
-          <a href="https://github.com/sougataresearch/MOS-Imager-Notes" target="_blank" rel="noopener">
-            Technical notes
-          </a>
-        </li>
-        <li>
-          <strong>Semiconductor Fabrication Notes</strong><br>
-          Process-oriented notes compiled during coursework and training.<br>
-          <a href="https://github.com/sougataresearch/Semiconductor-Fabrication" target="_blank" rel="noopener">
-            Technical notes
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education">
-  <div class="section-header">
-    <div class="section-kicker">Education</div>
-    <h2 class="section-title">Education</h2>
-  </div>
-
-  <ul class="timeline">
-    <li class="timeline-item">
-      <div class="timeline-title">
-        PhD in Mechanical Engineering (Nanoengineering & Nanoscience)
-      </div>
-      <div class="timeline-meta">
-        National Taiwan University · Taipei, Taiwan · Starting Feb 2026
-      </div>
-      <div class="timeline-detail">
-        Incoming doctoral student. Lab assignment: [To be confirmed].
-      </div>
-    </li>
-
-    <li class="timeline-item">
-      <div class="timeline-title">
-        M.Sc. in Electronics Science
-      </div>
-      <div class="timeline-meta">
-        Jadavpur University · Kolkata, India · 2023–2025 · CGPA: 7.72/10
-      </div>
-      <div class="timeline-detail">
-        Thesis: Lead-free high-entropy perovskite oxide for thermoelectric and hydrogen-evolution applications.
-      </div>
-    </li>
-
-    <li class="timeline-item">
-      <div class="timeline-title">
-        B.Sc. (Hons.) in Physics
-      </div>
-      <div class="timeline-meta">
-        St. Paul’s Cathedral Mission College, University of Calcutta · 2020–2023 · SGPA: 7.5/10
-      </div>
-    </li>
-  </ul>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-header">
-    <div class="section-kicker">Contact</div>
-    <h2 class="section-title">Contact & CV</h2>
-  </div>
-
-  <div class="contact-grid">
-    <div class="card">
-      <div class="card-header">Contact</div>
-      <ul class="contact-list">
-        <li><strong>Email:</strong>
-          <a href="mailto:sougata.jadavpur.university605@gmail.com">
-            sougata.jadavpur.university605@gmail.com
-          </a>
-        </li>
-        <li><strong>Google Scholar:</strong>
-          <a href="https://scholar.google.com/citations?hl=en&user=-owKAGYAAAAJ" target="_blank" rel="noopener">
-            Profile
-          </a>
-        </li>
-        <li><strong>GitHub:</strong>
-          <a href="https://github.com/sougataresearch" target="_blank" rel="noopener">
-            github.com/sougataresearch
-          </a>
-        </li>
-        <li><strong>LinkedIn:</strong>
-          <a href="https://www.linkedin.com/in/sougata-bhunia85" target="_blank" rel="noopener">
-            linkedin.com/in/sougata-bhunia85
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <div class="card-header">Curriculum Vitae</div>
-      <p>
-        <a class="btn btn-primary"
-           href="https://drive.google.com/file/d/1BJS3tckP7zWaBkxk527N3ry1ikpvYiMC/view"
-           target="_blank" rel="noopener">
-          Download CV (PDF)
-        </a>
-      </p>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  &copy; <span id="year"></span> Sougata Bhunia
-</footer>
-
-<script>
-  const navToggle = document.querySelector('.nav-toggle');
-  const navLinks = document.getElementById('nav-links');
-  navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = (e.clientX / window.innerWidth) - 0.5;
+            const mouseY = (e.clientY / window.innerHeight) - 0.5;
+            points.rotation.y += mouseX * 0.02;
+            points.rotation.x += mouseY * 0.02;
+        });
+    </script>
 </body>
 </html>
+
+
