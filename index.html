@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sougata Bhunia | PhD Researcher · NTU Taiwan</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -19,9 +17,9 @@
             --teal: #7eb8b0;
             --muted: rgba(232,228,220,0.38);
             --line: rgba(232,228,220,0.07);
-            --serif: 'Cormorant Garamond', Georgia, serif;
-            --sans: 'Syne', sans-serif;
-            --mono: 'JetBrains Mono', monospace;
+            --serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --mono: 'Courier New', Courier, monospace;
         }
 
         html { scroll-behavior: smooth; }
@@ -32,6 +30,7 @@
             color: var(--paper);
             overflow-x: hidden;
             line-height: 1.6;
+            font-size: 16px;
         }
 
         #bg-canvas {
@@ -65,7 +64,7 @@
 
         .nav-logo {
             font-family: var(--serif);
-            font-size: 17px;
+            font-size: 20px;
             font-weight: 600;
             color: var(--gold);
             letter-spacing: 0.03em;
@@ -80,7 +79,7 @@
 
         .nav-links a {
             font-family: var(--mono);
-            font-size: 9.5px;
+            font-size: 12px;
             font-weight: 400;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -142,7 +141,7 @@
 
         .mobile-menu a {
             font-family: var(--mono);
-            font-size: 11px;
+            font-size: 14px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--muted);
@@ -162,7 +161,8 @@
         main {
             position: relative;
             z-index: 1;
-            max-width: 1120px;
+            max-width: 100%;
+            width: 100%;
             margin: 0 auto;
             padding: 0 44px;
         }
@@ -184,7 +184,7 @@
 
         .sec-label {
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             font-weight: 500;
             letter-spacing: 0.3em;
             text-transform: uppercase;
@@ -218,7 +218,7 @@
             align-items: center;
             gap: 10px;
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             letter-spacing: 0.22em;
             text-transform: uppercase;
             color: var(--gold);
@@ -244,7 +244,7 @@
 
         .hero-name {
             font-family: var(--serif);
-            font-size: clamp(54px, 8vw, 100px);
+            font-size: clamp(68px, 10vw, 130px);
             font-weight: 300;
             line-height: 0.9;
             letter-spacing: -0.01em;
@@ -254,7 +254,7 @@
 
         .hero-name-last {
             font-family: var(--serif);
-            font-size: clamp(54px, 8vw, 100px);
+            font-size: clamp(68px, 10vw, 130px);
             font-weight: 300;
             font-style: italic;
             line-height: 0.9;
@@ -265,7 +265,7 @@
 
         .hero-institution {
             font-family: var(--mono);
-            font-size: 10px;
+            font-size: 13px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--teal);
@@ -274,7 +274,7 @@
 
         .hero-lab {
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             letter-spacing: 0.15em;
             color: var(--muted);
             margin-bottom: 28px;
@@ -282,7 +282,7 @@
 
         .hero-tagline {
             font-family: var(--serif);
-            font-size: 19px;
+            font-size: 24px;
             font-style: italic;
             font-weight: 300;
             color: rgba(232,228,220,0.65);
@@ -299,7 +299,7 @@
             align-items: center;
             gap: 8px;
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             letter-spacing: 0.12em;
             color: rgba(126,184,176,0.8);
             border: 1px solid rgba(126,184,176,0.2);
@@ -325,7 +325,7 @@
 
         .btn-gold {
             font-family: var(--mono);
-            font-size: 9.5px;
+            font-size: 12px;
             letter-spacing: 0.16em;
             text-transform: uppercase;
             color: var(--bg);
@@ -342,7 +342,7 @@
 
         .btn-ghost {
             font-family: var(--mono);
-            font-size: 9.5px;
+            font-size: 12px;
             letter-spacing: 0.16em;
             text-transform: uppercase;
             color: var(--muted);
@@ -409,7 +409,7 @@
 
         .photo-placeholder span:last-child {
             font-family: var(--mono);
-            font-size: 8px;
+            font-size: 11px;
             letter-spacing: 0.2em;
             color: var(--muted);
             text-transform: uppercase;
@@ -427,7 +427,7 @@
 
         .skill-chip {
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--muted);
@@ -444,7 +444,7 @@
         ══════════════════════════════════════ */
         .research-subsec-label {
             font-family: var(--mono);
-            font-size: 8.5px;
+            font-size: 11px;
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--gold);
@@ -454,7 +454,7 @@
 
         .research-title {
             font-family: var(--serif);
-            font-size: 32px;
+            font-size: 42px;
             font-weight: 400;
             line-height: 1.15;
             color: var(--paper);
@@ -463,7 +463,7 @@
 
         .research-body {
             font-family: var(--serif);
-            font-size: 17px;
+            font-size: 22px;
             font-weight: 300;
             line-height: 1.82;
             color: rgba(232,228,220,0.62);
@@ -508,7 +508,7 @@
 
         .rtag {
             font-family: var(--mono);
-            font-size: 8.5px;
+            font-size: 11px;
             letter-spacing: 0.1em;
             color: rgba(201,169,110,0.65);
             border: 1px solid rgba(201,169,110,0.18);
@@ -531,7 +531,7 @@
 
         .pillar-num {
             font-family: var(--mono);
-            font-size: 8px;
+            font-size: 11px;
             letter-spacing: 0.2em;
             color: var(--gold);
             opacity: 0.5;
@@ -539,7 +539,7 @@
         }
 
         .pillar-title {
-            font-size: 13px;
+            font-size: 16px;
             font-weight: 600;
             color: rgba(232,228,220,0.8);
             margin-bottom: 6px;
@@ -548,7 +548,7 @@
 
         .pillar-body {
             font-family: var(--serif);
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 300;
             color: var(--muted);
             line-height: 1.65;
@@ -575,14 +575,14 @@
 
         .pub-placeholder-title {
             font-family: var(--serif);
-            font-size: 22px;
+            font-size: 28px;
             font-weight: 300;
             color: var(--paper);
         }
 
         .pub-placeholder-sub {
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--muted);
@@ -597,7 +597,7 @@
 
         .journey-subsec-title {
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             letter-spacing: 0.28em;
             text-transform: uppercase;
             color: var(--teal);
@@ -634,7 +634,7 @@
 
         .tl-date-year {
             font-family: var(--mono);
-            font-size: 10px;
+            font-size: 12px;
             color: var(--gold);
             letter-spacing: 0.08em;
             display: block;
@@ -642,7 +642,7 @@
 
         .tl-date-place {
             font-family: var(--mono);
-            font-size: 8.5px;
+            font-size: 11px;
             color: var(--muted);
             display: block;
             margin-top: 3px;
@@ -679,7 +679,7 @@
 
         .tl-inst {
             font-family: var(--mono);
-            font-size: 8.5px;
+            font-size: 11px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--teal);
@@ -688,7 +688,7 @@
 
         .tl-degree {
             font-family: var(--serif);
-            font-size: 26px;
+            font-size: 34px;
             font-weight: 400;
             color: var(--paper);
             line-height: 1.15;
@@ -697,7 +697,7 @@
 
         .tl-cgpa {
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             letter-spacing: 0.12em;
             color: rgba(201,169,110,0.6);
             margin-bottom: 12px;
@@ -705,7 +705,7 @@
 
         .tl-desc {
             font-family: var(--serif);
-            font-size: 15px;
+            font-size: 19px;
             font-weight: 300;
             color: var(--muted);
             line-height: 1.72;
@@ -720,7 +720,7 @@
 
         .s-pill {
             font-family: var(--mono);
-            font-size: 8px;
+            font-size: 10px;
             letter-spacing: 0.08em;
             color: rgba(232,228,220,0.3);
             border: 1px solid rgba(232,228,220,0.07);
@@ -752,7 +752,7 @@
 
         .exp-role {
             font-family: var(--serif);
-            font-size: 20px;
+            font-size: 26px;
             font-weight: 400;
             color: var(--paper);
             margin-bottom: 4px;
@@ -760,7 +760,7 @@
 
         .exp-org {
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--teal);
@@ -769,7 +769,7 @@
 
         .exp-body {
             font-family: var(--serif);
-            font-size: 15px;
+            font-size: 19px;
             font-weight: 300;
             color: var(--muted);
             line-height: 1.7;
@@ -777,7 +777,7 @@
 
         .exp-date {
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             letter-spacing: 0.1em;
             color: var(--gold);
             text-align: right;
@@ -788,7 +788,7 @@
             display: inline-block;
             margin-top: 10px;
             font-family: var(--mono);
-            font-size: 8.5px;
+            font-size: 11px;
             letter-spacing: 0.12em;
             color: #4ade80;
             border: 1px solid rgba(74,222,128,0.2);
@@ -832,13 +832,13 @@
 
         .cert-issuer {
             font-family: var(--mono);
-            font-size: 8px;
+            font-size: 10px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
         }
 
         .cert-title {
-            font-size: 13px;
+            font-size: 17px;
             font-weight: 600;
             color: var(--paper);
             line-height: 1.3;
@@ -860,7 +860,7 @@
 
         .ach-label {
             font-family: var(--mono);
-            font-size: 8px;
+            font-size: 10px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--gold);
@@ -870,7 +870,7 @@
 
         .ach-title {
             font-family: var(--serif);
-            font-size: 17px;
+            font-size: 21px;
             font-weight: 400;
             color: var(--paper);
             margin-bottom: 4px;
@@ -878,7 +878,7 @@
 
         .ach-sub {
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             color: var(--muted);
             letter-spacing: 0.06em;
         }
@@ -893,7 +893,7 @@
 
         .beyond-label {
             font-family: var(--mono);
-            font-size: 8.5px;
+            font-size: 11px;
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--teal);
@@ -902,7 +902,7 @@
 
         .beyond-body {
             font-family: var(--serif);
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 300;
             color: var(--muted);
             line-height: 1.75;
@@ -927,7 +927,7 @@
 
         .ref-role {
             font-family: var(--mono);
-            font-size: 8px;
+            font-size: 10px;
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--gold);
@@ -936,7 +936,7 @@
 
         .ref-name {
             font-family: var(--serif);
-            font-size: 21px;
+            font-size: 27px;
             font-weight: 400;
             color: var(--paper);
             margin-bottom: 6px;
@@ -944,7 +944,7 @@
         }
 
         .ref-affil {
-            font-size: 12px;
+            font-size: 15px;
             color: var(--muted);
             line-height: 1.5;
             margin-bottom: 14px;
@@ -952,7 +952,7 @@
 
         .ref-email {
             font-family: var(--mono);
-            font-size: 10px;
+            font-size: 13px;
             color: var(--teal);
             text-decoration: none;
             letter-spacing: 0.04em;
@@ -1010,7 +1010,7 @@
 
         .gallery-placeholder-slide span:last-child {
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--muted);
@@ -1022,7 +1022,7 @@
             padding: 14px 24px;
             background: linear-gradient(to top, rgba(8,10,14,0.9), transparent);
             font-family: var(--mono);
-            font-size: 9.5px;
+            font-size: 12px;
             letter-spacing: 0.14em;
             color: rgba(232,228,220,0.6);
         }
@@ -1031,7 +1031,7 @@
             position: absolute;
             top: 16px; right: 20px;
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             letter-spacing: 0.14em;
             color: rgba(232,228,220,0.3);
         }
@@ -1066,7 +1066,7 @@
         /* Contact form */
         .contact-intro {
             font-family: var(--serif);
-            font-size: 17px;
+            font-size: 21px;
             font-weight: 300;
             color: var(--muted);
             line-height: 1.7;
@@ -1083,7 +1083,7 @@
 
         .contact-email-tag {
             font-family: var(--mono);
-            font-size: 10px;
+            font-size: 13px;
             letter-spacing: 0.1em;
             color: var(--teal);
             border: 1px solid rgba(126,184,176,0.2);
@@ -1111,7 +1111,7 @@
 
         .form-label {
             font-family: var(--mono);
-            font-size: 8.5px;
+            font-size: 11px;
             letter-spacing: 0.22em;
             text-transform: uppercase;
             color: var(--gold);
@@ -1124,7 +1124,7 @@
             border: 1px solid rgba(232,228,220,0.08);
             color: var(--paper);
             font-family: var(--serif);
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 300;
             padding: 13px 16px;
             border-radius: 2px;
@@ -1158,7 +1158,7 @@
 
         .guide-intro {
             font-family: var(--serif);
-            font-size: 18px;
+            font-size: 22px;
             font-style: italic;
             font-weight: 300;
             color: rgba(232,228,220,0.55);
@@ -1199,7 +1199,7 @@
 
         .acc-num {
             font-family: var(--mono);
-            font-size: 9px;
+            font-size: 12px;
             letter-spacing: 0.2em;
             color: rgba(201,169,110,0.45);
             transition: color 0.2s;
@@ -1208,7 +1208,7 @@
 
         .acc-title {
             font-family: var(--serif);
-            font-size: 20px;
+            font-size: 26px;
             font-weight: 400;
         }
 
@@ -1236,7 +1236,7 @@
 
         .acc-text {
             font-family: var(--serif);
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 300;
             color: rgba(232,228,220,0.55);
             line-height: 1.82;
@@ -1255,20 +1255,21 @@
             align-items: center;
             padding: 28px 44px;
             border-top: 1px solid var(--line);
-            max-width: 1120px;
+            max-width: 100%;
+            width: 100%;
             margin: 0 auto;
         }
 
         .footer-name {
             font-family: var(--serif);
-            font-size: 15px;
+            font-size: 18px;
             font-style: italic;
             color: rgba(232,228,220,0.25);
         }
 
         .footer-right {
             font-family: var(--mono);
-            font-size: 8.5px;
+            font-size: 11px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: rgba(232,228,220,0.15);
@@ -1385,7 +1386,6 @@
         </div>
 
         <div class="hero-links">
-            <!-- Replace FILE_ID with your actual Google Drive CV file ID -->
             <a href="https://drive.google.com/uc?export=download&id=YOUR_CV_FILE_ID" class="btn-gold" target="_blank">Download CV</a>
             <a href="https://linkedin.com/in/sougata-bhunia85" class="btn-ghost" target="_blank">LinkedIn ↗</a>
             <a href="https://github.com/sougatabhunia85" class="btn-ghost" target="_blank">GitHub ↗</a>
@@ -1406,14 +1406,6 @@
     <div class="hero-right">
         <div class="photo-ring">
             <div class="photo-inner">
-                <!--
-                    TO ADD YOUR PHOTO:
-                    1. Upload to Google Drive
-                    2. Set sharing to "Anyone with the link"
-                    3. Get file ID from the link
-                    4. Replace YOUR_PHOTO_FILE_ID below
-                    <img src="https://drive.google.com/uc?export=view&id=YOUR_PHOTO_FILE_ID" alt="Sougata Bhunia">
-                -->
                 <div class="photo-placeholder">
                     <span>SB</span>
                     <span>Photo coming soon</span>
@@ -1436,33 +1428,28 @@
         <h3 class="research-title">Lead-Free High-Entropy Perovskite Oxide Nanomaterials</h3>
 
         <p class="research-body">
-            The global push to eliminate toxic lead from functional materials has opened a fascinating frontier in perovskite science. For my master's thesis, I synthesized a novel class of <strong>lead-free, high-entropy perovskite oxide</strong> — a material where five or more metal cations are simultaneously incorporated into a single crystallographic phase. This configurational entropy, rather than conventional stoichiometric control, becomes the primary stabilizing force, enabling entirely new combinations of elements that would otherwise phase-separate.
+            The global push to eliminate toxic lead from functional materials has opened a fascinating frontier in perovskite science. For my master's thesis, I synthesized a novel class of <strong>lead-free, high-entropy perovskite oxide</strong> — a material where five or more metal cations are simultaneously incorporated into a single crystallographic phase.
         </p>
         <p class="research-body">
-            The synthesis was carried out via the <strong>sol-gel route</strong>, chosen for its ability to achieve atomic-level homogeneity at low processing temperatures and relatively low cost — a key consideration if these materials are to translate from the laboratory into scalable device fabrication. The sol-gel process involved precise chelation of metal precursors, controlled hydrolysis, and a carefully designed annealing protocol to drive phase formation without entropy collapse.
+            The synthesis was carried out via the <strong>sol-gel route</strong>, chosen for its ability to achieve atomic-level homogeneity at low processing temperatures and relatively low cost.
         </p>
         <p class="research-body">
-            Structural and functional characterization formed the heart of this work. <strong>X-ray diffraction with Rietveld refinement</strong> confirmed single-phase formation and allowed quantitative extraction of lattice parameters, site occupancies, and strain. <strong>FESEM with EDS mapping</strong> verified the spatial homogeneity of all five cation species across the microstructure. <strong>UV-Vis spectroscopy</strong> was used to extract the optical bandgap, while <strong>FTIR</strong> confirmed the nature of metal-oxygen bonding environments. Finally, <strong>TGA and DSC</strong> provided a thermodynamic window into the material's thermal stability and the entropic contribution to phase stabilization — the very quantity that defines a high-entropy system.
-        </p>
-        <p class="research-body">
-            The results point toward a compelling dual application: the measured Seebeck coefficient and low thermal conductivity make this material a candidate for <strong>thermoelectric energy conversion</strong>, while the engineered electronic structure opens a pathway toward <strong>photocatalytic hydrogen evolution</strong> — directly relevant to clean energy research. This work contributes to the growing understanding of how entropy engineering can be used to design functional oxides without relying on the periodic table's heavier, more hazardous elements.
+            Structural and functional characterization formed the heart of this work. <strong>X-ray diffraction with Rietveld refinement</strong> confirmed single-phase formation. <strong>FESEM with EDS mapping</strong> verified spatial homogeneity. <strong>UV-Vis spectroscopy</strong> was used to extract the optical bandgap, while <strong>FTIR</strong> confirmed metal-oxygen bonding.
         </p>
 
-        <!-- Replace YOUR_THESIS_FILE_ID with actual Google Drive file ID -->
         <div style="margin-top:24px;">
-            <a href="https://drive.google.com/uc?export=view&id=YOUR_THESIS_FILE_ID" target="_blank" class="btn-ghost" style="display:inline-flex;align-items:center;gap:8px;font-size:9px;">
+            <a href="https://drive.google.com/uc?export=view&id=YOUR_THESIS_FILE_ID" target="_blank" class="btn-ghost" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;">
                 📄 View Thesis PDF ↗
             </a>
         </div>
 
         <div class="research-tags">
             <span class="rtag">Sol-Gel Synthesis</span>
-            <span class="rtag">XRD · Rietveld Refinement</span>
+            <span class="rtag">XRD · Rietveld</span>
             <span class="rtag">FESEM / EDS</span>
             <span class="rtag">UV-Vis · FTIR</span>
             <span class="rtag">TGA / DSC</span>
             <span class="rtag">Thermoelectrics</span>
-            <span class="rtag">Hydrogen Evolution</span>
         </div>
     </div>
 
@@ -1472,29 +1459,29 @@
         <h3 class="research-title">Optical Metrology, AI Super-Resolution & Semiconductor Inspection</h3>
 
         <p class="research-body">
-            At the Precision Metrology Lab in NTU's Graduate School of Advanced Technology, my doctoral research addresses one of the most critical bottlenecks in modern semiconductor manufacturing: the ability to <strong>measure structures that are smaller than the wavelength of light used to inspect them</strong>. As transistor dimensions shrink into the sub-nanometer regime for technologies like Gate-All-Around FETs (GAAFET) and 3D NAND memory, the metrology tools must evolve faster than the devices themselves.
+            At the Precision Metrology Lab in NTU's Graduate School of Advanced Technology, my doctoral research addresses one of the most critical bottlenecks in modern semiconductor manufacturing.
         </p>
 
         <div class="phd-pillars">
             <div class="pillar">
                 <div class="pillar-num">01</div>
                 <div class="pillar-title">Optical Critical Dimension (OCD) Metrology</div>
-                <p class="pillar-body">Developing scatterometry-based methods where reflected light from periodic nanostructures encodes their geometry. I build inverse-problem solvers using <strong>Rigorous Coupled-Wave Analysis (RCWA)</strong> to extract critical dimension, height, and sidewall angle with picometer-level precision — without destroying the wafer.</p>
+                <p class="pillar-body">Developing scatterometry-based methods using <strong>Rigorous Coupled-Wave Analysis (RCWA)</strong> to extract critical dimension with picometer-level precision.</p>
             </div>
             <div class="pillar">
                 <div class="pillar-num">02</div>
                 <div class="pillar-title">AI-Driven Super-Resolution Imaging</div>
-                <p class="pillar-body">Integrating deep learning architectures with physics-based optical forward models to push image resolution beyond the classical diffraction limit. The goal is to reconstruct nanoscale features from diffraction-limited measurements — combining the interpretability of physics with the adaptability of data-driven methods.</p>
+                <p class="pillar-body">Integrating deep learning with physics-based optical models to push image resolution beyond the classical diffraction limit.</p>
             </div>
             <div class="pillar">
                 <div class="pillar-num">03</div>
                 <div class="pillar-title">Instrumentation & System Integration</div>
-                <p class="pillar-body">Designing and optimizing interferometric optical setups incorporating broadband light sources, high-speed detectors, and precision translation stages for automated wafer-level inspection — bridging algorithmic advances with physical measurement systems.</p>
+                <p class="pillar-body">Designing interferometric optical setups for automated wafer-level inspection and measurement.</p>
             </div>
             <div class="pillar">
                 <div class="pillar-num">04</div>
                 <div class="pillar-title">Nanomaterials & Device Characterization</div>
-                <p class="pillar-body">Applying optical and electrical characterization techniques to thin films and nanomaterials for device performance evaluation, with applications in optoelectronics and sensor calibration — connecting materials understanding with metrological outcomes.</p>
+                <p class="pillar-body">Applying characterization techniques to thin films and nanomaterials for device performance evaluation.</p>
             </div>
         </div>
 
@@ -1541,7 +1528,7 @@
                     <div class="tl-inst">National Taiwan University</div>
                     <div class="tl-degree">PhD in Nanoengineering<br>& Nanoscience</div>
                     <div class="tl-cgpa">GSAT · Precision Metrology Lab · Advisor: Prof. Liang-Chia Chen</div>
-                    <p class="tl-desc">Pursuing doctoral research at the intersection of optical metrology, AI-driven imaging, and semiconductor inspection at the sub-nanometer scale. Based at NTU's Graduate School of Advanced Technology.</p>
+                    <p class="tl-desc">Pursuing doctoral research at the intersection of optical metrology, AI-driven imaging, and semiconductor inspection.</p>
                 </div>
             </div>
 
@@ -1558,16 +1545,13 @@
                     <div class="tl-inst" style="color:var(--teal);">Jadavpur University · Dept. of Physics</div>
                     <div class="tl-degree">M.Sc. in Electronics Science</div>
                     <div class="tl-cgpa">CGPA: 7.72 / 10 · Supervisor: Prof. K.K. Chattopadhyay</div>
-                    <p class="tl-desc">Postgraduate specialization integrating quantum mechanics, semiconductor device physics, and advanced nanoscale characterization. Thesis research conducted at the School of Materials Science and Nanotechnology.</p>
+                    <p class="tl-desc">Postgraduate specialization in quantum mechanics, semiconductor device physics, and nanoscale characterization.</p>
                     <div class="syllabus-row">
                         <span class="s-pill">Quantum Mechanics</span>
                         <span class="s-pill">Solid State Physics</span>
                         <span class="s-pill">Semiconductor Devices</span>
-                        <span class="s-pill">Power Electronics</span>
                         <span class="s-pill">Nanoelectronics</span>
-                        <span class="s-pill">Microprocessors (8085)</span>
                         <span class="s-pill">Nanotechnology</span>
-                        <span class="s-pill">Optoelectronics</span>
                     </div>
                 </div>
             </div>
@@ -1585,15 +1569,7 @@
                     <div class="tl-inst" style="color:rgba(232,228,220,0.35);">St. Paul's Cathedral Mission College · University of Calcutta</div>
                     <div class="tl-degree">B.Sc. (Hons.) in Physics</div>
                     <div class="tl-cgpa">CGPA: 7.5 / 10</div>
-                    <p class="tl-desc">Rigorous undergraduate foundation in classical and modern physics, electronics, and mathematical methods — the bedrock that later enabled graduate-level specialization in nanomaterials and devices.</p>
-                    <div class="syllabus-row">
-                        <span class="s-pill">Classical Mechanics</span>
-                        <span class="s-pill">Electromagnetism</span>
-                        <span class="s-pill">Thermodynamics</span>
-                        <span class="s-pill">Statistical Mechanics</span>
-                        <span class="s-pill">Analog & Digital Electronics</span>
-                        <span class="s-pill">Nuclear Physics</span>
-                    </div>
+                    <p class="tl-desc">Rigorous foundation in classical and modern physics, electronics, and mathematical methods.</p>
                 </div>
             </div>
 
@@ -1609,16 +1585,16 @@
                 <div>
                     <div class="exp-role">Research Intern · TEEP Program</div>
                     <div class="exp-org">College of Semiconductor Research (CoSR) · NTHU, Hsinchu, Taiwan</div>
-                    <p class="exp-body">Under the supervision of Prof. Sourav De, I worked on developing semiconductor material synthesis routes and device process flows — integrating growth, patterning, lithography, and electrical testing into end-to-end device prototyping workflows. This internship was my first deep exposure to a world-class semiconductor research environment and fundamentally shaped how I think about the relationship between materials science and device engineering.</p>
+                    <p class="exp-body">Worked on semiconductor material synthesis routes and device process flows under Prof. Sourav De's supervision, integrating growth, patterning, and electrical testing into device prototyping workflows.</p>
                 </div>
-                <div class="exp-date">Aug – Dec 2025<br><br><span style="color:var(--gold);font-size:8px;">TEEP · Taiwan</span></div>
+                <div class="exp-date">Aug – Dec 2025<br><br><span style="color:var(--gold);font-size:10px;">TEEP · Taiwan</span></div>
             </div>
 
             <div class="exp-card fade-in">
                 <div>
                     <div class="exp-role">INUP-i2i Hands-on Workshop on Nanoelectronics</div>
                     <div class="exp-org">IIT Kharagpur · Indian Nanoelectronics Users Programme</div>
-                    <p class="exp-body">An intensive ten-day national training program covering hands-on fabrication and characterization in IIT Kharagpur's nanofabrication facilities, providing direct exposure to cleanroom processes and nanoelectronic device testing.</p>
+                    <p class="exp-body">Intensive ten-day national training program covering hands-on fabrication and characterization in IIT Kharagpur's nanofabrication facilities.</p>
                 </div>
                 <div class="exp-date">Feb 12–21, 2025</div>
             </div>
@@ -1627,7 +1603,7 @@
                 <div>
                     <div class="exp-role">Winter School on Micro/Nanoelectronics</div>
                     <div class="exp-org">CeNSE · Indian Institute of Science (IISc), Bangalore</div>
-                    <p class="exp-body">A twelve-day intensive school at IISc's Centre for Nano Science and Engineering covering the fundamentals and frontiers of micro and nanoelectronics — from device physics to fabrication technology. Scored 93% in the Semiconductor Technology assessment, ranking among the top participants nationally.</p>
+                    <p class="exp-body">Twelve-day intensive school at IISc covering fundamentals and frontiers of micro and nanoelectronics. Scored 93% in the Semiconductor Technology assessment.</p>
                     <span class="exp-score">Score: 93% · Semiconductor Technology</span>
                 </div>
                 <div class="exp-date">Dec 9–20, 2024</div>
@@ -1646,7 +1622,7 @@
             </a>
             <a href="https://www.coursera.org/account/accomplishments/verify/7GBH5OY37483" target="_blank" class="cert-card fade-in">
                 <span class="cert-issuer" style="color:var(--teal);">Vanderbilt University</span>
-                <span class="cert-title">MATLAB Programming for Engineers & Scientists</span>
+                <span class="cert-title">MATLAB Programming for Engineers</span>
             </a>
             <a href="https://www.coursera.org/account/accomplishments/verify/621ZOLDPDR36" target="_blank" class="cert-card fade-in">
                 <span class="cert-issuer" style="color:#6ee7b7;">Arizona State University</span>
@@ -1685,7 +1661,7 @@
     <div class="beyond-card fade-in">
         <div class="beyond-label">Beyond the Lab</div>
         <p class="beyond-body">
-            Presented original physics work at an Inter-College Science Exhibition at St. Paul's Cathedral Mission College, representing the Physics Department. Selected for State-level Debate at Vidyasagar Vidyapith Boys' School and for a State-level Inter-School Science Exhibition — reflecting a long-standing habit of communicating ideas clearly and confidently, well before stepping into a research laboratory.
+            Presented original physics work at an Inter-College Science Exhibition. Selected for State-level Debate and State-level Inter-School Science Exhibition — reflecting a habit of communicating ideas clearly and confidently.
         </p>
     </div>
 
@@ -1727,17 +1703,6 @@
     <div class="journey-subsec">
         <div class="journey-subsec-title">Photos</div>
         <div class="gallery-wrap" id="gallery">
-            <!--
-                TO ADD PHOTOS:
-                1. Upload each photo to Google Drive
-                2. Set sharing to "Anyone with the link"
-                3. Get file ID from share link
-                4. Add slides like this:
-                <div class="gallery-slide active">
-                    <img src="https://drive.google.com/uc?export=view&id=YOUR_FILE_ID" alt="Caption here">
-                    <div class="gallery-caption">Conference · NTU Taiwan, 2026</div>
-                </div>
-            -->
             <div class="gallery-slide active">
                 <div class="gallery-placeholder-slide">
                     <span>📸</span>
@@ -1772,7 +1737,7 @@
     <div class="journey-subsec">
         <div class="journey-subsec-title">Contact Me</div>
         <p class="contact-intro">
-            Whether you are a professor with a collaboration in mind, a student seeking guidance, or someone curious about my research — feel free to reach out. I respond to all genuine inquiries.
+            Whether you are a professor with a collaboration in mind, a student seeking guidance, or someone curious about my research — feel free to reach out.
         </p>
         <div class="contact-emails">
             <a href="mailto:sougata.jadavpur.university605@gmail.com" class="contact-email-tag">sougata.jadavpur.university605@gmail.com</a>
@@ -1816,7 +1781,7 @@
     </div>
 
     <p class="guide-intro">
-        I went from a regular college in Paschim Medinipur to a PhD seat at National Taiwan University — without clearing IELTS, without a famous undergraduate institution, and without knowing anyone abroad. This guide is everything I wish someone had told me when I was starting out.
+        I went from a regular college to a PhD seat at National Taiwan University — without clearing IELTS, without a famous undergraduate institution, and without knowing anyone abroad. This guide is everything I wish someone had told me.
     </p>
 
     <div class="accordion">
@@ -1825,14 +1790,14 @@
             <button class="accordion-trigger">
                 <div class="acc-left">
                     <span class="acc-num">01</span>
-                    <span class="acc-title">Why a Semiconductor Degree Matters for Indian Students</span>
+                    <span class="acc-title">Why Semiconductor Matters for Indian Students</span>
                 </div>
                 <span class="acc-arrow">+</span>
             </button>
             <div class="accordion-body">
                 <div class="accordion-body-inner">
-                    <p class="acc-text">India is at an inflection point in its semiconductor journey. With the India Semiconductor Mission channelling billions into fabrication plants in Gujarat and Assam — backed by companies like Tata Electronics, Micron, and CG Power — the demand for trained engineers who understand both the physics and the process is growing faster than the supply. This is not a trend; it is a structural shift that will define the next two decades of Indian high technology.</p>
-                    <p class="acc-text">What makes semiconductor engineering particularly valuable is the depth of foundation it demands. You cannot fake knowledge of solid-state physics, device operation, or thin-film processing. This high entry barrier is also your shield — once you have built genuine expertise, you occupy a position that is extremely difficult to automate or offshore. A Physics or Electronics graduate from any Indian university who commits seriously to this field has a legitimate path to global opportunities, because the knowledge itself is portable even when the institution name is not.</p>
+                    <p class="acc-text">India is at an inflection point in its semiconductor journey. The India Semiconductor Mission is channeling billions into fabrication plants, backed by companies like Tata Electronics and Micron. The demand for trained engineers far exceeds supply.</p>
+                    <p class="acc-text">Semiconductor engineering demands genuine expertise — you cannot fake solid-state physics or device operation knowledge. This high entry barrier is your shield once you have built expertise. A Physics or Electronics graduate who commits to this field has a legitimate path to global opportunities.</p>
                 </div>
             </div>
         </div>
@@ -1847,8 +1812,8 @@
             </button>
             <div class="accordion-body">
                 <div class="accordion-body-inner">
-                    <p class="acc-text">The cold email is the single most underused tool available to Indian students trying to reach foreign labs. Most students either never send one, or send a generic template that no professor will remember. The difference between an email that gets a reply and one that gets deleted in three seconds is specificity — and specificity requires genuine reading of the professor's work before you write a single word.</p>
-                    <p class="acc-text">Your email should open by naming a specific paper of theirs, explaining what in that paper connected with your own work or thinking, and then concisely describing what you have done that is relevant to their research direction. Keep the entire email under 200 words. Attach a one-page CV and nothing else unless they ask. Do not call them "Respected Sir/Madam" — use their proper title and last name. Send individual, personalized emails, never mass mail. Follow up once after two weeks if there is no reply. The professors who respond are often the ones who are actively looking — your job is simply to be specific enough that they notice you.</p>
+                    <p class="acc-text">The cold email is the most underused tool available to Indian students. Most students either never send one, or send generic templates. The difference is specificity — read the professor's work before writing.</p>
+                    <p class="acc-text">Open by naming a specific paper, explain what connected with your thinking, then describe your relevant work. Keep it under 200 words. Attach a one-page CV. Use proper titles, not "Respected Sir/Madam". Send personalized emails, never mass mail. Follow up once after two weeks.</p>
                 </div>
             </div>
         </div>
@@ -1857,14 +1822,14 @@
             <button class="accordion-trigger">
                 <div class="acc-left">
                     <span class="acc-num">03</span>
-                    <span class="acc-title">Building a Strong CV as an Indian Physics or Electronics Student</span>
+                    <span class="acc-title">Building a Strong CV</span>
                 </div>
                 <span class="acc-arrow">+</span>
             </button>
             <div class="accordion-body">
                 <div class="accordion-body-inner">
-                    <p class="acc-text">Your CV is not a list of everything you have done — it is a curated argument for why a particular professor should invest time in you. The single most important thing on it, by a large margin, is your thesis or research project. Describe it in two to three bullet points that are specific about what you did, what technique you used, and what result you obtained. Vague lines like "studied nanomaterials" tell a professor nothing and waste their time.</p>
-                    <p class="acc-text">Skills matter only when they are honest and specific. List tools you can actually use — MATLAB, LaTeX, Origin, Python, specific characterization equipment — and nothing else. Certifications from Coursera are worth including if they are from reputable universities and relevant to the field you are applying to. Keep the CV to one page for most applications unless you genuinely have publications that justify a second. Use LaTeX to typeset it — this alone signals to a professor in a technical field that you are someone who takes precision seriously.</p>
+                    <p class="acc-text">Your CV is a curated argument for why a professor should invest time in you. The most important thing is your thesis or research project — describe it specifically with what you did, techniques used, and results.</p>
+                    <p class="acc-text">List only tools you actually use: MATLAB, LaTeX, Origin, Python, specific equipment. Include Coursera certifications if from reputable universities and relevant. Keep to one page unless you have publications. Use LaTeX for typesetting — it signals care and precision to professors.</p>
                 </div>
             </div>
         </div>
@@ -1873,14 +1838,14 @@
             <button class="accordion-trigger">
                 <div class="acc-left">
                     <span class="acc-num">04</span>
-                    <span class="acc-title">How to Find the Right Lab & Professor</span>
+                    <span class="acc-title">How to Find the Right Lab</span>
                 </div>
                 <span class="acc-arrow">+</span>
             </button>
             <div class="accordion-body">
                 <div class="accordion-body-inner">
-                    <p class="acc-text">Start with the research question, not the university ranking. Identify two or three topics you are genuinely interested in, then use Google Scholar to find the most active researchers publishing in those areas in the last three years. Activity in the recent past matters more than historical prestige — a professor who published consistently in 2023 and 2024 is likely running a funded, active lab that has room for students. A famous name who has not published in five years may have shifted focus or reduced lab size.</p>
-                    <p class="acc-text">Once you have a shortlist, read their group website carefully. Look for whether they have open positions stated, what funding sources they list, and whether their current students' work overlaps with yours. LinkedIn can also reveal where their alumni have gone — this tells you a great deal about the kind of mentorship and career outcomes the lab produces. Reach out to current students if you can; they will tell you things the professor's webpage never will.</p>
+                    <p class="acc-text">Start with research questions, not university rankings. Identify topics of interest, then use Google Scholar to find active researchers publishing in the last three years. Recent activity matters more than historical prestige.</p>
+                    <p class="acc-text">Read their group website carefully. Look for open positions, funding sources, and whether students' work overlaps with yours. Check LinkedIn to see where alumni went — this reveals mentorship quality and career outcomes. Reach out to current students if possible.</p>
                 </div>
             </div>
         </div>
@@ -1889,14 +1854,14 @@
             <button class="accordion-trigger">
                 <div class="acc-left">
                     <span class="acc-num">05</span>
-                    <span class="acc-title">How to Skip IELTS / TOEFL for Research Programs</span>
+                    <span class="acc-title">How to Skip IELTS / TOEFL</span>
                 </div>
                 <span class="acc-arrow">+</span>
             </button>
             <div class="accordion-body">
                 <div class="accordion-body-inner">
-                    <p class="acc-text">Many research-focused graduate programs, particularly in Taiwan, South Korea, Japan, and parts of Europe, either waive the English language test requirement or accept alternatives that Indian students can satisfy without a formal exam. In Taiwan specifically, a large number of universities — including NTU and NTHU — will waive IELTS and TOEFL if your undergraduate or graduate education was conducted entirely in English, which is true for almost every Indian student. You typically need a letter from your institution confirming the medium of instruction, which your university office can provide.</p>
-                    <p class="acc-text">For programs that require a score, check whether they accept Duolingo English Test, which is significantly cheaper and faster to schedule than IELTS or TOEFL. Some programs also waive the requirement entirely if you are applying through a specific fellowship or internship pathway — the TEEP program in Taiwan, for example, is one such route where research ability matters far more than standardised test scores. Always read the admission requirements carefully for the specific program, not just the university's general page.</p>
+                    <p class="acc-text">Many research programs, especially in Taiwan, South Korea, Japan, and Europe, waive English language tests or accept alternatives. In Taiwan, universities like NTU waive IELTS/TOEFL if your education was in English, which is true for most Indian students. Get a letter from your institution confirming medium of instruction.</p>
+                    <p class="acc-text">Check if they accept Duolingo English Test — significantly cheaper and faster. Some programs waive requirements entirely for specific fellowships like TEEP, where research ability matters more than test scores.</p>
                 </div>
             </div>
         </div>
@@ -1905,14 +1870,14 @@
             <button class="accordion-trigger">
                 <div class="acc-left">
                     <span class="acc-num">06</span>
-                    <span class="acc-title">TEEP & Internship Programs — Your Gateway Abroad</span>
+                    <span class="acc-title">TEEP & Internship Programs</span>
                 </div>
                 <span class="acc-arrow">+</span>
             </button>
             <div class="accordion-body">
                 <div class="accordion-body-inner">
-                    <p class="acc-text">Taiwan's <strong>Taiwan Experience Education Program (TEEP)</strong> is, in my view, the most accessible and well-structured short-term research internship available to Indian students in semiconductor and materials science. It is fully funded — including flight, accommodation, and a monthly stipend — and places you in a Taiwanese university laboratory for three to six months. The application is open, competitive, and evaluated primarily on your research background and the match with a host professor's work. I did my TEEP at NTHU's College of Semiconductor Research in 2025, and it directly led to my PhD position at NTU.</p>
-                    <p class="acc-text">Within India, the INUP (Indian Nanoelectronics Users Programme) workshops at IITs and IISc are excellent for gaining hands-on cleanroom and characterization experience that you would otherwise only get at a well-funded foreign lab. Applying to these schools early — even as an M.Sc. student — builds both skills and a demonstrable track record. The IISc winter school at CeNSE is particularly rigorous; scoring well there is something worth noting on your CV. These domestic programs are often overlooked by students focused on going abroad, but they are precisely what makes your profile competitive enough to get there.</p>
+                    <p class="acc-text">Taiwan's TEEP (Taiwan Experience Education Program) is the most accessible research internship for Indian students in semiconductors and materials science. Fully funded including flight, accommodation, and monthly stipend. Places you in a Taiwanese lab for 3-6 months. Evaluated on research background and professor match. This led directly to my PhD at NTU.</p>
+                    <p class="acc-text">Within India, INUP workshops at IITs and IISc offer hands-on cleanroom and characterization experience. Apply early — even as an M.Sc. student — to build skills and track record. The IISc winter school at CeNSE is rigorous; scoring well is worth noting on your CV.</p>
                 </div>
             </div>
         </div>
@@ -1921,14 +1886,14 @@
             <button class="accordion-trigger">
                 <div class="acc-left">
                     <span class="acc-num">07</span>
-                    <span class="acc-title">Key Skills to Learn: MATLAB, LaTeX, Origin & Python</span>
+                    <span class="acc-title">Key Skills: MATLAB, LaTeX, Origin & Python</span>
                 </div>
                 <span class="acc-arrow">+</span>
             </button>
             <div class="accordion-body">
                 <div class="accordion-body-inner">
-                    <p class="acc-text">In a physics or electronics research career, the tools you use to process, analyze, and present data are nearly as important as the experiments themselves. <strong>MATLAB</strong> is the lingua franca of signal processing, optical simulation, and numerical methods in the kind of research I do — knowing it well enough to write your own scripts, not just run existing ones, is a meaningful differentiator. <strong>Python</strong> with NumPy, SciPy, and Matplotlib has become equally essential, especially if you intend to work with AI or data-driven methods at any point.</p>
-                    <p class="acc-text"><strong>Origin</strong> is the standard tool for scientific data plotting and fitting in materials science and characterization — if your data from XRD or UV-Vis goes anywhere, it likely goes into Origin. Learn it properly, including curve fitting and statistical analysis, not just basic plotting. <strong>LaTeX</strong> is non-negotiable for anyone who intends to write papers, theses, or research proposals. Professors in Taiwan, Europe, and the US notice immediately when a student submits a well-typeset document — it signals care, precision, and familiarity with the culture of academic writing. Start learning it during your M.Sc. itself, not when your thesis deadline arrives.</p>
+                    <p class="acc-text"><strong>MATLAB</strong> is the lingua franca of signal processing and optical simulation — know it well enough to write scripts, not just run existing ones. <strong>Python</strong> with NumPy, SciPy, and Matplotlib is equally essential, especially for AI or data-driven methods.</p>
+                    <p class="acc-text"><strong>Origin</strong> is standard for scientific data plotting and fitting — learn it properly including curve fitting. <strong>LaTeX</strong> is non-negotiable for papers, theses, and proposals. Professors notice well-typeset documents — it signals care and precision. Start learning it during your M.Sc., not your thesis deadline.</p>
                 </div>
             </div>
         </div>
@@ -1944,7 +1909,7 @@
 </footer>
 
 <script>
-// ═══════════════════════════════════════════
+// ══════════════════════════════��════════════
 // THREE.JS BACKGROUND
 // ═══════════════════════════════════════════
 const canvas = document.getElementById('bg-canvas');
@@ -1964,9 +1929,9 @@ for(let i = 0; i < count; i++){
     pos[i*3+1] = (Math.random()-0.5)*1800;
     pos[i*3+2] = (Math.random()-0.5)*1800;
     const t = Math.random();
-    colors[i*3]   = t > 0.7 ? 0.49 : 0.78; // R
-    colors[i*3+1] = t > 0.7 ? 0.72 : 0.66; // G
-    colors[i*3+2] = t > 0.7 ? 0.69 : 0.43; // B (gold vs teal)
+    colors[i*3]   = t > 0.7 ? 0.49 : 0.78;
+    colors[i*3+1] = t > 0.7 ? 0.72 : 0.66;
+    colors[i*3+2] = t > 0.7 ? 0.69 : 0.43;
 }
 
 geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
@@ -2067,7 +2032,6 @@ document.getElementById('gallery').addEventListener('click', () => {
 
 startAuto();
 
-// Touch swipe
 let touchX = 0;
 document.getElementById('gallery').addEventListener('touchstart', e => touchX = e.touches[0].clientX);
 document.getElementById('gallery').addEventListener('touchend', e => {
@@ -2086,7 +2050,6 @@ document.querySelectorAll('.accordion-trigger').forEach(btn => {
         const body = item.querySelector('.accordion-body');
         const isOpen = item.classList.contains('open');
 
-        // close all
         document.querySelectorAll('.accordion-item').forEach(i => {
             i.classList.remove('open');
             i.querySelector('.accordion-body').style.maxHeight = '0';
