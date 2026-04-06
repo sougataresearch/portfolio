@@ -3,481 +3,2130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sougata Bhunia | Academic Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Sougata Bhunia | PhD Researcher · NTU Taiwan</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --blue: #60A5FA;
-            --purple: #A78BFA;
-            --bg: #030303;
+            --bg: #080a0e;
+            --bg2: #0d1117;
+            --paper: #e8e4dc;
+            --gold: #c9a96e;
+            --gold-dim: rgba(201,169,110,0.15);
+            --teal: #7eb8b0;
+            --muted: rgba(232,228,220,0.38);
+            --line: rgba(232,228,220,0.07);
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Syne', sans-serif;
+            --mono: 'JetBrains Mono', monospace;
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg);
-            color: #ffffff;
-            scroll-behavior: smooth;
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--paper);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         #bg-canvas {
             position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            background: radial-gradient(circle at center, #0a0a0a 0%, #030303 100%);
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
         }
 
-        .glass {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: rgba(201,169,110,0.3); border-radius: 2px; }
+
+        /* ══════════════════════════════════════
+           NAV
+        ══════════════════════════════════════ */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 200;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 52px;
+            height: 64px;
+            background: rgba(8,10,14,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
         }
 
-        .glass:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--blue);
-            transform: translateY(-5px);
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-btn {
-            color: #94a3b8;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: 0.3s;
-        }
-
-        .nav-btn:hover { color: var(--blue); }
-
-        section { scroll-margin-top: 100px; }
-
-        .tag {
-            background: rgba(96, 165, 250, 0.1);
-            border: 1px solid rgba(96, 165, 250, 0.3);
-            color: var(--blue);
-            padding: 4px 12px;
-            border-radius: 99px;
-            font-size: 10px;
+        .nav-logo {
+            font-family: var(--serif);
+            font-size: 17px;
             font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.03em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--mono);
+            font-size: 9.5px;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px; left: 0; right: 0;
+            height: 1px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.25s;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { transform: scaleX(1); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: var(--paper);
+            transition: all 0.3s;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 64px; left: 0; right: 0;
+            background: rgba(8,10,14,0.97);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            z-index: 199;
+            padding: 24px 0;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        .mobile-menu.open { display: flex; }
+
+        .mobile-menu a {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 14px 0;
+            width: 100%;
+            text-align: center;
+            border-bottom: 1px solid var(--line);
+            transition: color 0.2s;
+        }
+
+        .mobile-menu a:hover { color: var(--gold); }
+
+        /* ══════════════════════════════════════
+           LAYOUT
+        ══════════════════════════════════════ */
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 44px;
+        }
+
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        section:last-of-type { border-bottom: none; }
+
+        /* ── Section Header ── */
+        .sec-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+
+        .sec-label {
+            font-family: var(--mono);
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            white-space: nowrap;
+        }
+
+        .sec-rule {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(201,169,110,0.35), transparent);
+        }
+
+        /* ══════════════════════════════════════
+           HERO
+        ══════════════════════════════════════ */
+        #about {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 60px;
+            align-items: center;
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        .hero-left { display: flex; flex-direction: column; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(201,169,110,0.3);
+            padding: 7px 16px;
+            border-radius: 2px;
+            background: var(--gold-dim);
+            margin-bottom: 32px;
+            width: fit-content;
+        }
+
+        .pulse-dot {
+            width: 6px; height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: pulse 2.2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%,100% { opacity:1; transform:scale(1); }
+            50% { opacity:0.3; transform:scale(0.7); }
+        }
+
+        .hero-name {
+            font-family: var(--serif);
+            font-size: clamp(54px, 8vw, 100px);
+            font-weight: 300;
+            line-height: 0.9;
+            letter-spacing: -0.01em;
+            color: var(--paper);
+            margin-bottom: 8px;
+        }
+
+        .hero-name-last {
+            font-family: var(--serif);
+            font-size: clamp(54px, 8vw, 100px);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 0.9;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 28px;
+        }
+
+        .hero-institution {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 8px;
+        }
+
+        .hero-lab {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .hero-tagline {
+            font-family: var(--serif);
+            font-size: 19px;
+            font-style: italic;
+            font-weight: 300;
+            color: rgba(232,228,220,0.65);
+            line-height: 1.55;
+            max-width: 520px;
+            margin-bottom: 36px;
+            border-left: 2px solid rgba(201,169,110,0.3);
+            padding-left: 18px;
+        }
+
+        /* Currently working on */
+        .current-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.12em;
+            color: rgba(126,184,176,0.8);
+            border: 1px solid rgba(126,184,176,0.2);
+            padding: 7px 14px;
+            border-radius: 2px;
+            background: rgba(126,184,176,0.04);
+            margin-bottom: 36px;
+            width: fit-content;
+        }
+
+        .live-dot {
+            width: 6px; height: 6px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-gold {
+            font-family: var(--mono);
+            font-size: 9.5px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--bg);
+            background: var(--gold);
+            padding: 11px 22px;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: all 0.22s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-gold:hover { background: #d4b07a; transform: translateY(-1px); }
+
+        .btn-ghost {
+            font-family: var(--mono);
+            font-size: 9.5px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border: 1px solid rgba(232,228,220,0.15);
+            padding: 11px 22px;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: all 0.22s;
+        }
+
+        .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* Hero photo */
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-ring {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            padding: 3px;
+            background: conic-gradient(from 0deg, var(--gold), transparent 40%, var(--teal) 60%, transparent 80%, var(--gold));
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .photo-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            background: var(--bg2);
+            border: 4px solid var(--bg);
+        }
+
+        .photo-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #0d1117, #151c26);
+        }
+
+        .photo-placeholder span:first-child {
+            font-family: var(--serif);
+            font-size: 52px;
+            font-weight: 300;
+            color: rgba(201,169,110,0.5);
+        }
+
+        .photo-placeholder span:last-child {
+            font-family: var(--mono);
+            font-size: 8px;
+            letter-spacing: 0.2em;
+            color: var(--muted);
             text-transform: uppercase;
         }
 
-        .syllabus-grid {
+        /* Skills strip */
+        .skills-strip {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+            padding-top: 28px;
+            border-top: 1px solid var(--line);
+        }
+
+        .skill-chip {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border: 1px solid rgba(232,228,220,0.1);
+            padding: 5px 12px;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+
+        .skill-chip:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* ══════════════════════════════════════
+           RESEARCH
+        ══════════════════════════════════════ */
+        .research-subsec-label {
+            font-family: var(--mono);
+            font-size: 8.5px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+            opacity: 0.7;
+        }
+
+        .research-title {
+            font-family: var(--serif);
+            font-size: 32px;
+            font-weight: 400;
+            line-height: 1.15;
+            color: var(--paper);
+            margin-bottom: 20px;
+        }
+
+        .research-body {
+            font-family: var(--serif);
+            font-size: 17px;
+            font-weight: 300;
+            line-height: 1.82;
+            color: rgba(232,228,220,0.62);
+        }
+
+        .research-body + .research-body { margin-top: 16px; }
+
+        .research-body strong {
+            color: rgba(232,228,220,0.85);
+            font-weight: 400;
+        }
+
+        .research-card {
+            padding: 44px;
+            background: rgba(232,228,220,0.018);
+            border: 1px solid var(--line);
+            transition: border-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--gold);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .research-card:hover { border-color: rgba(201,169,110,0.2); }
+        .research-card:hover::before { opacity: 1; }
+
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .rtag {
+            font-family: var(--mono);
+            font-size: 8.5px;
+            letter-spacing: 0.1em;
+            color: rgba(201,169,110,0.65);
+            border: 1px solid rgba(201,169,110,0.18);
+            padding: 4px 11px;
+            border-radius: 2px;
+        }
+
+        .phd-pillars {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            margin-top: 28px;
+        }
+
+        .pillar {
+            padding: 22px 24px;
+            background: rgba(232,228,220,0.02);
+            border: 1px solid var(--line);
+        }
+
+        .pillar-num {
+            font-family: var(--mono);
+            font-size: 8px;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            opacity: 0.5;
+            margin-bottom: 8px;
+        }
+
+        .pillar-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(232,228,220,0.8);
+            margin-bottom: 6px;
+            letter-spacing: 0.02em;
+        }
+
+        .pillar-body {
+            font-family: var(--serif);
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* Publications placeholder */
+        .pub-placeholder {
+            padding: 44px;
+            border: 1px dashed rgba(232,228,220,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 12px;
+            opacity: 0.45;
+        }
+
+        .pub-placeholder-icon {
+            font-family: var(--serif);
+            font-size: 36px;
+            color: var(--gold);
+        }
+
+        .pub-placeholder-title {
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 300;
+            color: var(--paper);
+        }
+
+        .pub-placeholder-sub {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* ══════════════════════════════════════
+           JOURNEY
+        ══════════════════════════════════════ */
+        .journey-subsec {
+            margin-bottom: 64px;
+        }
+
+        .journey-subsec-title {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .journey-subsec-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(126,184,176,0.15);
+        }
+
+        /* Timeline */
+        .timeline { position: relative; }
+
+        .tl-item {
+            display: grid;
+            grid-template-columns: 148px 40px 1fr;
+            gap: 0;
+            position: relative;
+        }
+
+        .tl-item + .tl-item { margin-top: 0; }
+
+        .tl-date {
+            padding-top: 3px;
+            text-align: right;
+            padding-right: 0;
+        }
+
+        .tl-date-year {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--gold);
+            letter-spacing: 0.08em;
+            display: block;
+        }
+
+        .tl-date-place {
+            font-family: var(--mono);
+            font-size: 8.5px;
+            color: var(--muted);
+            display: block;
+            margin-top: 3px;
+            letter-spacing: 0.06em;
+        }
+
+        .tl-axis {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 5px;
+        }
+
+        .tl-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            border: 1.5px solid var(--gold);
+            background: var(--bg);
+            box-shadow: 0 0 8px rgba(201,169,110,0.4);
+            flex-shrink: 0;
+            z-index: 1;
+        }
+
+        .tl-line {
+            flex: 1;
+            width: 1px;
+            background: var(--line);
+            min-height: 40px;
+        }
+
+        .tl-content {
+            padding: 0 0 52px 16px;
+        }
+
+        .tl-inst {
+            font-family: var(--mono);
+            font-size: 8.5px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 6px;
+        }
+
+        .tl-degree {
+            font-family: var(--serif);
+            font-size: 26px;
+            font-weight: 400;
+            color: var(--paper);
+            line-height: 1.15;
+            margin-bottom: 6px;
+        }
+
+        .tl-cgpa {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.12em;
+            color: rgba(201,169,110,0.6);
+            margin-bottom: 12px;
+        }
+
+        .tl-desc {
+            font-family: var(--serif);
+            font-size: 15px;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.72;
+            margin-bottom: 14px;
+        }
+
+        .syllabus-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .s-pill {
+            font-family: var(--mono);
+            font-size: 8px;
+            letter-spacing: 0.08em;
+            color: rgba(232,228,220,0.3);
+            border: 1px solid rgba(232,228,220,0.07);
+            padding: 3px 9px;
+            border-radius: 2px;
+        }
+
+        /* Experience cards */
+        .exp-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2px;
+        }
+
+        .exp-card {
+            padding: 32px 36px;
+            background: rgba(232,228,220,0.018);
+            border: 1px solid var(--line);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .exp-card.featured {
+            border-left: 3px solid var(--gold);
+            background: rgba(201,169,110,0.03);
+        }
+
+        .exp-role {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--paper);
+            margin-bottom: 4px;
+        }
+
+        .exp-org {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 12px;
+        }
+
+        .exp-body {
+            font-family: var(--serif);
+            font-size: 15px;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .exp-date {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .exp-score {
+            display: inline-block;
+            margin-top: 10px;
+            font-family: var(--mono);
+            font-size: 8.5px;
+            letter-spacing: 0.12em;
+            color: #4ade80;
+            border: 1px solid rgba(74,222,128,0.2);
+            padding: 3px 9px;
+            border-radius: 2px;
+        }
+
+        /* Cert grid */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+        }
+
+        .cert-card {
+            padding: 26px 22px;
+            background: rgba(232,228,220,0.018);
+            border: 1px solid var(--line);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: all 0.22s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::after {
+            content: '↗';
+            position: absolute;
+            bottom: 16px; right: 16px;
+            font-size: 16px;
+            color: var(--gold);
+            opacity: 0;
+            transform: translate(-4px,4px);
+            transition: all 0.22s;
+        }
+
+        .cert-card:hover { background: rgba(201,169,110,0.05); border-color: rgba(201,169,110,0.2); }
+        .cert-card:hover::after { opacity:1; transform:translate(0,0); }
+
+        .cert-issuer {
+            font-family: var(--mono);
+            font-size: 8px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .cert-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--paper);
+            line-height: 1.3;
+            letter-spacing: 0.01em;
+        }
+
+        /* Achievements */
+        .ach-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .ach-card {
+            padding: 24px;
+            background: rgba(232,228,220,0.018);
+            border: 1px solid var(--line);
+        }
+
+        .ach-label {
+            font-family: var(--mono);
+            font-size: 8px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.7;
+            margin-bottom: 8px;
+        }
+
+        .ach-title {
+            font-family: var(--serif);
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--paper);
+            margin-bottom: 4px;
+        }
+
+        .ach-sub {
+            font-family: var(--mono);
+            font-size: 9px;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+        }
+
+        /* Beyond the lab */
+        .beyond-card {
+            padding: 32px 36px;
+            background: rgba(126,184,176,0.03);
+            border: 1px solid rgba(126,184,176,0.1);
+            border-left: 3px solid var(--teal);
+        }
+
+        .beyond-label {
+            font-family: var(--mono);
+            font-size: 8.5px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 14px;
+        }
+
+        .beyond-body {
+            font-family: var(--serif);
+            font-size: 16px;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        /* ══════════════════════════════════════
+           CONNECT
+        ══════════════════════════════════════ */
+
+        /* References */
+        .ref-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .ref-card {
+            padding: 32px 28px;
+            background: rgba(232,228,220,0.018);
+            border: 1px solid var(--line);
+        }
+
+        .ref-role {
+            font-family: var(--mono);
+            font-size: 8px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+
+        .ref-name {
+            font-family: var(--serif);
+            font-size: 21px;
+            font-weight: 400;
+            color: var(--paper);
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .ref-affil {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .ref-email {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--teal);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            transition: color 0.2s;
+        }
+
+        .ref-email:hover { color: var(--gold); }
+
+        /* Gallery */
+        .gallery-wrap {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            overflow: hidden;
+            background: var(--bg2);
+            border: 1px solid var(--line);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .gallery-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-slide.active { opacity: 1; }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-placeholder-slide {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #0d1117 0%, #111822 100%);
+        }
+
+        .gallery-placeholder-slide span:first-child {
+            font-family: var(--serif);
+            font-size: 48px;
+            color: rgba(201,169,110,0.3);
+        }
+
+        .gallery-placeholder-slide span:last-child {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 14px 24px;
+            background: linear-gradient(to top, rgba(8,10,14,0.9), transparent);
+            font-family: var(--mono);
+            font-size: 9.5px;
+            letter-spacing: 0.14em;
+            color: rgba(232,228,220,0.6);
+        }
+
+        .gallery-counter {
+            position: absolute;
+            top: 16px; right: 20px;
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.14em;
+            color: rgba(232,228,220,0.3);
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%; transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 16px;
+            pointer-events: none;
+        }
+
+        .gallery-btn {
+            pointer-events: all;
+            background: rgba(8,10,14,0.6);
+            border: 1px solid rgba(232,228,220,0.1);
+            color: var(--paper);
+            width: 40px; height: 40px;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .gallery-btn:hover { background: rgba(201,169,110,0.2); border-color: var(--gold); }
+
+        /* Contact form */
+        .contact-intro {
+            font-family: var(--serif);
+            font-size: 17px;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 600px;
+        }
+
+        .contact-emails {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .contact-email-tag {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            color: var(--teal);
+            border: 1px solid rgba(126,184,176,0.2);
+            padding: 8px 16px;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .contact-email-tag:hover { border-color: var(--teal); background: rgba(126,184,176,0.05); }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
             gap: 8px;
         }
 
-        .syllabus-item {
-            font-size: 11px;
-            color: #94a3b8;
-            padding: 4px 8px;
-            border-left: 2px solid rgba(96, 165, 250, 0.3);
-            background: rgba(255, 255, 255, 0.02);
+        .form-field.full { grid-column: 1 / -1; }
+
+        .form-label {
+            font-family: var(--mono);
+            font-size: 8.5px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.7;
         }
 
-        .guide-card {
-            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 24px;
+        .form-input,
+        .form-textarea {
+            background: rgba(232,228,220,0.03);
+            border: 1px solid rgba(232,228,220,0.08);
+            color: var(--paper);
+            font-family: var(--serif);
+            font-size: 15px;
+            font-weight: 300;
+            padding: 13px 16px;
+            border-radius: 2px;
+            outline: none;
+            transition: border-color 0.2s;
+            width: 100%;
         }
 
-        .blog-cta {
-            background: linear-gradient(45deg, #1e293b, #0f172a);
-            border: 1px solid rgba(96, 165, 250, 0.4);
-            transition: all 0.3s ease;
+        .form-input:focus,
+        .form-textarea:focus { border-color: rgba(201,169,110,0.4); }
+
+        .form-textarea { resize: vertical; min-height: 120px; }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder { color: rgba(232,228,220,0.2); font-style: italic; }
+
+        .form-submit-row {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 8px;
         }
 
-        .blog-cta:hover {
-            border-color: var(--blue);
-            box-shadow: 0 0 30px rgba(96, 165, 250, 0.2);
+        /* ══════════════════════════════════════
+           STUDENT GUIDE
+        ══════════════════════════════════════ */
+        #guide {
+            background: rgba(201,169,110,0.015);
+            border-top: 1px solid rgba(201,169,110,0.1);
+        }
+
+        .guide-intro {
+            font-family: var(--serif);
+            font-size: 18px;
+            font-style: italic;
+            font-weight: 300;
+            color: rgba(232,228,220,0.55);
+            line-height: 1.7;
+            max-width: 680px;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--line);
+            overflow: hidden;
+        }
+
+        .accordion-trigger {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 0;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--paper);
+            text-align: left;
+            transition: color 0.2s;
+        }
+
+        .accordion-trigger:hover { color: var(--gold); }
+        .accordion-trigger:hover .acc-num { color: var(--gold); }
+
+        .acc-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .acc-num {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            color: rgba(201,169,110,0.45);
+            transition: color 0.2s;
+            min-width: 24px;
+        }
+
+        .acc-title {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .acc-arrow {
+            font-size: 18px;
+            color: var(--muted);
+            transition: transform 0.3s, color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .accordion-item.open .acc-arrow {
+            transform: rotate(45deg);
+            color: var(--gold);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-body-inner {
+            padding: 0 0 28px 44px;
+        }
+
+        .acc-text {
+            font-family: var(--serif);
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(232,228,220,0.55);
+            line-height: 1.82;
+        }
+
+        .acc-text + .acc-text { margin-top: 14px; }
+
+        /* ══════════════════════════════════════
+           FOOTER
+        ══════════════════════════════════════ */
+        footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 44px;
+            border-top: 1px solid var(--line);
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .footer-name {
+            font-family: var(--serif);
+            font-size: 15px;
+            font-style: italic;
+            color: rgba(232,228,220,0.25);
+        }
+
+        .footer-right {
+            font-family: var(--mono);
+            font-size: 8.5px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(232,228,220,0.15);
+        }
+
+        /* ══════════════════════════════════════
+           FADE IN
+        ══════════════════════════════════════ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ══════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════ */
+        @media (max-width: 960px) {
+            nav { padding: 0 28px; }
+            main { padding: 0 28px; }
+            footer { padding: 24px 28px; }
+
+            #about {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 100px;
+            }
+
+            .hero-badge, .current-badge { margin-left: auto; margin-right: auto; }
+            .hero-tagline { margin-left: auto; margin-right: auto; }
+            .hero-links { justify-content: center; }
+            .skills-strip { justify-content: center; }
+            .hero-right { order: -1; }
+            .photo-ring { width: 200px; height: 200px; }
+
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .phd-pillars { grid-template-columns: 1fr; }
+            .cert-grid { grid-template-columns: 1fr 1fr; }
+            .ref-grid { grid-template-columns: 1fr; }
+            .ach-grid { grid-template-columns: 1fr 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .tl-item { grid-template-columns: 80px 32px 1fr; }
+            .exp-card { grid-template-columns: 1fr; }
+            .exp-date { text-align: left; }
+        }
+
+        @media (max-width: 600px) {
+            main { padding: 0 20px; }
+            .cert-grid { grid-template-columns: 1fr; }
+            .ach-grid { grid-template-columns: 1fr; }
+            .research-card { padding: 28px 24px; }
+            .hero-name, .hero-name-last { font-size: 48px; }
+            footer { flex-direction: column; gap: 8px; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <canvas id="bg-canvas"></canvas>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full top-0 z-50 px-6 py-8 flex justify-center pointer-events-none">
-        <div class="glass px-10 py-4 flex gap-8 pointer-events-auto overflow-x-auto max-w-full">
-            <a href="#about" class="nav-btn">About</a>
-            <a href="#journey" class="nav-btn">Journey</a>
-            <a href="#research" class="nav-btn">Research</a>
-            <a href="#certs" class="nav-btn">Certs</a>
-            <a href="#contact" class="nav-btn">Contact</a>
-            <a href="#insight" class="nav-btn text-blue-400">Mentorship</a>
+<canvas id="bg-canvas"></canvas>
+
+<!-- ═══════ NAV ═══════ -->
+<nav>
+    <a href="#about" class="nav-logo">Sougata Bhunia</a>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#connect">Connect</a></li>
+        <li><a href="#guide">Student Guide</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#research" onclick="closeMobile()">Research</a>
+    <a href="#journey" onclick="closeMobile()">Journey</a>
+    <a href="#connect" onclick="closeMobile()">Connect</a>
+    <a href="#guide" onclick="closeMobile()">Student Guide</a>
+</div>
+
+<main>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section id="about">
+    <div class="hero-left">
+        <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            PhD Researcher · National Taiwan University, Taiwan
         </div>
-    </nav>
 
-    <main class="max-w-6xl mx-auto px-6 pt-32 pb-20">
-        <!-- Hero -->
-        <section id="about" class="mb-40 flex flex-col items-center text-center">
-            <div class="tag mb-6 tracking-widest">Incoming PhD @ NENS, GSAT, NTU Taiwan (Feb 2026)</div>
-            <h1 class="text-6xl md:text-8xl font-black tracking-tighter uppercase mb-6">
-                SOUGATA <span class="text-gradient">BHUNIA</span>
-            </h1>
-            <p class="text-xl text-slate-400 max-w-3xl leading-relaxed mb-10">
-                Bridging materials science with next-gen semiconductor manufacturing through 
-                <span class="text-white">High-Entropy Oxide Nanomaterials</span> and 
-                <span class="text-white">Optical Critical Dimension Metrology</span>.
-            </p>
-            
-            <div class="flex gap-4">
-                <a href="https://linkedin.com/in/sougata-bhunia85" target="_blank" class="glass p-4 flex items-center gap-2 group">
-                    <i data-lucide="linkedin" class="w-5 h-5 text-blue-400 group-hover:scale-110 transition"></i>
-                </a>
-                <a href="https://github.com/sougatabhunia85" target="_blank" class="glass p-4 flex items-center gap-2 group">
-                    <i data-lucide="github" class="w-5 h-5 text-white group-hover:scale-110 transition"></i>
-                </a>
-                <a href="mailto:d14k46004@ntu.edu.tw" class="glass p-4 flex items-center gap-2 group">
-                    <i data-lucide="mail" class="w-5 h-5 text-purple-400 group-hover:scale-110 transition"></i>
-                </a>
-            </div>
-        </section>
+        <h1 class="hero-name">Sougata</h1>
+        <span class="hero-name-last">Bhunia</span>
 
-        <!-- Academic Journey -->
-        <section id="journey" class="mb-40">
-            <h2 class="text-xs uppercase tracking-[0.4em] text-blue-500 font-bold mb-12 flex items-center gap-2">
-                <i data-lucide="graduation-cap" class="w-4 h-4"></i> Academic Foundation
-            </h2>
-            
-            <div class="space-y-12">
-                <!-- PhD -->
-                <div class="glass p-8 relative overflow-hidden">
-                    <div class="flex flex-col md:flex-row justify-between mb-6">
-                        <div>
-                            <h3 class="text-2xl font-bold">PhD in Nanoengineering and Nanoscience</h3>
-                            <p class="text-blue-400 font-semibold">National Taiwan University (NTU) · Taipei</p>
-                        </div>
-                        <span class="tag h-fit">Feb 2026 — Present</span>
-                    </div>
-                    <p class="text-sm text-slate-400 mb-4">Precision Metrology Lab, Graduate School of Advanced Technology (GSAT). Research focuses on sub-nanometer semiconductor yield enhancement via advanced optical metrology.</p>
-                </div>
+        <div class="hero-institution">Nanoengineering & Nanoscience · GSAT</div>
+        <div class="hero-lab">Precision Metrology Lab · Prof. Liang-Chia Chen</div>
 
-                <!-- MSc -->
-                <div class="glass p-8 border-l-4 border-purple-500/50">
-                    <div class="flex flex-col md:flex-row justify-between mb-6">
-                        <div>
-                            <h3 class="text-2xl font-bold">M.Sc. in Electronics Science</h3>
-                            <p class="text-purple-400 font-semibold">Jadavpur University, Dept. of Physics · Kolkata</p>
-                        </div>
-                        <span class="tag h-fit">2023 — 2025</span>
-                    </div>
-                    <div class="mb-6">
-                        <h4 class="text-[10px] font-black uppercase text-slate-500 mb-3 tracking-widest">Key Curriculum Highlights</h4>
-                        <div class="syllabus-grid">
-                            <div class="syllabus-item">Quantum Mechanics</div>
-                            <div class="syllabus-item">Solid State Physics</div>
-                            <div class="syllabus-item">Semiconductor Devices</div>
-                            <div class="syllabus-item">Power Electronics</div>
-                            <div class="syllabus-item">Nanoelectronics</div>
-                            <div class="syllabus-item">Microprocessors (8085)</div>
-                            <div class="syllabus-item">Introduction to Nanotechnology</div>
-                            <div class="syllabus-item">Optoelectronics</div>
-                        </div>
-                    </div>
-                </div>
+        <p class="hero-tagline">
+            My work sits at the intersection of optical physics, nanomaterials, and AI-driven metrology — building measurement tools that see what conventional instruments cannot.
+        </p>
 
-                <!-- BSc -->
-                <div class="glass p-8 border-l-4 border-slate-500/50">
-                    <div class="flex flex-col md:flex-row justify-between mb-6">
-                        <div>
-                            <h3 class="text-2xl font-bold">B.Sc. (Hons.) in Physics</h3>
-                            <p class="text-slate-400 font-semibold">St. Paul's Cathedral Mission College, University of Calcutta</p>
-                        </div>
-                        <span class="tag h-fit">2020 — 2023</span>
-                    </div>
-                    <div class="mb-6">
-                        <h4 class="text-[10px] font-black uppercase text-slate-500 mb-3 tracking-widest">Undergraduate Foundation</h4>
-                        <div class="syllabus-grid">
-                            <div class="syllabus-item">Classical Mechanics</div>
-                            <div class="syllabus-item">Electromagnetism</div>
-                            <div class="syllabus-item">Thermodynamics</div>
-                            <div class="syllabus-item">Statistical Mechanics</div>
-                            <div class="syllabus-item">Analog & Digital Electronics</div>
-                            <div class="syllabus-item">Nuclear Physics</div>
-                        </div>
-                    </div>
+        <div class="current-badge">
+            <span class="live-dot"></span>
+            Currently: RCWA inversion algorithms · AI super-resolution imaging · NTU
+        </div>
+
+        <div class="hero-links">
+            <!-- Replace FILE_ID with your actual Google Drive CV file ID -->
+            <a href="https://drive.google.com/uc?export=download&id=YOUR_CV_FILE_ID" class="btn-gold" target="_blank">Download CV</a>
+            <a href="https://linkedin.com/in/sougata-bhunia85" class="btn-ghost" target="_blank">LinkedIn ↗</a>
+            <a href="https://github.com/sougatabhunia85" class="btn-ghost" target="_blank">GitHub ↗</a>
+            <a href="mailto:sougata.jadavpur.university605@gmail.com" class="btn-ghost">Email ↗</a>
+        </div>
+
+        <div class="skills-strip">
+            <span class="skill-chip">MATLAB</span>
+            <span class="skill-chip">LaTeX</span>
+            <span class="skill-chip">RCWA</span>
+            <span class="skill-chip">VS Code</span>
+            <span class="skill-chip">Python</span>
+            <span class="skill-chip">XRD</span>
+            <span class="skill-chip">FESEM</span>
+        </div>
+    </div>
+
+    <div class="hero-right">
+        <div class="photo-ring">
+            <div class="photo-inner">
+                <!--
+                    TO ADD YOUR PHOTO:
+                    1. Upload to Google Drive
+                    2. Set sharing to "Anyone with the link"
+                    3. Get file ID from the link
+                    4. Replace YOUR_PHOTO_FILE_ID below
+                    <img src="https://drive.google.com/uc?export=view&id=YOUR_PHOTO_FILE_ID" alt="Sougata Bhunia">
+                -->
+                <div class="photo-placeholder">
+                    <span>SB</span>
+                    <span>Photo coming soon</span>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <!-- Research Portfolio -->
-        <section id="research" class="mb-40">
-            <h2 class="text-xs uppercase tracking-[0.4em] text-blue-500 font-bold mb-12">Research Specialization</h2>
-            
-            <div class="space-y-8">
-                <div class="glass p-10 relative group">
-                    <div class="flex flex-col lg:flex-row gap-10">
-                        <div class="lg:w-1/3">
-                            <div class="p-4 bg-blue-500/10 rounded-2xl w-fit mb-6">
-                                <i data-lucide="flask-conical" class="w-8 h-8 text-blue-400"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-2">Master Thesis</h3>
-                            <p class="text-blue-400 text-sm font-bold mb-4 uppercase tracking-tighter">Lead-Free High-Entropy Oxides</p>
-                        </div>
-                        <div class="lg:w-2/3 text-slate-400 text-sm leading-relaxed space-y-4">
-                            <p>Synthesized novel <strong>Lead-Free High-Entropy Perovskite (HEP)</strong> nanomaterials utilizing cost-effective <strong>Sol-Gel</strong> routes. High-Entropy Oxides are a new class of materials where five or more metal cations are incorporated into a single-phase crystal structure.</p>
-                            <p>Utilized <strong>XRD Rietveld refinement</strong> and <strong>FESEM/EDS</strong> for elemental mapping. These materials show immense potential for thermoelectric and dielectric applications in future electronics.</p>
-                        </div>
-                    </div>
+<!-- ═══════ RESEARCH ═══════ -->
+<section id="research">
+    <div class="sec-header">
+        <span class="sec-label">Research</span>
+        <div class="sec-rule"></div>
+    </div>
+
+    <!-- Master's Thesis -->
+    <div class="research-card fade-in" style="margin-bottom:2px;">
+        <div class="research-subsec-label">01 · Master's Thesis · Jadavpur University</div>
+        <h3 class="research-title">Lead-Free High-Entropy Perovskite Oxide Nanomaterials</h3>
+
+        <p class="research-body">
+            The global push to eliminate toxic lead from functional materials has opened a fascinating frontier in perovskite science. For my master's thesis, I synthesized a novel class of <strong>lead-free, high-entropy perovskite oxide</strong> — a material where five or more metal cations are simultaneously incorporated into a single crystallographic phase. This configurational entropy, rather than conventional stoichiometric control, becomes the primary stabilizing force, enabling entirely new combinations of elements that would otherwise phase-separate.
+        </p>
+        <p class="research-body">
+            The synthesis was carried out via the <strong>sol-gel route</strong>, chosen for its ability to achieve atomic-level homogeneity at low processing temperatures and relatively low cost — a key consideration if these materials are to translate from the laboratory into scalable device fabrication. The sol-gel process involved precise chelation of metal precursors, controlled hydrolysis, and a carefully designed annealing protocol to drive phase formation without entropy collapse.
+        </p>
+        <p class="research-body">
+            Structural and functional characterization formed the heart of this work. <strong>X-ray diffraction with Rietveld refinement</strong> confirmed single-phase formation and allowed quantitative extraction of lattice parameters, site occupancies, and strain. <strong>FESEM with EDS mapping</strong> verified the spatial homogeneity of all five cation species across the microstructure. <strong>UV-Vis spectroscopy</strong> was used to extract the optical bandgap, while <strong>FTIR</strong> confirmed the nature of metal-oxygen bonding environments. Finally, <strong>TGA and DSC</strong> provided a thermodynamic window into the material's thermal stability and the entropic contribution to phase stabilization — the very quantity that defines a high-entropy system.
+        </p>
+        <p class="research-body">
+            The results point toward a compelling dual application: the measured Seebeck coefficient and low thermal conductivity make this material a candidate for <strong>thermoelectric energy conversion</strong>, while the engineered electronic structure opens a pathway toward <strong>photocatalytic hydrogen evolution</strong> — directly relevant to clean energy research. This work contributes to the growing understanding of how entropy engineering can be used to design functional oxides without relying on the periodic table's heavier, more hazardous elements.
+        </p>
+
+        <!-- Replace YOUR_THESIS_FILE_ID with actual Google Drive file ID -->
+        <div style="margin-top:24px;">
+            <a href="https://drive.google.com/uc?export=view&id=YOUR_THESIS_FILE_ID" target="_blank" class="btn-ghost" style="display:inline-flex;align-items:center;gap:8px;font-size:9px;">
+                📄 View Thesis PDF ↗
+            </a>
+        </div>
+
+        <div class="research-tags">
+            <span class="rtag">Sol-Gel Synthesis</span>
+            <span class="rtag">XRD · Rietveld Refinement</span>
+            <span class="rtag">FESEM / EDS</span>
+            <span class="rtag">UV-Vis · FTIR</span>
+            <span class="rtag">TGA / DSC</span>
+            <span class="rtag">Thermoelectrics</span>
+            <span class="rtag">Hydrogen Evolution</span>
+        </div>
+    </div>
+
+    <!-- PhD Research -->
+    <div class="research-card fade-in" style="margin-bottom:2px;">
+        <div class="research-subsec-label">02 · PhD Research (Ongoing) · NTU Taiwan</div>
+        <h3 class="research-title">Optical Metrology, AI Super-Resolution & Semiconductor Inspection</h3>
+
+        <p class="research-body">
+            At the Precision Metrology Lab in NTU's Graduate School of Advanced Technology, my doctoral research addresses one of the most critical bottlenecks in modern semiconductor manufacturing: the ability to <strong>measure structures that are smaller than the wavelength of light used to inspect them</strong>. As transistor dimensions shrink into the sub-nanometer regime for technologies like Gate-All-Around FETs (GAAFET) and 3D NAND memory, the metrology tools must evolve faster than the devices themselves.
+        </p>
+
+        <div class="phd-pillars">
+            <div class="pillar">
+                <div class="pillar-num">01</div>
+                <div class="pillar-title">Optical Critical Dimension (OCD) Metrology</div>
+                <p class="pillar-body">Developing scatterometry-based methods where reflected light from periodic nanostructures encodes their geometry. I build inverse-problem solvers using <strong>Rigorous Coupled-Wave Analysis (RCWA)</strong> to extract critical dimension, height, and sidewall angle with picometer-level precision — without destroying the wafer.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-num">02</div>
+                <div class="pillar-title">AI-Driven Super-Resolution Imaging</div>
+                <p class="pillar-body">Integrating deep learning architectures with physics-based optical forward models to push image resolution beyond the classical diffraction limit. The goal is to reconstruct nanoscale features from diffraction-limited measurements — combining the interpretability of physics with the adaptability of data-driven methods.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-num">03</div>
+                <div class="pillar-title">Instrumentation & System Integration</div>
+                <p class="pillar-body">Designing and optimizing interferometric optical setups incorporating broadband light sources, high-speed detectors, and precision translation stages for automated wafer-level inspection — bridging algorithmic advances with physical measurement systems.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-num">04</div>
+                <div class="pillar-title">Nanomaterials & Device Characterization</div>
+                <p class="pillar-body">Applying optical and electrical characterization techniques to thin films and nanomaterials for device performance evaluation, with applications in optoelectronics and sensor calibration — connecting materials understanding with metrological outcomes.</p>
+            </div>
+        </div>
+
+        <div class="research-tags" style="margin-top:28px;">
+            <span class="rtag">OCD Metrology</span>
+            <span class="rtag">RCWA</span>
+            <span class="rtag">Scatterometry</span>
+            <span class="rtag">AI Super-Resolution</span>
+            <span class="rtag">GAAFET · 3D NAND</span>
+            <span class="rtag">Interferometry</span>
+        </div>
+    </div>
+
+    <!-- Publications placeholder -->
+    <div class="pub-placeholder fade-in">
+        <div class="pub-placeholder-icon">§</div>
+        <div class="pub-placeholder-title">Publications & Manuscripts</div>
+        <div class="pub-placeholder-sub">Papers in preparation · Check back soon</div>
+    </div>
+</section>
+
+<!-- ═══════ JOURNEY ═══════ -->
+<section id="journey">
+    <div class="sec-header">
+        <span class="sec-label">Journey</span>
+        <div class="sec-rule"></div>
+    </div>
+
+    <!-- Education -->
+    <div class="journey-subsec">
+        <div class="journey-subsec-title">Education</div>
+        <div class="timeline">
+
+            <div class="tl-item fade-in">
+                <div class="tl-date">
+                    <span class="tl-date-year">Feb 2026 –</span>
+                    <span class="tl-date-place">Taipei, Taiwan</span>
                 </div>
-
-                <div class="glass p-10 relative group border-t-2 border-blue-500/20">
-                    <div class="flex flex-col lg:flex-row gap-10">
-                        <div class="lg:w-1/3">
-                            <div class="p-4 bg-purple-500/10 rounded-2xl w-fit mb-6">
-                                <i data-lucide="microscope" class="w-8 h-8 text-purple-400"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-2">PhD Research</h3>
-                            <p class="text-purple-400 text-sm font-bold mb-4 uppercase tracking-tighter">Sub-nm OCD Metrology</p>
-                        </div>
-                        <div class="lg:w-2/3 text-slate-400 text-sm leading-relaxed space-y-4">
-                            <p>Focusing on <strong>Optical Critical Dimension (OCD) Metrology</strong> at the sub-nanometer node. My research aims to improve yield through non-destructive <strong>scatterometry</strong>.</p>
-                            <p>I am developing algorithms based on <strong>Rigorous Coupled-Wave Analysis (RCWA)</strong> to characterize 3D nanostructural parameters like CD and height with picometer-level precision for GAAFET and 3D NAND.</p>
-                        </div>
-                    </div>
+                <div class="tl-axis">
+                    <div class="tl-dot" style="border-color:var(--gold);box-shadow:0 0 10px rgba(201,169,110,0.5);"></div>
+                    <div class="tl-line"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-inst">National Taiwan University</div>
+                    <div class="tl-degree">PhD in Nanoengineering<br>& Nanoscience</div>
+                    <div class="tl-cgpa">GSAT · Precision Metrology Lab · Advisor: Prof. Liang-Chia Chen</div>
+                    <p class="tl-desc">Pursuing doctoral research at the intersection of optical metrology, AI-driven imaging, and semiconductor inspection at the sub-nanometer scale. Based at NTU's Graduate School of Advanced Technology.</p>
                 </div>
             </div>
-        </section>
 
-        <!-- Certificates -->
-        <section id="certs" class="mb-40">
-            <h2 class="text-xs uppercase tracking-[0.4em] text-blue-500 font-bold mb-12">Professional Certifications</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <a href="https://www.coursera.org/account/accomplishments/verify/4VLE0VBFGM9M" target="_blank" class="glass p-6 group">
-                    <p class="text-[10px] font-black text-blue-400 mb-2">PURDUE / INTEL</p>
-                    <h4 class="text-sm font-bold mb-4">Semiconductor Fabrication</h4>
-                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-white transition"></i>
-                </a>
-                <a href="https://www.coursera.org/account/accomplishments/verify/7GBH5OY37483" target="_blank" class="glass p-6 group">
-                    <p class="text-[10px] font-black text-purple-400 mb-2">VANDERBILT UNIV.</p>
-                    <h4 class="text-sm font-bold mb-4">MATLAB Programming</h4>
-                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-white transition"></i>
-                </a>
-                <a href="https://www.coursera.org/account/accomplishments/verify/621ZOLDPDR36" target="_blank" class="glass p-6 group">
-                    <p class="text-[10px] font-black text-emerald-400 mb-2">ARIZONA STATE</p>
-                    <h4 class="text-sm font-bold mb-4">Characterization</h4>
-                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-white transition"></i>
-                </a>
-                <a href="https://www.coursera.org/account/accomplishments/verify/QVNOKPZN2SQB" target="_blank" class="glass p-6 group">
-                    <p class="text-[10px] font-black text-pink-400 mb-2">DUKE / NC STATE</p>
-                    <h4 class="text-sm font-bold mb-4">Nanotechnology</h4>
-                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-white transition"></i>
-                </a>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="mb-40">
-            <h2 class="text-xs uppercase tracking-[0.4em] text-blue-500 font-bold mb-12">Contact & References</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="glass p-8 space-y-4">
-                    <h4 class="text-xs font-bold text-blue-400 uppercase">Primary Advisor</h4>
-                    <p class="font-bold">Dr. K.K. Chattopadhyay</p>
-                    <p class="text-xs text-slate-500">Professor, Dept. of Physics, Jadavpur University</p>
-                    <a href="mailto:kkc.juphy@gmail.com" class="text-xs text-blue-500 hover:underline">kkc.juphy@gmail.com</a>
+            <div class="tl-item fade-in">
+                <div class="tl-date">
+                    <span class="tl-date-year">2023 – 2025</span>
+                    <span class="tl-date-place">Kolkata, India</span>
                 </div>
-                <div class="glass p-8 space-y-4">
-                    <h4 class="text-xs font-bold text-purple-400 uppercase">PhD Advisor</h4>
-                    <p class="font-bold">Prof. Liang-Chia Chen</p>
-                    <p class="text-xs text-slate-500">Distinguished Professor, NTU Taiwan</p>
-                    <a href="mailto:lcchen@ntu.edu.tw" class="text-xs text-purple-500 hover:underline">lcchen@ntu.edu.tw</a>
+                <div class="tl-axis">
+                    <div class="tl-dot" style="border-color:var(--teal);box-shadow:0 0 8px rgba(126,184,176,0.4);"></div>
+                    <div class="tl-line"></div>
                 </div>
-                <div class="glass p-8 flex flex-col justify-center items-center text-center">
-                    <h4 class="text-xs font-bold text-emerald-400 uppercase mb-4">Direct Contact</h4>
-                    <a href="mailto:sougata.jadavpur.university605@gmail.com" class="text-sm font-bold hover:text-blue-400 transition mb-2">Email Me</a>
-                    <p class="text-[10px] text-slate-600 uppercase tracking-tighter">Paschim Medinipur, WB, India</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Mentor/Blog Section (At the very end) -->
-        <section id="insight" class="mb-20 pt-20 border-t border-white/5">
-            <div class="flex justify-between items-center mb-12">
-                <h2 class="text-xs uppercase tracking-[0.4em] text-blue-500 font-bold flex items-center gap-2">
-                    <i data-lucide="book-open" class="w-4 h-4"></i> The Semiconductor Guide for Juniors
-                </h2>
-                <span class="text-[10px] text-slate-600 uppercase">Mental Note: For Students Only</span>
-            </div>
-            
-            <!-- Catchy Hero Box for Section -->
-            <div class="glass p-12 mb-12 border-t-4 border-blue-500">
-                <div class="flex flex-col lg:flex-row gap-10 items-center">
-                    <div class="lg:w-2/3">
-                        <h3 class="text-4xl font-black mb-6">Why You Should Care About <span class="text-gradient">Chips</span> in 2026?</h3>
-                        <p class="text-slate-400 text-lg leading-relaxed mb-8">
-                            While Software is crowded, Hardware is the new frontier. With the world facing a "Chip War" and talent shortage, Semiconductor Engineers are the architects of the physical world. Master the physics, and you become irreplaceable.
-                        </p>
-                    </div>
-                    <div class="lg:w-1/3 w-full">
-                        <a href="https://github.com/sougatabhunia85/semiconductor-roadmap" target="_blank" class="blog-cta block p-8 rounded-3xl text-center">
-                            <i data-lucide="external-link" class="w-8 h-8 text-blue-400 mx-auto mb-4"></i>
-                            <h4 class="font-bold text-lg text-white mb-2">Full Roadmap & Blog</h4>
-                            <p class="text-xs text-slate-400">Cold Emails, CV Tips, Internships, Finding Profs & skipping IELTS/TOEFL.</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-                    <div class="p-6 bg-blue-500/5 rounded-2xl border border-blue-500/10">
-                        <h4 class="font-bold text-white mb-2">High Entry Barrier</h4>
-                        <p class="text-xs text-slate-500">Once you're in, you are shielded from mass layoffs common in pure software.</p>
-                    </div>
-                    <div class="p-6 bg-purple-500/5 rounded-2xl border border-purple-500/10">
-                        <h4 class="font-bold text-white mb-2">Global Impact</h4>
-                        <p class="text-xs text-slate-500">Design the atoms that allow AI, Space Tech, and Quantum to exist.</p>
-                    </div>
-                    <div class="p-6 bg-emerald-500/5 rounded-2xl border border-emerald-500/10">
-                        <h4 class="font-bold text-white mb-2">India's Mission</h4>
-                        <p class="text-xs text-slate-500">The ISM is bringing multi-billion dollar Fabs to India—Jobs are waiting.</p>
+                <div class="tl-content">
+                    <div class="tl-inst" style="color:var(--teal);">Jadavpur University · Dept. of Physics</div>
+                    <div class="tl-degree">M.Sc. in Electronics Science</div>
+                    <div class="tl-cgpa">CGPA: 7.72 / 10 · Supervisor: Prof. K.K. Chattopadhyay</div>
+                    <p class="tl-desc">Postgraduate specialization integrating quantum mechanics, semiconductor device physics, and advanced nanoscale characterization. Thesis research conducted at the School of Materials Science and Nanotechnology.</p>
+                    <div class="syllabus-row">
+                        <span class="s-pill">Quantum Mechanics</span>
+                        <span class="s-pill">Solid State Physics</span>
+                        <span class="s-pill">Semiconductor Devices</span>
+                        <span class="s-pill">Power Electronics</span>
+                        <span class="s-pill">Nanoelectronics</span>
+                        <span class="s-pill">Microprocessors (8085)</span>
+                        <span class="s-pill">Nanotechnology</span>
+                        <span class="s-pill">Optoelectronics</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Blog Layout -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="space-y-8">
-                    <div class="guide-card">
-                        <h4 class="text-xl font-bold mb-4 flex items-center gap-2">
-                            <i data-lucide="map" class="w-5 h-5 text-orange-400"></i> The Future in India (ISM)
-                        </h4>
-                        <p class="text-sm text-slate-400 mb-4">India is no longer just "designing" chips. Through the <strong>India Semiconductor Mission (ISM)</strong>, billions are flowing into Fabs in Gujarat and Assam.</p>
-                        <ul class="space-y-3 text-xs">
-                            <li class="flex gap-2">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
-                                <span><strong>Massive Job Boom:</strong> Tata Electronics, Micron, and CG Power are hiring.</span>
-                            </li>
-                            <li class="flex gap-2">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
-                                <span><strong>Local Supply Chain:</strong> Chemicals, gases, and wafer startups are exploding.</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="guide-card">
-                        <h4 class="text-xl font-bold mb-4 flex items-center gap-2">
-                            <i data-lucide="briefcase" class="w-5 h-5 text-blue-400"></i> Job Opportunities
-                        </h4>
-                        <div class="space-y-4">
-                            <div>
-                                <p class="text-white font-bold text-xs uppercase">Design (VLSI):</p>
-                                <p class="text-[10px] text-slate-500">RTL Coding, Synthesis, DFT. Intel, NVIDIA, Qualcomm.</p>
-                            </div>
-                            <div>
-                                <p class="text-white font-bold text-xs uppercase">Manufacturing (Fab):</p>
-                                <p class="text-[10px] text-slate-500">Process Engineering, Lithography, Etching. TSMC, Micron, Tata.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="tl-item fade-in">
+                <div class="tl-date">
+                    <span class="tl-date-year">2020 – 2023</span>
+                    <span class="tl-date-place">Kolkata, India</span>
                 </div>
-
-                <div class="space-y-8">
-                    <div class="guide-card border-purple-500/20">
-                        <h4 class="text-xl font-bold mb-4 flex items-center gap-2">
-                            <i data-lucide="plane" class="w-5 h-5 text-purple-400"></i> How to go Abroad?
-                        </h4>
-                        <p class="text-sm text-slate-400 mb-6">If you want to reach the global top (Taiwan, USA, Europe), follow this strategy:</p>
-                        <div class="space-y-6">
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0 text-xs font-bold">1</div>
-                                <div><p class="text-sm font-bold">Build Foundation</p><p class="text-[11px] text-slate-500">Master Solid State Physics and Device physics early.</p></div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0 text-xs font-bold">2</div>
-                                <div><p class="text-sm font-bold">Internships (TEEP)</p><p class="text-[11px] text-slate-500">Taiwan's TEEP program is the easiest gateway for Indians.</p></div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0 text-xs font-bold">3</div>
-                                <div><p class="text-sm font-bold">Cold Email Strategy</p><p class="text-[11px] text-slate-500">Directly contact professors with your specific research fit.</p></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-8 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl border border-white/5">
-                        <h4 class="text-white font-bold mb-2 text-sm italic">"Stop chasing only coding. Learn the Physics behind the Hardware. Master Origin, MATLAB, and LaTeX."</h4>
+                <div class="tl-axis">
+                    <div class="tl-dot" style="border-color:rgba(232,228,220,0.2);"></div>
+                    <div class="tl-line" style="min-height:10px;"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-inst" style="color:rgba(232,228,220,0.35);">St. Paul's Cathedral Mission College · University of Calcutta</div>
+                    <div class="tl-degree">B.Sc. (Hons.) in Physics</div>
+                    <div class="tl-cgpa">CGPA: 7.5 / 10</div>
+                    <p class="tl-desc">Rigorous undergraduate foundation in classical and modern physics, electronics, and mathematical methods — the bedrock that later enabled graduate-level specialization in nanomaterials and devices.</p>
+                    <div class="syllabus-row">
+                        <span class="s-pill">Classical Mechanics</span>
+                        <span class="s-pill">Electromagnetism</span>
+                        <span class="s-pill">Thermodynamics</span>
+                        <span class="s-pill">Statistical Mechanics</span>
+                        <span class="s-pill">Analog & Digital Electronics</span>
+                        <span class="s-pill">Nuclear Physics</span>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <footer class="pt-20 border-t border-white/5 text-center text-slate-600 text-[9px] uppercase tracking-[0.4em]">
-            Sougata Bhunia // Researcher Portfolio // 2026
-        </footer>
-    </main>
+        </div>
+    </div>
 
-    <script>
-        lucide.createIcons();
+    <!-- Experience & Training -->
+    <div class="journey-subsec">
+        <div class="journey-subsec-title">Experience & Training</div>
+        <div class="exp-grid">
 
-        let scene, camera, renderer, points;
+            <div class="exp-card featured fade-in">
+                <div>
+                    <div class="exp-role">Research Intern · TEEP Program</div>
+                    <div class="exp-org">College of Semiconductor Research (CoSR) · NTHU, Hsinchu, Taiwan</div>
+                    <p class="exp-body">Under the supervision of Prof. Sourav De, I worked on developing semiconductor material synthesis routes and device process flows — integrating growth, patterning, lithography, and electrical testing into end-to-end device prototyping workflows. This internship was my first deep exposure to a world-class semiconductor research environment and fundamentally shaped how I think about the relationship between materials science and device engineering.</p>
+                </div>
+                <div class="exp-date">Aug – Dec 2025<br><br><span style="color:var(--gold);font-size:8px;">TEEP · Taiwan</span></div>
+            </div>
 
-        function init3D() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
+            <div class="exp-card fade-in">
+                <div>
+                    <div class="exp-role">INUP-i2i Hands-on Workshop on Nanoelectronics</div>
+                    <div class="exp-org">IIT Kharagpur · Indian Nanoelectronics Users Programme</div>
+                    <p class="exp-body">An intensive ten-day national training program covering hands-on fabrication and characterization in IIT Kharagpur's nanofabrication facilities, providing direct exposure to cleanroom processes and nanoelectronic device testing.</p>
+                </div>
+                <div class="exp-date">Feb 12–21, 2025</div>
+            </div>
 
-            const geometry = new THREE.BufferGeometry();
-            const count = 1200;
-            const positions = new Float32Array(count * 3);
+            <div class="exp-card fade-in">
+                <div>
+                    <div class="exp-role">Winter School on Micro/Nanoelectronics</div>
+                    <div class="exp-org">CeNSE · Indian Institute of Science (IISc), Bangalore</div>
+                    <p class="exp-body">A twelve-day intensive school at IISc's Centre for Nano Science and Engineering covering the fundamentals and frontiers of micro and nanoelectronics — from device physics to fabrication technology. Scored 93% in the Semiconductor Technology assessment, ranking among the top participants nationally.</p>
+                    <span class="exp-score">Score: 93% · Semiconductor Technology</span>
+                </div>
+                <div class="exp-date">Dec 9–20, 2024</div>
+            </div>
 
-            for(let i = 0; i < count * 3; i++) {
-                positions[i] = (Math.random() - 0.5) * 1200;
-            }
+        </div>
+    </div>
 
-            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            
-            const material = new THREE.PointsMaterial({
-                size: 2,
-                color: 0x60A5FA,
-                transparent: true,
-                opacity: 0.2,
-                blending: THREE.AdditiveBlending
-            });
+    <!-- Certifications -->
+    <div class="journey-subsec">
+        <div class="journey-subsec-title">Certifications</div>
+        <div class="cert-grid">
+            <a href="https://www.coursera.org/account/accomplishments/verify/4VLE0VBFGM9M" target="_blank" class="cert-card fade-in">
+                <span class="cert-issuer" style="color:#60a5fa;">Purdue / UT Austin / Intel</span>
+                <span class="cert-title">Semiconductor Fabrication Fundamentals</span>
+            </a>
+            <a href="https://www.coursera.org/account/accomplishments/verify/7GBH5OY37483" target="_blank" class="cert-card fade-in">
+                <span class="cert-issuer" style="color:var(--teal);">Vanderbilt University</span>
+                <span class="cert-title">MATLAB Programming for Engineers & Scientists</span>
+            </a>
+            <a href="https://www.coursera.org/account/accomplishments/verify/621ZOLDPDR36" target="_blank" class="cert-card fade-in">
+                <span class="cert-issuer" style="color:#6ee7b7;">Arizona State University</span>
+                <span class="cert-title">Materials Characterization</span>
+            </a>
+            <a href="https://www.coursera.org/account/accomplishments/verify/QVNOKPZN2SQB" target="_blank" class="cert-card fade-in">
+                <span class="cert-issuer" style="color:#f9a8d4;">Duke / UNC / NC State</span>
+                <span class="cert-title">Nanotechnology & Nanodevices</span>
+            </a>
+        </div>
+    </div>
 
-            points = new THREE.Points(geometry, material);
-            scene.add(points);
-            camera.position.z = 500;
+    <!-- Achievements -->
+    <div class="journey-subsec">
+        <div class="journey-subsec-title">Achievements</div>
+        <div class="ach-grid">
+            <div class="ach-card fade-in">
+                <div class="ach-label">National · 2020</div>
+                <div class="ach-title">JEE Mains</div>
+                <div class="ach-sub">90th Percentile</div>
+            </div>
+            <div class="ach-card fade-in">
+                <div class="ach-label">State · 2020</div>
+                <div class="ach-title">WBJEE</div>
+                <div class="ach-sub">Rank under 1000</div>
+            </div>
+            <div class="ach-card fade-in">
+                <div class="ach-label">National · 2023</div>
+                <div class="ach-title">JU Entrance Test</div>
+                <div class="ach-sub">Qualified — Master's Admission</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Beyond the Lab -->
+    <div class="beyond-card fade-in">
+        <div class="beyond-label">Beyond the Lab</div>
+        <p class="beyond-body">
+            Presented original physics work at an Inter-College Science Exhibition at St. Paul's Cathedral Mission College, representing the Physics Department. Selected for State-level Debate at Vidyasagar Vidyapith Boys' School and for a State-level Inter-School Science Exhibition — reflecting a long-standing habit of communicating ideas clearly and confidently, well before stepping into a research laboratory.
+        </p>
+    </div>
+
+</section>
+
+<!-- ═══════ CONNECT ═══════ -->
+<section id="connect">
+    <div class="sec-header">
+        <span class="sec-label">Connect</span>
+        <div class="sec-rule"></div>
+    </div>
+
+    <!-- References -->
+    <div class="journey-subsec">
+        <div class="journey-subsec-title">References</div>
+        <div class="ref-grid">
+            <div class="ref-card fade-in">
+                <div class="ref-role">MSc Thesis Supervisor</div>
+                <div class="ref-name">Dr. Kalyan Kumar Chattopadhyay</div>
+                <div class="ref-affil">Professor, Department of Physics<br>Jadavpur University, Kolkata, India</div>
+                <a href="mailto:kkc.juphy@gmail.com" class="ref-email">kkc.juphy@gmail.com</a>
+            </div>
+            <div class="ref-card fade-in">
+                <div class="ref-role">MSc Exam Co-ordinator</div>
+                <div class="ref-name">Dr. Jayoti Das</div>
+                <div class="ref-affil">Professor, Department of Physics<br>Jadavpur University, Kolkata, India</div>
+                <a href="mailto:jayoti.das@gmail.com" class="ref-email">jayoti.das@gmail.com</a>
+            </div>
+            <div class="ref-card fade-in">
+                <div class="ref-role" style="color:var(--teal);">PhD Advisor</div>
+                <div class="ref-name">Prof. Liang-Chia Chen</div>
+                <div class="ref-affil">Distinguished Professor<br>National Taiwan University, Taipei</div>
+                <a href="mailto:lchen@ntu.edu.tw" class="ref-email" style="color:var(--teal);">lchen@ntu.edu.tw</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Photo Gallery -->
+    <div class="journey-subsec">
+        <div class="journey-subsec-title">Photos</div>
+        <div class="gallery-wrap" id="gallery">
+            <!--
+                TO ADD PHOTOS:
+                1. Upload each photo to Google Drive
+                2. Set sharing to "Anyone with the link"
+                3. Get file ID from share link
+                4. Add slides like this:
+                <div class="gallery-slide active">
+                    <img src="https://drive.google.com/uc?export=view&id=YOUR_FILE_ID" alt="Caption here">
+                    <div class="gallery-caption">Conference · NTU Taiwan, 2026</div>
+                </div>
+            -->
+            <div class="gallery-slide active">
+                <div class="gallery-placeholder-slide">
+                    <span>📸</span>
+                    <span>Conference · Lab · Seminar photos coming soon</span>
+                </div>
+                <div class="gallery-caption">Gallery — Photos will be added soon</div>
+            </div>
+            <div class="gallery-slide">
+                <div class="gallery-placeholder-slide">
+                    <span>🔬</span>
+                    <span>Lab activities · NTU Precision Metrology Lab</span>
+                </div>
+                <div class="gallery-caption">Lab Life · NTU Taiwan</div>
+            </div>
+            <div class="gallery-slide">
+                <div class="gallery-placeholder-slide">
+                    <span>🎓</span>
+                    <span>Academic events · Workshops · Seminars</span>
+                </div>
+                <div class="gallery-caption">Academic Events</div>
+            </div>
+
+            <div class="gallery-counter" id="galleryCounter">1 / 3</div>
+            <div class="gallery-nav">
+                <button class="gallery-btn" id="prevBtn">←</button>
+                <button class="gallery-btn" id="nextBtn">→</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="journey-subsec">
+        <div class="journey-subsec-title">Contact Me</div>
+        <p class="contact-intro">
+            Whether you are a professor with a collaboration in mind, a student seeking guidance, or someone curious about my research — feel free to reach out. I respond to all genuine inquiries.
+        </p>
+        <div class="contact-emails">
+            <a href="mailto:sougata.jadavpur.university605@gmail.com" class="contact-email-tag">sougata.jadavpur.university605@gmail.com</a>
+            <a href="mailto:d14k46004@ntu.edu.tw" class="contact-email-tag">d14k46004@ntu.edu.tw</a>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-field fade-in">
+                <label class="form-label">Your Name</label>
+                <input type="text" class="form-input" id="f-name" placeholder="Full name">
+            </div>
+            <div class="form-field fade-in">
+                <label class="form-label">Contact Number</label>
+                <input type="tel" class="form-input" id="f-phone" placeholder="+91 or international">
+            </div>
+            <div class="form-field fade-in">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" id="f-email" placeholder="your@email.com">
+            </div>
+            <div class="form-field fade-in">
+                <label class="form-label">Reason to Contact</label>
+                <input type="text" class="form-input" id="f-reason" placeholder="Research collaboration, student guidance, etc.">
+            </div>
+            <div class="form-field full fade-in">
+                <label class="form-label">Message</label>
+                <textarea class="form-textarea" id="f-message" placeholder="Write your message here..."></textarea>
+            </div>
+            <div class="form-submit-row fade-in">
+                <button class="btn-gold" onclick="submitForm()">Send Message →</button>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ═══════ STUDENT GUIDE ═══════ -->
+<section id="guide">
+    <div class="sec-header">
+        <span class="sec-label">Student Guide — For Indian Students</span>
+        <div class="sec-rule"></div>
+    </div>
+
+    <p class="guide-intro">
+        I went from a regular college in Paschim Medinipur to a PhD seat at National Taiwan University — without clearing IELTS, without a famous undergraduate institution, and without knowing anyone abroad. This guide is everything I wish someone had told me when I was starting out.
+    </p>
+
+    <div class="accordion">
+
+        <div class="accordion-item">
+            <button class="accordion-trigger">
+                <div class="acc-left">
+                    <span class="acc-num">01</span>
+                    <span class="acc-title">Why a Semiconductor Degree Matters for Indian Students</span>
+                </div>
+                <span class="acc-arrow">+</span>
+            </button>
+            <div class="accordion-body">
+                <div class="accordion-body-inner">
+                    <p class="acc-text">India is at an inflection point in its semiconductor journey. With the India Semiconductor Mission channelling billions into fabrication plants in Gujarat and Assam — backed by companies like Tata Electronics, Micron, and CG Power — the demand for trained engineers who understand both the physics and the process is growing faster than the supply. This is not a trend; it is a structural shift that will define the next two decades of Indian high technology.</p>
+                    <p class="acc-text">What makes semiconductor engineering particularly valuable is the depth of foundation it demands. You cannot fake knowledge of solid-state physics, device operation, or thin-film processing. This high entry barrier is also your shield — once you have built genuine expertise, you occupy a position that is extremely difficult to automate or offshore. A Physics or Electronics graduate from any Indian university who commits seriously to this field has a legitimate path to global opportunities, because the knowledge itself is portable even when the institution name is not.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-trigger">
+                <div class="acc-left">
+                    <span class="acc-num">02</span>
+                    <span class="acc-title">How to Write Cold Emails to Professors</span>
+                </div>
+                <span class="acc-arrow">+</span>
+            </button>
+            <div class="accordion-body">
+                <div class="accordion-body-inner">
+                    <p class="acc-text">The cold email is the single most underused tool available to Indian students trying to reach foreign labs. Most students either never send one, or send a generic template that no professor will remember. The difference between an email that gets a reply and one that gets deleted in three seconds is specificity — and specificity requires genuine reading of the professor's work before you write a single word.</p>
+                    <p class="acc-text">Your email should open by naming a specific paper of theirs, explaining what in that paper connected with your own work or thinking, and then concisely describing what you have done that is relevant to their research direction. Keep the entire email under 200 words. Attach a one-page CV and nothing else unless they ask. Do not call them "Respected Sir/Madam" — use their proper title and last name. Send individual, personalized emails, never mass mail. Follow up once after two weeks if there is no reply. The professors who respond are often the ones who are actively looking — your job is simply to be specific enough that they notice you.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-trigger">
+                <div class="acc-left">
+                    <span class="acc-num">03</span>
+                    <span class="acc-title">Building a Strong CV as an Indian Physics or Electronics Student</span>
+                </div>
+                <span class="acc-arrow">+</span>
+            </button>
+            <div class="accordion-body">
+                <div class="accordion-body-inner">
+                    <p class="acc-text">Your CV is not a list of everything you have done — it is a curated argument for why a particular professor should invest time in you. The single most important thing on it, by a large margin, is your thesis or research project. Describe it in two to three bullet points that are specific about what you did, what technique you used, and what result you obtained. Vague lines like "studied nanomaterials" tell a professor nothing and waste their time.</p>
+                    <p class="acc-text">Skills matter only when they are honest and specific. List tools you can actually use — MATLAB, LaTeX, Origin, Python, specific characterization equipment — and nothing else. Certifications from Coursera are worth including if they are from reputable universities and relevant to the field you are applying to. Keep the CV to one page for most applications unless you genuinely have publications that justify a second. Use LaTeX to typeset it — this alone signals to a professor in a technical field that you are someone who takes precision seriously.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-trigger">
+                <div class="acc-left">
+                    <span class="acc-num">04</span>
+                    <span class="acc-title">How to Find the Right Lab & Professor</span>
+                </div>
+                <span class="acc-arrow">+</span>
+            </button>
+            <div class="accordion-body">
+                <div class="accordion-body-inner">
+                    <p class="acc-text">Start with the research question, not the university ranking. Identify two or three topics you are genuinely interested in, then use Google Scholar to find the most active researchers publishing in those areas in the last three years. Activity in the recent past matters more than historical prestige — a professor who published consistently in 2023 and 2024 is likely running a funded, active lab that has room for students. A famous name who has not published in five years may have shifted focus or reduced lab size.</p>
+                    <p class="acc-text">Once you have a shortlist, read their group website carefully. Look for whether they have open positions stated, what funding sources they list, and whether their current students' work overlaps with yours. LinkedIn can also reveal where their alumni have gone — this tells you a great deal about the kind of mentorship and career outcomes the lab produces. Reach out to current students if you can; they will tell you things the professor's webpage never will.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-trigger">
+                <div class="acc-left">
+                    <span class="acc-num">05</span>
+                    <span class="acc-title">How to Skip IELTS / TOEFL for Research Programs</span>
+                </div>
+                <span class="acc-arrow">+</span>
+            </button>
+            <div class="accordion-body">
+                <div class="accordion-body-inner">
+                    <p class="acc-text">Many research-focused graduate programs, particularly in Taiwan, South Korea, Japan, and parts of Europe, either waive the English language test requirement or accept alternatives that Indian students can satisfy without a formal exam. In Taiwan specifically, a large number of universities — including NTU and NTHU — will waive IELTS and TOEFL if your undergraduate or graduate education was conducted entirely in English, which is true for almost every Indian student. You typically need a letter from your institution confirming the medium of instruction, which your university office can provide.</p>
+                    <p class="acc-text">For programs that require a score, check whether they accept Duolingo English Test, which is significantly cheaper and faster to schedule than IELTS or TOEFL. Some programs also waive the requirement entirely if you are applying through a specific fellowship or internship pathway — the TEEP program in Taiwan, for example, is one such route where research ability matters far more than standardised test scores. Always read the admission requirements carefully for the specific program, not just the university's general page.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-trigger">
+                <div class="acc-left">
+                    <span class="acc-num">06</span>
+                    <span class="acc-title">TEEP & Internship Programs — Your Gateway Abroad</span>
+                </div>
+                <span class="acc-arrow">+</span>
+            </button>
+            <div class="accordion-body">
+                <div class="accordion-body-inner">
+                    <p class="acc-text">Taiwan's <strong>Taiwan Experience Education Program (TEEP)</strong> is, in my view, the most accessible and well-structured short-term research internship available to Indian students in semiconductor and materials science. It is fully funded — including flight, accommodation, and a monthly stipend — and places you in a Taiwanese university laboratory for three to six months. The application is open, competitive, and evaluated primarily on your research background and the match with a host professor's work. I did my TEEP at NTHU's College of Semiconductor Research in 2025, and it directly led to my PhD position at NTU.</p>
+                    <p class="acc-text">Within India, the INUP (Indian Nanoelectronics Users Programme) workshops at IITs and IISc are excellent for gaining hands-on cleanroom and characterization experience that you would otherwise only get at a well-funded foreign lab. Applying to these schools early — even as an M.Sc. student — builds both skills and a demonstrable track record. The IISc winter school at CeNSE is particularly rigorous; scoring well there is something worth noting on your CV. These domestic programs are often overlooked by students focused on going abroad, but they are precisely what makes your profile competitive enough to get there.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-trigger">
+                <div class="acc-left">
+                    <span class="acc-num">07</span>
+                    <span class="acc-title">Key Skills to Learn: MATLAB, LaTeX, Origin & Python</span>
+                </div>
+                <span class="acc-arrow">+</span>
+            </button>
+            <div class="accordion-body">
+                <div class="accordion-body-inner">
+                    <p class="acc-text">In a physics or electronics research career, the tools you use to process, analyze, and present data are nearly as important as the experiments themselves. <strong>MATLAB</strong> is the lingua franca of signal processing, optical simulation, and numerical methods in the kind of research I do — knowing it well enough to write your own scripts, not just run existing ones, is a meaningful differentiator. <strong>Python</strong> with NumPy, SciPy, and Matplotlib has become equally essential, especially if you intend to work with AI or data-driven methods at any point.</p>
+                    <p class="acc-text"><strong>Origin</strong> is the standard tool for scientific data plotting and fitting in materials science and characterization — if your data from XRD or UV-Vis goes anywhere, it likely goes into Origin. Learn it properly, including curve fitting and statistical analysis, not just basic plotting. <strong>LaTeX</strong> is non-negotiable for anyone who intends to write papers, theses, or research proposals. Professors in Taiwan, Europe, and the US notice immediately when a student submits a well-typeset document — it signals care, precision, and familiarity with the culture of academic writing. Start learning it during your M.Sc. itself, not when your thesis deadline arrives.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="footer-name">Sougata Bhunia</div>
+    <div class="footer-right">NTU Taiwan · Researcher Portfolio · 2026</div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════
+// THREE.JS BACKGROUND
+// ═══════════════════════════════════════════
+const canvas = document.getElementById('bg-canvas');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(70, innerWidth/innerHeight, 0.1, 2000);
+const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+
+const count = 2000;
+const geo = new THREE.BufferGeometry();
+const pos = new Float32Array(count * 3);
+const colors = new Float32Array(count * 3);
+
+for(let i = 0; i < count; i++){
+    pos[i*3]   = (Math.random()-0.5)*1800;
+    pos[i*3+1] = (Math.random()-0.5)*1800;
+    pos[i*3+2] = (Math.random()-0.5)*1800;
+    const t = Math.random();
+    colors[i*3]   = t > 0.7 ? 0.49 : 0.78; // R
+    colors[i*3+1] = t > 0.7 ? 0.72 : 0.66; // G
+    colors[i*3+2] = t > 0.7 ? 0.69 : 0.43; // B (gold vs teal)
+}
+
+geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+geo.setAttribute('color', new THREE.BufferAttribute(colors,3));
+
+const mat = new THREE.PointsMaterial({
+    size: 1.4,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.13,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+});
+
+const stars = new THREE.Points(geo, mat);
+scene.add(stars);
+camera.position.z = 650;
+
+let mx=0, my=0;
+document.addEventListener('mousemove', e => {
+    mx = (e.clientX/innerWidth - 0.5) * 0.012;
+    my = (e.clientY/innerHeight - 0.5) * 0.012;
+});
+
+(function animate(){
+    requestAnimationFrame(animate);
+    stars.rotation.y += 0.0001 + mx*0.3;
+    stars.rotation.x += 0.00006 + my*0.3;
+    renderer.render(scene, camera);
+})();
+
+window.addEventListener('resize', () => {
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+});
+
+// ═══════════════════════════════════════════
+// MOBILE NAV
+// ═══════════════════════════════════════════
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+});
+
+function closeMobile(){
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+}
+
+// ═══════════════════════════════════════════
+// FADE IN ON SCROLL
+// ═══════════════════════════════════════════
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+        if(e.isIntersecting){
+            setTimeout(() => e.target.classList.add('visible'), i * 80);
         }
+    });
+}, { threshold: 0.07 });
 
-        function animate() {
-            requestAnimationFrame(animate);
-            points.rotation.y += 0.0003;
-            points.rotation.x += 0.0001;
-            renderer.render(scene, camera);
-        }
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        window.onload = () => {
-            init3D();
-            animate();
-        }
+// ═══════════════════════════════════════════
+// GALLERY
+// ═══════════════════════════════════════════
+const slides = document.querySelectorAll('.gallery-slide');
+const counter = document.getElementById('galleryCounter');
+let current = 0;
+let autoTimer;
 
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
+function showSlide(n){
+    slides[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    counter.textContent = `${current+1} / ${slides.length}`;
+}
+
+function nextSlide(){ showSlide(current+1); }
+function prevSlide(){ showSlide(current-1); }
+
+function startAuto(){ autoTimer = setInterval(nextSlide, 1000); }
+function stopAuto(){ clearInterval(autoTimer); }
+
+document.getElementById('nextBtn').addEventListener('click', e => {
+    e.stopPropagation(); stopAuto(); nextSlide(); startAuto();
+});
+document.getElementById('prevBtn').addEventListener('click', e => {
+    e.stopPropagation(); stopAuto(); prevSlide(); startAuto();
+});
+
+document.getElementById('gallery').addEventListener('click', () => {
+    stopAuto(); nextSlide(); startAuto();
+});
+
+startAuto();
+
+// Touch swipe
+let touchX = 0;
+document.getElementById('gallery').addEventListener('touchstart', e => touchX = e.touches[0].clientX);
+document.getElementById('gallery').addEventListener('touchend', e => {
+    const diff = touchX - e.changedTouches[0].clientX;
+    stopAuto();
+    if(Math.abs(diff) > 40){ diff > 0 ? nextSlide() : prevSlide(); }
+    startAuto();
+});
+
+// ═══════════════════════════════════════════
+// ACCORDION
+// ═══════════════════════════════════════════
+document.querySelectorAll('.accordion-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const body = item.querySelector('.accordion-body');
+        const isOpen = item.classList.contains('open');
+
+        // close all
+        document.querySelectorAll('.accordion-item').forEach(i => {
+            i.classList.remove('open');
+            i.querySelector('.accordion-body').style.maxHeight = '0';
         });
 
-        document.addEventListener('mousemove', (e) => {
-            const mouseX = (e.clientX / window.innerWidth) - 0.5;
-            const mouseY = (e.clientY / window.innerHeight) - 0.5;
-            points.rotation.y += mouseX * 0.02;
-            points.rotation.x += mouseY * 0.02;
-        });
-    </script>
+        if(!isOpen){
+            item.classList.add('open');
+            body.style.maxHeight = body.scrollHeight + 'px';
+        }
+    });
+});
+
+// ═══════════════════════════════════════════
+// CONTACT FORM
+// ═══════════════════════════════════════════
+function submitForm(){
+    const name    = document.getElementById('f-name').value.trim();
+    const phone   = document.getElementById('f-phone').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const reason  = document.getElementById('f-reason').value.trim();
+    const message = document.getElementById('f-message').value.trim();
+
+    if(!name || !email || !message){
+        alert('Please fill in at least your name, email, and message.');
+        return;
+    }
+
+    const subject = encodeURIComponent(`[Portfolio Contact] ${reason || 'Inquiry'} — from ${name}`);
+    const body = encodeURIComponent(
+`Name: ${name}
+Phone: ${phone || 'Not provided'}
+Email: ${email}
+Reason: ${reason || 'Not specified'}
+
+Message:
+${message}`
+    );
+
+    window.location.href = `mailto:sougata.jadavpur.university605@gmail.com?subject=${subject}&body=${body}`;
+}
+</script>
 </body>
 </html>
-
-
