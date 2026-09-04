@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sougata Bhunia · PhD Researcher, Optical Metrology &amp; AI Imaging</title>
 <meta name="description" content="PhD researcher at National Taiwan University's Precision Metrology Lab. Optical critical dimension metrology, physics-informed AI super-resolution imaging, high-entropy nanomaterials.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#fbfaf8;
@@ -30,6 +27,7 @@
   --shadow:0 1px 2px rgba(30,25,50,.04),0 8px 24px -12px rgba(30,25,50,.10);
   --radius:14px;
   --maxw:1080px;
+  --font:'Times New Roman',Times,'Liberation Serif','Nimbus Roman',Georgia,serif;
 }
 :root[data-theme="dark"]{
   --bg:#15131c;
@@ -75,15 +73,15 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4{font-family:'Source Serif 4',Georgia,serif;color:var(--text);letter-spacing:-.01em}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{color:var(--text);letter-spacing:0;font-weight:700}
 a{color:var(--accent);text-decoration:none}
 a:hover{color:var(--accent-strong)}
 img{max-width:100%;display:block}
 ul{list-style:none}
-.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.mono{letter-spacing:.04em}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:10px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700;font-style:italic;margin-bottom:10px}
 section{padding:72px 0}
 section + section{border-top:1px solid var(--border)}
 .section-head{max-width:720px;margin-bottom:36px}
@@ -94,8 +92,8 @@ section + section{border-top:1px solid var(--border)}
 header.site{position:sticky;top:0;z-index:500;background:var(--bg);border-bottom:1px solid var(--border)}
 .nav-inner{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);flex-shrink:0}
-.brand-mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent-strong));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;font-family:'Inter',sans-serif}
-.brand-name{font-weight:700;font-size:15px;font-family:'Inter',sans-serif;white-space:nowrap}
+.brand-mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent-strong));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;}
+.brand-name{font-weight:700;font-size:15px;white-space:nowrap}
 .brand-name em{font-style:normal;color:var(--accent)}
 nav.links{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
 nav.links a{font-size:13.5px;font-weight:500;color:var(--text-soft);white-space:nowrap}
@@ -104,7 +102,7 @@ nav.links a:hover{color:var(--text)}
 .theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text-soft);display:flex;align-items:center;justify-content:center;cursor:pointer}
 .theme-btn:hover{color:var(--text);border-color:var(--accent)}
 .nav-toggle{display:none;width:36px;height:36px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text);align-items:center;justify-content:center;cursor:pointer}
-.btn{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;padding:10px 18px;border-radius:9px;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:'Inter',sans-serif}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;padding:10px 18px;border-radius:9px;text-decoration:none;border:1px solid transparent;cursor:pointer;}
 .btn-primary{background:var(--accent);color:#fff}
 .btn-primary:hover{background:var(--accent-strong);color:#fff}
 .btn-ghost{background:var(--surface);color:var(--text);border-color:var(--border)}
@@ -126,33 +124,33 @@ nav.links a:hover{color:var(--text)}
 .facts{display:flex;flex-wrap:wrap;gap:0;margin-top:26px;border-top:1px solid var(--border);padding-top:18px}
 .fact{padding-right:28px;margin-right:28px;border-right:1px solid var(--border);margin-bottom:10px}
 .fact:last-child{border-right:none}
-.fact .k{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-mute);margin-bottom:4px}
+.fact .k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-mute);margin-bottom:4px}
 .fact .v{font-size:13.5px;font-weight:600;color:var(--text)}
 
 /* interest / overview cards */
 .cards-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:12px}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
-.card .glyph{width:44px;height:44px;border-radius:11px;background:var(--accent-soft);border:1px solid var(--accent-soft-border);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;margin-bottom:14px}
-.card h3{font-size:16px;font-weight:700;margin-bottom:8px;font-family:'Inter',sans-serif}
+.card .glyph{width:44px;height:44px;border-radius:11px;background:var(--accent-soft);border:1px solid var(--accent-soft-border);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;margin-bottom:14px}
+.card h3{font-size:16px;font-weight:700;margin-bottom:8px;}
 .card p{font-size:14px;color:var(--text-soft);line-height:1.7}
 
 /* project cards */
 .project{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:32px;box-shadow:var(--shadow);margin-bottom:20px}
 .project-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;margin-bottom:12px}
-.project-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:.08em}
+.project-num{font-size:12px;color:var(--accent);letter-spacing:.08em}
 .project h3{font-size:clamp(20px,2.2vw,26px);font-weight:700;flex:1;min-width:240px}
-.status-pill{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;border-radius:999px;white-space:nowrap;border:1px solid;flex-shrink:0}
+.status-pill{font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;border-radius:999px;white-space:nowrap;border:1px solid;flex-shrink:0}
 .status-active{color:var(--teal);border-color:var(--teal);background:var(--teal-soft)}
 .status-done{color:var(--amber);border-color:var(--amber);background:var(--amber-soft)}
 .project .lede{color:var(--text-soft);font-size:15.5px;line-height:1.8;max-width:800px}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-soft-border);padding:5px 10px;border-radius:7px}
+.tag{font-size:11px;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-soft-border);padding:5px 10px;border-radius:7px}
 details.more{margin-top:18px}
-details.more > summary{list-style:none;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-soft-border);padding:10px 16px;border-radius:9px;display:inline-block}
+details.more > summary{list-style:none;cursor:pointer;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-soft-border);padding:10px 16px;border-radius:9px;display:inline-block}
 details.more > summary::-webkit-details-marker{display:none}
 details.more[open] > summary{margin-bottom:22px}
 .more-grid{display:grid;grid-template-columns:1fr;gap:22px;padding-top:20px;border-top:1px solid var(--border)}
-.more-grid h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:600}
+.more-grid h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:600}
 .more-grid p{font-size:15px;color:var(--text-soft);line-height:1.8;margin-bottom:10px}
 .stack-list{display:flex;flex-direction:column;gap:0;margin-top:6px}
 .stack-list li{font-size:14px;color:var(--text-soft);padding:8px 0;border-bottom:1px solid var(--border)}
@@ -160,25 +158,25 @@ details.more[open] > summary{margin-bottom:22px}
 
 /* publications */
 .pub{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px 24px;display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;margin-bottom:12px}
-.pub-status{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px;border:1px solid;white-space:nowrap;flex-shrink:0}
-.pub h3{font-size:16.5px;font-weight:700;margin-bottom:6px;font-family:'Inter',sans-serif;line-height:1.4}
+.pub-status{font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px;border:1px solid;white-space:nowrap;flex-shrink:0}
+.pub h3{font-size:16.5px;font-weight:700;margin-bottom:6px;line-height:1.4}
 .pub p{font-size:14px;color:var(--text-soft)}
 .pub-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.pub-links a{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-soft-border);padding:8px 12px;border-radius:8px}
+.pub-links a{font-size:11.5px;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-soft-border);padding:8px 12px;border-radius:8px}
 
 /* grids */
 .grid-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
 .simple-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
-.simple-card .tag-yr{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:block}
-.simple-card h3{font-size:15.5px;font-weight:700;margin-bottom:6px;font-family:'Inter',sans-serif;line-height:1.4}
+.simple-card .tag-yr{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:block}
+.simple-card h3{font-size:15.5px;font-weight:700;margin-bottom:6px;line-height:1.4}
 .simple-card p{font-size:13.5px;color:var(--text-soft);line-height:1.6}
 a.simple-card{text-decoration:none;display:block}
 a.simple-card:hover{border-color:var(--accent)}
-.verify{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text-mute);margin-top:8px;display:block}
+.verify{font-size:10.5px;color:var(--text-mute);margin-top:8px;display:block}
 
 /* talks list */
 .talk-row{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 22px;display:flex;flex-wrap:wrap;gap:16px;align-items:baseline;margin-bottom:10px}
-.talk-date{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--accent);white-space:nowrap}
+.talk-date{font-size:11px;letter-spacing:.08em;color:var(--accent);white-space:nowrap}
 .talk-title{font-size:15px;font-weight:600;flex:1;min-width:240px}
 .talk-where{font-size:13.5px;color:var(--text-soft)}
 
@@ -188,13 +186,13 @@ a.simple-card:hover{border-color:var(--accent)}
 .tl-item.alt2{border-left-color:var(--amber)}
 .tl-item.alt3{border-left-color:var(--green)}
 .tl-head{display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;margin-bottom:10px}
-.tl-badge{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:5px 10px;border-radius:7px}
+.tl-badge{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:5px 10px;border-radius:7px}
 .tl-item.alt .tl-badge{color:var(--teal);border-color:var(--teal)}
 .tl-item.alt2 .tl-badge{color:var(--amber);border-color:var(--amber)}
 .tl-item.alt3 .tl-badge{color:var(--green);border-color:var(--green)}
 .tl-item h3{font-size:18px;font-weight:700;flex:1;min-width:220px}
-.tl-date{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-mute);white-space:nowrap}
-.tl-org{font-size:13.5px;font-weight:600;color:var(--accent);margin-bottom:10px;font-family:'JetBrains Mono',monospace}
+.tl-date{font-size:11px;color:var(--text-mute);white-space:nowrap}
+.tl-org{font-size:13.5px;font-weight:600;color:var(--accent);margin-bottom:10px;}
 .tl-item.alt .tl-org{color:var(--teal)}
 .tl-item.alt2 .tl-org{color:var(--amber)}
 .tl-item.alt3 .tl-org{color:var(--green)}
@@ -203,20 +201,20 @@ a.simple-card:hover{border-color:var(--accent)}
 .tl-item ul li{font-size:14px;color:var(--text-soft);line-height:1.7;padding-left:16px;position:relative}
 .tl-item ul li::before{content:"–";position:absolute;left:0;color:var(--text-mute)}
 .pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
-.pill{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-soft-border);padding:5px 10px;border-radius:7px}
+.pill{font-size:10.5px;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-soft-border);padding:5px 10px;border-radius:7px}
 
 /* skills */
 .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
 .skill-chip{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
 .skill-chip .name{font-size:14.5px;font-weight:700}
-.skill-chip .kind{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mute);margin-top:4px}
+.skill-chip .kind{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mute);margin-top:4px}
 
 /* guide accordion */
 .guide-item{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:10px;overflow:hidden}
 .guide-item summary{list-style:none;cursor:pointer;padding:20px 24px;display:flex;align-items:center;gap:16px;font-weight:600;font-size:16px}
 .guide-item summary::-webkit-details-marker{display:none}
-.guide-item summary .qnum{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);flex-shrink:0}
-.guide-item summary::after{content:"+";margin-left:auto;font-size:20px;color:var(--accent);font-family:'Inter',sans-serif;flex-shrink:0}
+.guide-item summary .qnum{font-size:11px;color:var(--accent);flex-shrink:0}
+.guide-item summary::after{content:"+";margin-left:auto;font-size:20px;color:var(--accent);flex-shrink:0}
 .guide-item[open] summary::after{content:"–"}
 .guide-body{padding:0 24px 24px 62px;display:flex;flex-direction:column;gap:12px}
 .guide-body p{font-size:14.5px;color:var(--text-soft);line-height:1.8}
@@ -224,9 +222,9 @@ a.simple-card:hover{border-color:var(--accent)}
 /* gallery */
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
 .gallery-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
-.gallery-thumb{height:150px;background:linear-gradient(145deg,var(--accent-soft),var(--bg-alt));display:flex;align-items:center;justify-content:center;color:var(--text-mute);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-align:center;padding:0 14px}
+.gallery-thumb{height:150px;background:linear-gradient(145deg,var(--accent-soft),var(--bg-alt));display:flex;align-items:center;justify-content:center;color:var(--text-mute);font-size:11px;letter-spacing:.08em;text-align:center;padding:0 14px}
 .gallery-body{padding:14px 16px}
-.gallery-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block}
+.gallery-tag{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block}
 .gallery-body p{font-size:13px;color:var(--text-soft);line-height:1.6}
 
 /* contact */
@@ -234,7 +232,7 @@ a.simple-card:hover{border-color:var(--accent)}
 .contact-link{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px}
 .contact-link:hover{border-color:var(--accent)}
 .contact-icon{width:38px;height:38px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.contact-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-mute)}
+.contact-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-mute)}
 .contact-value{font-size:14.5px;font-weight:600;color:var(--text);word-break:break-word}
 
 /* footer */
@@ -242,7 +240,7 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
 .footer-inner{max-width:var(--maxw);margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
 .footer-links{display:flex;flex-wrap:wrap;gap:20px}
 .footer-links a{font-size:13px;color:var(--text-soft)}
-.footer-note{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mute)}
+.footer-note{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mute)}
 
 @media (max-width:820px){
   nav.links{position:fixed;top:66px;left:0;right:0;bottom:0;background:var(--bg);flex-direction:column;align-items:flex-start;padding:24px;gap:18px;transform:translateX(-100%);transition:transform .25s ease;overflow-y:auto;border-top:1px solid var(--border)}
@@ -256,9 +254,35 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
   .facts{justify-content:center}
   .fact{text-align:left}
 }
+
+/* modern touches: progress bar, hero mesh, reveal-on-scroll, hover lift */
+#scrollProgress{position:fixed;top:0;left:0;height:2.5px;width:0%;background:linear-gradient(90deg,var(--accent),var(--teal));z-index:1000;transition:width .1s linear}
+.hero{position:relative;overflow:hidden}
+.hero-mesh{position:absolute;inset:-20% -10%;z-index:0;pointer-events:none;opacity:.55;
+  background:
+    radial-gradient(38% 45% at 14% 18%,color-mix(in srgb,var(--accent) 30%,transparent),transparent 70%),
+    radial-gradient(34% 42% at 88% 8%,color-mix(in srgb,var(--teal) 26%,transparent),transparent 70%),
+    radial-gradient(30% 36% at 70% 92%,color-mix(in srgb,var(--amber) 18%,transparent),transparent 70%);
+  filter:blur(40px);animation:meshDrift 22s ease-in-out infinite alternate}
+@keyframes meshDrift{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(-2%,2%,0) scale(1.06)}}
+.hero-inner{position:relative;z-index:1}
+[data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+[data-reveal].is-visible{opacity:1;transform:none}
+.card,.project,.simple-card,.pub,.tl-item,.skill-chip,.talk-row,.contact-link,.gallery-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.card:hover,.simple-card:hover,.skill-chip:hover,.contact-link:hover{transform:translateY(-3px);border-color:var(--accent)}
+.project:hover,.tl-item:hover{box-shadow:0 4px 6px rgba(30,25,50,.05),0 18px 34px -14px rgba(30,25,50,.16)}
+nav.links a{position:relative;transition:color .15s ease}
+nav.links a.active{color:var(--accent);font-weight:700}
+nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20px;height:2px;background:var(--accent)}
+@media (prefers-reduced-motion:reduce){
+  [data-reveal]{opacity:1;transform:none;transition:none}
+  .hero-mesh{animation:none}
+}
 </style>
 </head>
 <body>
+
+<div id="scrollProgress"></div>
 
 <header class="site">
   <div class="nav-inner">
@@ -269,12 +293,9 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
     <nav class="links" id="navLinks">
       <a href="#about">About</a>
       <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#awards">Awards</a>
       <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
+      <a href="#publications">Publications</a>
       <a href="#guide">Guide</a>
-      <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-actions">
@@ -291,6 +312,7 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
 </header>
 
 <section id="hero" class="hero">
+  <div class="hero-mesh" aria-hidden="true"></div>
   <div class="wrap hero-inner">
     <div class="avatar-wrap">
       <img src="images/profile.jpg" alt="Sougata Bhunia">
@@ -323,30 +345,51 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
 
 <section id="about">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-reveal>
       <p class="eyebrow">Introduction</p>
       <h2>Overview</h2>
       <p>As transistors move to Gate-All-Around and 3D NAND, the tools that verify them must resolve structures far smaller than the light used to see them. I close that gap at National Taiwan University's Precision Metrology Lab, using spectroscopic scatterometry, RCWA inverse modelling and physics-informed deep networks.</p>
       <p style="margin-top:12px">I came to this from an ordinary undergraduate college in Kolkata, through a materials M.Sc. at Jadavpur University and a funded internship in Hsinchu. That route is the reason I keep a <a href="#guide">public guide for Indian students</a> on this site.</p>
     </div>
-    <div class="cards-4">
+    <div class="cards-4" data-reveal>
       <div class="card"><span class="glyph">OCD</span><h3>Optical Critical Dimension</h3><p>Scatterometry with RCWA inverse modelling to recover CD, height and sidewall angle, non-destructively.</p></div>
       <div class="card"><span class="glyph">AI</span><h3>AI Super-Resolution</h3><p>Physics-informed deep networks that reconstruct detail below the classical diffraction limit.</p></div>
       <div class="card"><span class="glyph">λ</span><h3>Optical Instrumentation</h3><p>Broadband interferometric setups and high-speed detection for automated wafer-level inspection.</p></div>
       <div class="card"><span class="glyph">Nm</span><h3>Nanomaterials</h3><p>Sol-gel synthesis and full structural, optical and thermal characterisation of oxide nanomaterials.</p></div>
+    </div>
+
+    <div class="section-head" data-reveal style="margin-top:56px;margin-bottom:22px">
+      <p class="eyebrow">Toolkit</p>
+      <h2 style="font-size:clamp(20px,2.4vw,24px)">Technologies</h2>
+    </div>
+    <div class="skill-grid" data-reveal>
+      <div class="skill-chip"><div class="name">MATLAB</div><div class="kind">Simulation</div></div>
+      <div class="skill-chip"><div class="name">Python</div><div class="kind">AI / data</div></div>
+      <div class="skill-chip"><div class="name">RCWA</div><div class="kind">Diffraction</div></div>
+      <div class="skill-chip"><div class="name">NumPy</div><div class="kind">Numerics</div></div>
+      <div class="skill-chip"><div class="name">LaTeX</div><div class="kind">Writing</div></div>
+      <div class="skill-chip"><div class="name">Origin</div><div class="kind">Plotting</div></div>
+      <div class="skill-chip"><div class="name">Git</div><div class="kind">Version ctl</div></div>
+      <div class="skill-chip"><div class="name">XRD</div><div class="kind">Structure</div></div>
+      <div class="skill-chip"><div class="name">FESEM</div><div class="kind">Imaging</div></div>
+      <div class="skill-chip"><div class="name">EDS</div><div class="kind">Elemental</div></div>
+      <div class="skill-chip"><div class="name">UV-Vis</div><div class="kind">Optical</div></div>
+      <div class="skill-chip"><div class="name">TGA / DSC</div><div class="kind">Thermal</div></div>
+      <div class="skill-chip"><div class="name">Ellipsometry</div><div class="kind">Thin film</div></div>
+      <div class="skill-chip"><div class="name">Sol-gel</div><div class="kind">Synthesis</div></div>
     </div>
   </div>
 </section>
 
 <section id="research">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-reveal>
       <p class="eyebrow">My work</p>
       <h2>Research Projects</h2>
-      <p>Three projects, two active. Each one is written out in full — the problem, the method, and what it is worth — because that is what a reader assessing a researcher actually needs.</p>
+      <p>Four projects, two active. Each one is written out in full — the problem, the method, and what it is worth — because that is what a reader assessing a researcher actually needs.</p>
     </div>
 
-    <article class="project">
+    <article class="project" data-reveal>
       <div class="project-head">
         <span class="project-num mono">01</span>
         <h3>Optical Critical Dimension Metrology</h3>
@@ -388,7 +431,7 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
       </details>
     </article>
 
-    <article class="project">
+    <article class="project" data-reveal>
       <div class="project-head">
         <span class="project-num mono">02</span>
         <h3>Physics-Informed AI Super-Resolution</h3>
@@ -430,7 +473,7 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
       </details>
     </article>
 
-    <article class="project">
+    <article class="project" data-reveal>
       <div class="project-head">
         <span class="project-num mono">03</span>
         <h3>Lead-Free High-Entropy Perovskite Oxides</h3>
@@ -471,78 +514,58 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
         </div>
       </details>
     </article>
-  </div>
-</section>
 
-<section id="publications">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Written record</p>
-      <h2>Publications &amp; Theses</h2>
-      <p>No journal publications yet — I began my PhD in February 2026 and my first manuscript is in preparation. What exists so far is the written record below. This section will be updated as work is submitted.</p>
-      <div class="pub-links">
-        <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener">Google Scholar</a>
-        <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener">ORCID</a>
-        <a href="https://www.researchgate.net/profile/YOUR_PROFILE" target="_blank" rel="noopener">ResearchGate</a>
+    <article class="project" data-reveal>
+      <div class="project-head">
+        <span class="project-num mono">04</span>
+        <h3>Custom RCWA Solver — Chroma ATE Internship</h3>
+        <span class="status-pill status-done">Completed · Industry, Chroma ATE</span>
       </div>
-    </div>
-
-    <div class="pub">
-      <span class="pub-status mono" style="color:var(--teal);border-color:var(--teal);background:var(--teal-soft)">In preparation</span>
-      <div><h3>Physics-informed super-resolution for optical critical-dimension metrology</h3><p>First-author manuscript, target submission 2027 · National Taiwan University, Precision Metrology Lab</p></div>
-    </div>
-    <div class="pub">
-      <span class="pub-status mono" style="color:var(--amber);border-color:var(--amber);background:var(--amber-soft)">M.Sc. thesis</span>
-      <div><h3>Lead-free high-entropy perovskite oxide nanomaterials: synthesis and characterisation</h3><p>Jadavpur University, Department of Physics, 2025 · Supervisor: Prof. K. K. Chattopadhyay</p></div>
-    </div>
-    <div class="pub">
-      <span class="pub-status mono" style="color:var(--text-mute);border-color:var(--border);background:var(--bg-alt)">B.Sc. project</span>
-      <div><h3>Undergraduate project in applied optics and electronics</h3><p>St. Paul's Cathedral Mission College, University of Calcutta, 2023 · presented at inter-college science exhibition</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="awards">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Recognition</p>
-      <h2>Awards &amp; Scholarships</h2>
-    </div>
-    <div class="grid-cards" style="margin-bottom:64px">
-      <div class="simple-card"><span class="tag-yr">2025</span><h3>TEEP Fellowship, Ministry of Education, Taiwan</h3><p>Fully funded five-month research internship at NTHU's College of Semiconductor Research, covering flight, accommodation and monthly stipend.</p></div>
-      <div class="simple-card"><span class="tag-yr" style="color:var(--green)">2025</span><h3>INUP-i2i national selection, IIT Kharagpur</h3><p>Selected nationally for the Indian Nanoelectronics Users Programme hands-on cleanroom workshop, MeitY-funded.</p></div>
-      <div class="simple-card"><span class="tag-yr" style="color:var(--amber)">2024</span><h3>93% · Semiconductor Technology assessment, IISc CeNSE</h3><p>Top-band result in the assessed component of the CeNSE Winter School on Micro/Nanoelectronics, IISc Bangalore.</p></div>
-    </div>
-
-    <div class="section-head">
-      <p class="eyebrow">Verified training</p>
-      <h2 style="font-size:clamp(22px,2.6vw,28px)">Certifications</h2>
-    </div>
-    <div class="grid-cards" style="margin-bottom:64px">
-      <a class="simple-card" href="https://www.coursera.org/account/accomplishments/verify/4VLE0VBFGM9M" target="_blank" rel="noopener"><span class="tag-yr">Purdue · UT Austin · Intel</span><h3>Semiconductor Fabrication Fundamentals</h3><span class="verify">Verify credential →</span></a>
-      <a class="simple-card" href="https://www.coursera.org/account/accomplishments/verify/7GBH5OY37483" target="_blank" rel="noopener"><span class="tag-yr">Vanderbilt University</span><h3>MATLAB Programming for Engineers &amp; Scientists</h3><span class="verify">Verify credential →</span></a>
-      <a class="simple-card" href="https://www.coursera.org/account/accomplishments/verify/621ZOLDPDR36" target="_blank" rel="noopener"><span class="tag-yr" style="color:var(--green)">Arizona State University</span><h3>Materials Characterization</h3><span class="verify">Verify credential →</span></a>
-      <a class="simple-card" href="https://www.coursera.org/account/accomplishments/verify/QVNOKPZN2SQB" target="_blank" rel="noopener"><span class="tag-yr" style="color:var(--amber)">Duke · UNC · NC State</span><h3>Nanotechnology &amp; Nanodevices</h3><span class="verify">Verify credential →</span></a>
-    </div>
-
-    <div class="section-head">
-      <p class="eyebrow">Spoken record</p>
-      <h2 style="font-size:clamp(22px,2.6vw,28px)">Talks &amp; Posters</h2>
-    </div>
-    <div class="talk-row"><span class="talk-date">2025</span><span class="talk-title">Semiconductor synthesis and device process flow — internship review presentation</span><span class="talk-where">NTHU, Hsinchu</span></div>
-    <div class="talk-row"><span class="talk-date" style="color:var(--amber)">2025</span><span class="talk-title">Lead-free high-entropy perovskite oxides — M.Sc. thesis defence</span><span class="talk-where">Jadavpur University, Kolkata</span></div>
-    <div class="talk-row"><span class="talk-date" style="color:var(--text-mute)">2023</span><span class="talk-title">Undergraduate project presentation, inter-college science exhibition</span><span class="talk-where">University of Calcutta</span></div>
+      <p class="lede">A from-scratch, pure-Python Rigorous Coupled-Wave Analysis engine for periodic electromagnetic structures — not a wrapper around an existing solver, and validated line by line against reference implementations rather than trusted by construction.</p>
+      <div class="tags">
+        <span class="tag">#RCWA</span><span class="tag">#python</span><span class="tag">#electromagnetics</span><span class="tag">#numericalvalidation</span>
+      </div>
+      <details class="more">
+        <summary>Read in full</summary>
+        <div class="more-grid">
+          <div>
+            <h4>The problem</h4>
+            <p>My PhD work leans on RCWA as a forward model for optical metrology, run in MATLAB against a narrow set of grating geometries. Chroma ATE — a Taiwan-based precision test-and-measurement equipment manufacturer — needed the same physics in a more general, independently trustworthy form: a solver that could handle thin-film stacks, 1D gratings and full 2D-periodic patterned layers (vias, pillars, arbitrary cross-sections), with sloped sidewalls and dispersive, anisotropic materials, and whose correctness didn't have to be taken on faith.</p>
+            <p>Silent numerical bugs — a wrong sign convention, the wrong branch cut on a square root, an inconsistent Fourier factorization rule — are the dominant failure mode for this class of solver, not crashes. A wrong answer that runs to completion and looks plausible is far more dangerous than one that errors out.</p>
+          </div>
+          <div>
+            <h4>What I built</h4>
+            <p>A from-first-principles RCWA implementation in Python: numerically stable Redheffer star-product S-matrix cascading across arbitrary multilayer stacks; Toeplitz permittivity construction for patterned layers via analytic in-plane Fourier transforms; a general eigenmode solver for 1D-periodic lamellar gratings and for non-uniform 2D-periodic patterned layers; tapered and sloped sidewalls via a staircase (z-discretized) layer approximation with convergence-vs-slice-count studies; and dispersive materials from five analytic models (Sellmeier, Cauchy, Lorentz, Drude, Drude-Lorentz) or tabulated n,k data, plus anisotropic (diagonal and in-plane-coupled) permittivity tensors for both uniform and patterned layers.</p>
+            <p>Every non-trivial formula was checked against a named, line-numbered source before being trusted: the vendored S4 C++ reference solver, an independent analytic solution (Fresnel/TMM), or a published benchmark such as Moharam &amp; Gaylord (1995). That discipline — validate before you trust a capability, not after — is documented as the project's core engineering principle.</p>
+          </div>
+          <div>
+            <h4>Beyond correctness</h4>
+            <p>I also treated the solver's numerical robustness as a deliverable in its own right: a documented failure contract covering every exception and warning condition, per-solve eigenvalue and mode-conditioning diagnostics, and a deterministic mode-ordering policy for near-degenerate eigenvalues — so a user can tell the difference between "the answer is right", "the answer is ill-conditioned", and "this input isn't supported yet".</p>
+          </div>
+          <div>
+            <h4>Methods &amp; tools</h4>
+            <ul class="stack-list">
+              <li>Python, NumPy — from-scratch S-matrix / eigenmode solver</li>
+              <li>Validation against the S4 reference implementation and analytic Fresnel/TMM</li>
+              <li>Literature benchmarks (Moharam &amp; Gaylord 1995)</li>
+              <li>pytest-driven regression and energy-conservation checks</li>
+            </ul>
+            <p class="figure-caption" style="margin-top:14px"><a href="https://github.com/sougataresearch/solver_own" target="_blank" rel="noopener">View the solver's source and validation suite on GitHub →</a></p>
+          </div>
+        </div>
+      </details>
+    </article>
   </div>
 </section>
 
 <section id="experience">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-reveal>
       <p class="eyebrow">What I have done so far</p>
       <h2>Work &amp; Education</h2>
     </div>
 
-    <div class="tl-item">
+    <div class="tl-item" data-reveal>
       <div class="tl-head"><span class="tl-badge">PhD</span><h3>PhD, Nanoengineering &amp; Nanoscience</h3><span class="tl-date">Feb 2026 to present · Taipei, Taiwan</span></div>
       <p class="tl-org">National Taiwan University · Precision Metrology Lab</p>
       <p class="desc">Doctoral research under Prof. Liang-Chia Chen on measuring semiconductor structures smaller than the wavelength used to inspect them, across both the optical bench and the computational side of the same problem. Expected completion 2031.</p>
@@ -555,7 +578,21 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
       <div class="pills"><span class="pill">OCD metrology</span><span class="pill">RCWA</span><span class="pill">Deep learning</span><span class="pill">Wafer inspection</span></div>
     </div>
 
-    <div class="tl-item alt">
+    <div class="tl-item" style="border-left-color:var(--green)" data-reveal>
+      <div class="tl-head"><span class="tl-badge" style="color:var(--green);border-color:var(--green)">Chroma ATE</span><h3>Research Intern · RCWA Solver Development</h3><span class="tl-date">13 Jul – 11 Sep 2026 · Taiwan</span></div>
+      <p class="tl-org" style="color:var(--green)">Chroma ATE Inc.</p>
+      <p class="desc">Two-month industry internship building <code style="font-family:inherit">sougata_solver</code>, a from-scratch, pure-Python Rigorous Coupled-Wave Analysis (RCWA) solver for periodic electromagnetic structures — extending the same forward-model machinery behind my PhD metrology work into a validated, general-purpose engineering tool.</p>
+      <ul>
+        <li>Implemented multilayer thin-film stacks, 1D-periodic lamellar gratings and general 2D-periodic patterned layers (via/pillar arrays, including elliptical and polygonal cross-sections), with numerically stable Redheffer star-product S-matrix cascading.</li>
+        <li>Added dispersive materials (Sellmeier, Cauchy, Lorentz, Drude, Drude-Lorentz models plus tabulated n,k data) and anisotropic permittivity tensors (diagonal and in-plane-coupled, for both uniform and patterned layers).</li>
+        <li>Built tapered/sloped-sidewall geometry via staircase (z-discretized) layer approximation, verified by convergence studies against slice count.</li>
+        <li>Validated every capability against an independent oracle — the vendored S4 C++ reference solver, analytic Fresnel/TMM solutions, or a published benchmark (Moharam &amp; Gaylord 1995) — before merging, and documented a formal numerical failure contract with eigenvalue/conditioning diagnostics.</li>
+      </ul>
+      <div class="pills"><span class="pill">RCWA</span><span class="pill">Python</span><span class="pill">Electromagnetics</span><span class="pill">Numerical validation</span></div>
+      <div class="pills" style="margin-top:8px"><a class="pill" href="https://github.com/sougataresearch/solver_own" target="_blank" rel="noopener">View solver on GitHub →</a></div>
+    </div>
+
+    <div class="tl-item alt" data-reveal>
       <div class="tl-head"><span class="tl-badge">TEEP</span><h3>Research Intern · TEEP Program</h3><span class="tl-date">Aug to Dec 2025 · Hsinchu, Taiwan</span></div>
       <p class="tl-org">NTHU · College of Semiconductor Research</p>
       <p class="desc">Five months with Prof. Sourav De on semiconductor synthesis and device process flows, taking structures from growth through patterning to electrical measurement. This internship led directly to my PhD position at NTU.</p>
@@ -568,7 +605,7 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
       <div class="pills"><span class="pill">Device fabrication</span><span class="pill">Process flow</span><span class="pill">Electrical testing</span></div>
     </div>
 
-    <div class="tl-item alt2">
+    <div class="tl-item alt2" data-reveal>
       <div class="tl-head"><span class="tl-badge">MSc</span><h3>M.Sc., Electronics Science</h3><span class="tl-date">2023 to 2025 · Kolkata, India</span></div>
       <p class="tl-org">Jadavpur University · Department of Physics</p>
       <p class="desc">CGPA 7.72/10. Thesis under Prof. K. K. Chattopadhyay on lead-free high-entropy perovskite oxide nanomaterials, with coursework spanning quantum mechanics, device physics and nanoscale characterisation.</p>
@@ -581,7 +618,7 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
       <div class="pills"><span class="pill">Quantum mechanics</span><span class="pill">Semiconductor devices</span><span class="pill">Nanoelectronics</span><span class="pill">Optoelectronics</span></div>
     </div>
 
-    <div class="tl-item alt3">
+    <div class="tl-item alt3" data-reveal>
       <div class="tl-head"><span class="tl-badge">IITKGP</span><h3>INUP-i2i Hands-on Workshop</h3><span class="tl-date">Feb 2025 · Kharagpur, India</span></div>
       <p class="tl-org">IIT Kharagpur · Indian Nanoelectronics Users Programme</p>
       <p class="desc">Ten-day national training in nanofabrication and characterisation inside IIT Kharagpur's cleanroom, one of the few routes by which an Indian M.Sc. student gets genuine hands-on time on this class of equipment.</p>
@@ -593,7 +630,7 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
       <div class="pills"><span class="pill">Cleanroom</span><span class="pill">Lithography</span><span class="pill">Characterisation</span></div>
     </div>
 
-    <div class="tl-item alt3">
+    <div class="tl-item alt3" data-reveal>
       <div class="tl-head"><span class="tl-badge">IISc</span><h3>Winter School on Micro/Nanoelectronics</h3><span class="tl-date">Dec 2024 · Bangalore, India</span></div>
       <p class="tl-org">IISc · Centre for Nano Science and Engineering</p>
       <p class="desc">Twelve-day intensive school at CeNSE on device physics and fabrication technology, taught by faculty and industry engineers working on production processes.</p>
@@ -605,7 +642,7 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
       <div class="pills"><span class="pill">Device physics</span><span class="pill">Fabrication technology</span></div>
     </div>
 
-    <div class="tl-item" style="border-left-color:var(--text-mute)">
+    <div class="tl-item" data-reveal style="border-left-color:var(--text-mute)">
       <div class="tl-head"><span class="tl-badge" style="color:var(--text-mute);border-color:var(--text-mute)">BSc</span><h3>B.Sc. (Hons.), Physics</h3><span class="tl-date">2020 to 2023 · Kolkata, India</span></div>
       <p class="tl-org" style="color:var(--text-mute)">St. Paul's Cathedral Mission College · University of Calcutta</p>
       <p class="desc">CGPA 7.5/10. A regular undergraduate college, not a famous one, which is worth stating plainly: the foundation matters more than the letterhead.</p>
@@ -616,37 +653,91 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
       </ul>
       <div class="pills"><span class="pill">Optics</span><span class="pill">Electromagnetism</span><span class="pill">Statistical mechanics</span><span class="pill">Electronics</span></div>
     </div>
+
+    <div class="section-head" data-reveal style="margin-top:56px;margin-bottom:22px">
+      <p class="eyebrow">Photographs</p>
+      <h2 style="font-size:clamp(20px,2.4vw,24px)">In the Lab &amp; Field</h2>
+      <p>Lab and instrument time, cleanroom workshops, talks, and the campuses this work has run between.</p>
+    </div>
+    <div class="gallery-grid" data-reveal>
+      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/bench-1.jpg</div><div class="gallery-body"><span class="gallery-tag">Lab &amp; instruments</span><p>Optical bench at NTU's Precision Metrology Lab, where the diffraction measurements are made.</p></div></div>
+      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/cleanroom-1.jpg</div><div class="gallery-body"><span class="gallery-tag" style="color:var(--green)">Cleanroom &amp; workshops</span><p>Cleanroom time during the INUP-i2i workshop at IIT Kharagpur.</p></div></div>
+      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/talk-1.jpg</div><div class="gallery-body"><span class="gallery-tag" style="color:var(--amber)">Seminars &amp; talks</span><p>Presenting current work.</p></div></div>
+      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/ntu-campus.jpg</div><div class="gallery-body"><span class="gallery-tag">Taiwan &amp; travel</span><p>National Taiwan University campus, Taipei.</p></div></div>
+    </div>
   </div>
 </section>
 
-<section id="skills">
+<section id="publications">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">My skills</p>
-      <h2>Technologies</h2>
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Written record</p>
+      <h2>Publications &amp; Theses</h2>
+      <p>No journal publications yet — I began my PhD in February 2026 and my first manuscript is in preparation. What exists so far is the written record below. This section will be updated as work is submitted.</p>
+      <div class="pub-links">
+        <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://www.researchgate.net/profile/YOUR_PROFILE" target="_blank" rel="noopener">ResearchGate</a>
+      </div>
     </div>
-    <div class="skill-grid">
-      <div class="skill-chip"><div class="name">MATLAB</div><div class="kind">Simulation</div></div>
-      <div class="skill-chip"><div class="name">Python</div><div class="kind">AI / data</div></div>
-      <div class="skill-chip"><div class="name">RCWA</div><div class="kind">Diffraction</div></div>
-      <div class="skill-chip"><div class="name">NumPy</div><div class="kind">Numerics</div></div>
-      <div class="skill-chip"><div class="name">LaTeX</div><div class="kind">Writing</div></div>
-      <div class="skill-chip"><div class="name">Origin</div><div class="kind">Plotting</div></div>
-      <div class="skill-chip"><div class="name">Git</div><div class="kind">Version ctl</div></div>
-      <div class="skill-chip"><div class="name">XRD</div><div class="kind">Structure</div></div>
-      <div class="skill-chip"><div class="name">FESEM</div><div class="kind">Imaging</div></div>
-      <div class="skill-chip"><div class="name">EDS</div><div class="kind">Elemental</div></div>
-      <div class="skill-chip"><div class="name">UV-Vis</div><div class="kind">Optical</div></div>
-      <div class="skill-chip"><div class="name">TGA / DSC</div><div class="kind">Thermal</div></div>
-      <div class="skill-chip"><div class="name">Ellipsometry</div><div class="kind">Thin film</div></div>
-      <div class="skill-chip"><div class="name">Sol-gel</div><div class="kind">Synthesis</div></div>
+
+    <div class="pub" data-reveal>
+      <span class="pub-status mono" style="color:var(--teal);border-color:var(--teal);background:var(--teal-soft)">In preparation</span>
+      <div><h3>Physics-informed super-resolution for optical critical-dimension metrology</h3><p>First-author manuscript, target submission 2027 · National Taiwan University, Precision Metrology Lab</p></div>
+    </div>
+    <div class="pub" data-reveal>
+      <span class="pub-status mono" style="color:var(--amber);border-color:var(--amber);background:var(--amber-soft)">M.Sc. thesis</span>
+      <div><h3>Lead-free high-entropy perovskite oxide nanomaterials: synthesis and characterisation</h3><p>Jadavpur University, Department of Physics, 2025 · Supervisor: Prof. K. K. Chattopadhyay</p></div>
+    </div>
+    <div class="pub" data-reveal>
+      <span class="pub-status mono" style="color:var(--text-mute);border-color:var(--border);background:var(--bg-alt)">B.Sc. project</span>
+      <div><h3>Undergraduate project in applied optics and electronics</h3><p>St. Paul's Cathedral Mission College, University of Calcutta, 2023 · presented at inter-college science exhibition</p></div>
+    </div>
+
+    <div class="section-head" data-reveal style="margin-top:56px">
+      <p class="eyebrow">Recognition</p>
+      <h2 style="font-size:clamp(22px,2.6vw,28px)">Awards &amp; Scholarships</h2>
+    </div>
+    <div class="grid-cards" style="margin-bottom:64px">
+      <div class="simple-card"><span class="tag-yr">2025</span><h3>TEEP Fellowship, Ministry of Education, Taiwan</h3><p>Fully funded five-month research internship at NTHU's College of Semiconductor Research, covering flight, accommodation and monthly stipend.</p></div>
+      <div class="simple-card"><span class="tag-yr" style="color:var(--green)">2025</span><h3>INUP-i2i national selection, IIT Kharagpur</h3><p>Selected nationally for the Indian Nanoelectronics Users Programme hands-on cleanroom workshop, MeitY-funded.</p></div>
+      <div class="simple-card"><span class="tag-yr" style="color:var(--amber)">2024</span><h3>93% · Semiconductor Technology assessment, IISc CeNSE</h3><p>Top-band result in the assessed component of the CeNSE Winter School on Micro/Nanoelectronics, IISc Bangalore.</p></div>
+    </div>
+
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Verified training</p>
+      <h2 style="font-size:clamp(22px,2.6vw,28px)">Certifications</h2>
+    </div>
+    <div class="grid-cards" style="margin-bottom:64px">
+      <a class="simple-card" href="https://www.coursera.org/account/accomplishments/verify/4VLE0VBFGM9M" target="_blank" rel="noopener"><span class="tag-yr">Purdue · UT Austin · Intel</span><h3>Semiconductor Fabrication Fundamentals</h3><span class="verify">Verify credential →</span></a>
+      <a class="simple-card" href="https://www.coursera.org/account/accomplishments/verify/7GBH5OY37483" target="_blank" rel="noopener"><span class="tag-yr">Vanderbilt University</span><h3>MATLAB Programming for Engineers &amp; Scientists</h3><span class="verify">Verify credential →</span></a>
+      <a class="simple-card" href="https://www.coursera.org/account/accomplishments/verify/621ZOLDPDR36" target="_blank" rel="noopener"><span class="tag-yr" style="color:var(--green)">Arizona State University</span><h3>Materials Characterization</h3><span class="verify">Verify credential →</span></a>
+      <a class="simple-card" href="https://www.coursera.org/account/accomplishments/verify/QVNOKPZN2SQB" target="_blank" rel="noopener"><span class="tag-yr" style="color:var(--amber)">Duke · UNC · NC State</span><h3>Nanotechnology &amp; Nanodevices</h3><span class="verify">Verify credential →</span></a>
+    </div>
+
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Spoken record</p>
+      <h2 style="font-size:clamp(22px,2.6vw,28px)">Talks &amp; Posters</h2>
+    </div>
+    <div class="talk-row"><span class="talk-date">2025</span><span class="talk-title">Semiconductor synthesis and device process flow — internship review presentation</span><span class="talk-where">NTHU, Hsinchu</span></div>
+    <div class="talk-row"><span class="talk-date" style="color:var(--amber)">2025</span><span class="talk-title">Lead-free high-entropy perovskite oxides — M.Sc. thesis defence</span><span class="talk-where">Jadavpur University, Kolkata</span></div>
+    <div class="talk-row"><span class="talk-date" style="color:var(--text-mute)">2023</span><span class="talk-title">Undergraduate project presentation, inter-college science exhibition</span><span class="talk-where">University of Calcutta</span></div>
+
+    <div class="section-head" data-reveal style="margin-top:56px">
+      <p class="eyebrow">Who can speak for me</p>
+      <h2 style="font-size:clamp(22px,2.6vw,28px)">References</h2>
+    </div>
+    <div class="grid-cards">
+      <div class="simple-card"><span class="tag-yr">PhD advisor</span><h3>Prof. Liang-Chia Chen</h3><p>Distinguished Professor, National Taiwan University, Taipei</p><span class="verify">Contact details on request</span></div>
+      <div class="simple-card" style="--c:var(--teal)"><span class="tag-yr" style="color:var(--teal)">M.Sc. thesis supervisor</span><h3>Dr. Kalyan Kumar Chattopadhyay</h3><p>Professor, Department of Physics, Jadavpur University, Kolkata</p><span class="verify">Contact details on request</span></div>
+      <div class="simple-card"><span class="tag-yr" style="color:var(--amber)">M.Sc. exam co-ordinator</span><h3>Dr. Jayoti Das</h3><p>Professor, Department of Physics, Jadavpur University, Kolkata</p><span class="verify">Contact details on request</span></div>
     </div>
   </div>
 </section>
 
 <section id="guide">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-reveal>
       <p class="eyebrow">For Indian students</p>
       <h2>Student Guide</h2>
       <p>Everything I wish someone had told me before I applied. Written for students from ordinary Indian colleges who want to do research abroad in semiconductors and materials science.</p>
@@ -744,33 +835,9 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
   </div>
 </section>
 
-<section id="gallery">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Photographs</p>
-      <h2>Gallery</h2>
-      <p>Lab and instrument time, cleanroom workshops, talks, and the two campuses this work has run between.</p>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/bench-1.jpg</div><div class="gallery-body"><span class="gallery-tag">Lab &amp; instruments</span><p>Optical bench at NTU's Precision Metrology Lab, where the diffraction measurements are made.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/bench-2.jpg</div><div class="gallery-body"><span class="gallery-tag">Lab &amp; instruments</span><p>Aligning the illumination path. Most of a measurement is spent getting to this state.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/bench-3.jpg</div><div class="gallery-body"><span class="gallery-tag">Lab &amp; instruments</span><p>A grating sample mounted for spectral acquisition.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/lab-group.jpg</div><div class="gallery-body"><span class="gallery-tag">Lab &amp; instruments</span><p>The group at NTU.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/cleanroom-1.jpg</div><div class="gallery-body"><span class="gallery-tag" style="color:var(--green)">Cleanroom &amp; workshops</span><p>Cleanroom time during the INUP-i2i workshop at IIT Kharagpur.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/cleanroom-2.jpg</div><div class="gallery-body"><span class="gallery-tag" style="color:var(--green)">Cleanroom &amp; workshops</span><p>Hands-on session on a process tool.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/iisc-1.jpg</div><div class="gallery-body"><span class="gallery-tag" style="color:var(--green)">Cleanroom &amp; workshops</span><p>Winter School on Micro/Nanoelectronics, CeNSE, IISc Bangalore.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/talk-1.jpg</div><div class="gallery-body"><span class="gallery-tag" style="color:var(--amber)">Seminars &amp; talks</span><p>Presenting current work.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/talk-2.jpg</div><div class="gallery-body"><span class="gallery-tag" style="color:var(--amber)">Seminars &amp; talks</span><p>Poster session.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/talk-3.jpg</div><div class="gallery-body"><span class="gallery-tag" style="color:var(--amber)">Seminars &amp; talks</span><p>Departmental seminar.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/ntu-campus.jpg</div><div class="gallery-body"><span class="gallery-tag">Taiwan &amp; travel</span><p>National Taiwan University campus, Taipei.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/nthu.jpg</div><div class="gallery-body"><span class="gallery-tag">Taiwan &amp; travel</span><p>NTHU, Hsinchu, during the TEEP internship.</p></div></div>
-    </div>
-  </div>
-</section>
-
 <section id="contact">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-reveal>
       <p class="eyebrow">Get in touch</p>
       <h2>Contact</h2>
       <p>Email is the fastest way to reach me and I answer everything that isn't automated. Worth writing about: collaboration on RCWA inverse modelling or learned reconstruction, 2027 summer internships in semiconductor metrology, or a question from a student applying abroad.</p>
@@ -796,20 +863,6 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
         <span class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 0 8.5l4 2.6V16l8 5 8-5v-4.9l4-2.6L12 1Zm0 2.4 8.2 5.1L12 13.6 3.8 8.5 12 3.4Z"></path></svg></span>
         <span><span class="contact-label mono">Google Scholar</span><br><span class="contact-value">Profile</span></span>
       </a>
-    </div>
-  </div>
-</section>
-
-<section style="padding:56px 0 72px">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Who can speak for me</p>
-      <h2 style="font-size:clamp(22px,2.6vw,28px)">References</h2>
-    </div>
-    <div class="grid-cards">
-      <div class="simple-card"><span class="tag-yr">PhD advisor</span><h3>Prof. Liang-Chia Chen</h3><p>Distinguished Professor, National Taiwan University, Taipei</p><span class="verify">Contact details on request</span></div>
-      <div class="simple-card"><span class="tag-yr" style="color:var(--teal)">M.Sc. thesis supervisor</span><h3>Dr. Kalyan Kumar Chattopadhyay</h3><p>Professor, Department of Physics, Jadavpur University, Kolkata</p><span class="verify">Contact details on request</span></div>
-      <div class="simple-card"><span class="tag-yr" style="color:var(--amber)">M.Sc. exam co-ordinator</span><h3>Dr. Jayoti Das</h3><p>Professor, Department of Physics, Jadavpur University, Kolkata</p><span class="verify">Contact details on request</span></div>
     </div>
   </div>
 </section>
@@ -868,6 +921,48 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
       applyTheme(next);
       try { localStorage.setItem('sb-theme', next); } catch(e){}
     });
+  }
+
+  /* scroll progress bar */
+  var bar = document.getElementById('scrollProgress');
+  function updateBar(){
+    if (!bar) return;
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', updateBar, { passive: true });
+  updateBar();
+
+  /* reveal-on-scroll */
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  /* scrollspy: highlight the current section in the nav */
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  var navA = navLinks ? navLinks.querySelectorAll('a[href^="#"]') : [];
+  if ('IntersectionObserver' in window && sections.length && navA.length) {
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (!entry.isIntersecting) return;
+        navA.forEach(function(a){
+          a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function(s){ spy.observe(s); });
   }
 })();
 </script>
