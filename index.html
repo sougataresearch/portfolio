@@ -73,7 +73,9 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.65;-webkit-font-smoothing:antialiased}
+body{background-color:var(--bg);color:var(--text);font-family:var(--font);line-height:1.65;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 1px 1px,color-mix(in srgb,var(--text) 7%,transparent) 1px,transparent 0);
+  background-size:26px 26px;background-attachment:fixed}
 h1,h2,h3,h4{color:var(--text);letter-spacing:0;font-weight:700}
 a{color:var(--accent);text-decoration:none}
 a:hover{color:var(--accent-strong)}
@@ -113,9 +115,9 @@ nav.links a:hover{color:var(--text)}
 .hero-inner{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:start}
 .avatar-wrap{width:200px;height:200px;border-radius:50%;overflow:hidden;border:4px solid var(--surface);box-shadow:var(--shadow);background:var(--bg-alt);flex-shrink:0}
 .avatar-wrap img{width:100%;height:100%;object-fit:cover}
-.hero h1{font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.18;margin-bottom:10px}
-.hero .tagline{font-size:17px;color:var(--accent);font-weight:500;margin-bottom:16px}
-.hero .bio{color:var(--text-soft);font-size:15.5px;line-height:1.8;max-width:640px;margin-bottom:8px}
+.hero h1{font-size:clamp(34px,5.2vw,52px);font-weight:700;line-height:1.14;margin-bottom:12px}
+.hero .tagline{font-size:20px;color:var(--accent);font-weight:500;margin-bottom:18px}
+.hero .bio{color:var(--text-soft);font-size:17px;line-height:1.8;max-width:660px;margin-bottom:8px}
 .hero .bio + .bio{margin-top:10px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .socials{display:flex;gap:10px;margin-top:20px}
@@ -185,7 +187,8 @@ a.simple-card:hover{border-color:var(--accent)}
 .tl-item.alt{border-left-color:var(--teal)}
 .tl-item.alt2{border-left-color:var(--amber)}
 .tl-item.alt3{border-left-color:var(--green)}
-.tl-head{display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;margin-bottom:10px}
+.tl-head{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:10px}
+.tl-logo{width:38px;height:38px;border-radius:10px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:.01em;flex-shrink:0;box-shadow:var(--shadow)}
 .tl-badge{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:5px 10px;border-radius:7px}
 .tl-item.alt .tl-badge{color:var(--teal);border-color:var(--teal)}
 .tl-item.alt2 .tl-badge{color:var(--amber);border-color:var(--amber)}
@@ -204,10 +207,16 @@ a.simple-card:hover{border-color:var(--accent)}
 .pill{font-size:10.5px;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-soft-border);padding:5px 10px;border-radius:7px}
 
 /* skills */
-.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
-.skill-chip{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.skill-grid{display:flex;flex-wrap:wrap;gap:14px 12px;align-items:center}
+.skill-chip{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:11px 20px;display:inline-flex;align-items:baseline;gap:7px;box-shadow:var(--shadow);animation:chipFloat 4.8s ease-in-out infinite}
+.skill-chip:nth-child(4n+1){animation-delay:-.3s}
+.skill-chip:nth-child(4n+2){animation-delay:-1.6s}
+.skill-chip:nth-child(4n+3){animation-delay:-2.7s}
+.skill-chip:nth-child(4n+4){animation-delay:-3.9s}
 .skill-chip .name{font-size:14.5px;font-weight:700}
-.skill-chip .kind{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mute);margin-top:4px}
+.skill-chip .kind{font-size:11px;letter-spacing:.04em;color:var(--text-mute)}
+.skill-chip .kind::before{content:"\00b7";margin-right:7px}
+@keyframes chipFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 
 /* guide accordion */
 .guide-item{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:10px;overflow:hidden}
@@ -277,6 +286,7 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
 @media (prefers-reduced-motion:reduce){
   [data-reveal]{opacity:1;transform:none;transition:none}
   .hero-mesh{animation:none}
+  .skill-chip{animation:none}
 }
 </style>
 </head>
@@ -321,7 +331,7 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
       <p class="eyebrow">PhD Researcher · National Taiwan University</p>
       <h1>Sougata Bhunia</h1>
       <p class="tagline">I measure semiconductor structures smaller than the light used to see them.</p>
-      <p class="bio">Doctoral researcher in optical critical dimension metrology at NTU's Precision Metrology Lab. I recover the width, height and sidewall angle of sub-wavelength nanostructures from the light they diffract, by inverting a rigorous coupled-wave model instead of imaging the feature at all — combined with physics-informed AI super-resolution imaging and a background in high-entropy nanomaterials.</p>
+      <p class="bio">Doctoral researcher in optical critical dimension metrology at NTU's Precision Metrology Lab. I recover the width, height and sidewall angle of sub-wavelength nanostructures from the light they diffract, by inverting a rigorous coupled-wave model instead of imaging the feature at all, combined with physics-informed AI super-resolution imaging and a background in high-entropy nanomaterials.</p>
       <p class="bio">Open to collaboration and 2027 internships. Education: PhD in Nanoengineering &amp; Nanoscience, NTU (2026–2031, expected); M.Sc. Electronics Science, Jadavpur University; B.Sc. (Hons.) Physics, University of Calcutta.</p>
       <div class="hero-actions">
         <a href="#research" class="btn btn-primary">See my research</a>
@@ -386,7 +396,7 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
     <div class="section-head" data-reveal>
       <p class="eyebrow">My work</p>
       <h2>Research Projects</h2>
-      <p>Four projects, two active. Each one is written out in full — the problem, the method, and what it is worth — because that is what a reader assessing a researcher actually needs.</p>
+      <p>Four projects, two active. Each one is written out in full (the problem, the method, and what it is worth) because that is what a reader assessing a researcher actually needs.</p>
     </div>
 
     <article class="project" data-reveal>
@@ -518,10 +528,10 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
     <article class="project" data-reveal>
       <div class="project-head">
         <span class="project-num mono">04</span>
-        <h3>Custom RCWA Solver — Chroma ATE Internship</h3>
+        <h3>Custom RCWA Solver: Chroma ATE Internship</h3>
         <span class="status-pill status-done">Completed · Industry, Chroma ATE</span>
       </div>
-      <p class="lede">A from-scratch, pure-Python Rigorous Coupled-Wave Analysis engine for periodic electromagnetic structures — not a wrapper around an existing solver, and validated line by line against reference implementations rather than trusted by construction.</p>
+      <p class="lede">A from-scratch, pure-Python Rigorous Coupled-Wave Analysis engine for periodic electromagnetic structures, not a wrapper around an existing solver, and validated line by line against reference implementations rather than trusted by construction.</p>
       <div class="tags">
         <span class="tag">#RCWA</span><span class="tag">#python</span><span class="tag">#electromagnetics</span><span class="tag">#numericalvalidation</span>
       </div>
@@ -530,22 +540,22 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
         <div class="more-grid">
           <div>
             <h4>The problem</h4>
-            <p>My PhD work leans on RCWA as a forward model for optical metrology, run in MATLAB against a narrow set of grating geometries. Chroma ATE — a Taiwan-based precision test-and-measurement equipment manufacturer — needed the same physics in a more general, independently trustworthy form: a solver that could handle thin-film stacks, 1D gratings and full 2D-periodic patterned layers (vias, pillars, arbitrary cross-sections), with sloped sidewalls and dispersive, anisotropic materials, and whose correctness didn't have to be taken on faith.</p>
-            <p>Silent numerical bugs — a wrong sign convention, the wrong branch cut on a square root, an inconsistent Fourier factorization rule — are the dominant failure mode for this class of solver, not crashes. A wrong answer that runs to completion and looks plausible is far more dangerous than one that errors out.</p>
+            <p>My PhD work leans on RCWA as a forward model for optical metrology, run in MATLAB against a narrow set of grating geometries. Chroma ATE, a Taiwan-based precision test-and-measurement equipment manufacturer, needed the same physics in a more general, independently trustworthy form: a solver that could handle thin-film stacks, 1D gratings and full 2D-periodic patterned layers (vias, pillars, arbitrary cross-sections), with sloped sidewalls and dispersive, anisotropic materials, and whose correctness didn't have to be taken on faith.</p>
+            <p>Silent numerical bugs (a wrong sign convention, the wrong branch cut on a square root, an inconsistent Fourier factorization rule) are the dominant failure mode for this class of solver, not crashes. A wrong answer that runs to completion and looks plausible is far more dangerous than one that errors out.</p>
           </div>
           <div>
             <h4>What I built</h4>
             <p>A from-first-principles RCWA implementation in Python: numerically stable Redheffer star-product S-matrix cascading across arbitrary multilayer stacks; Toeplitz permittivity construction for patterned layers via analytic in-plane Fourier transforms; a general eigenmode solver for 1D-periodic lamellar gratings and for non-uniform 2D-periodic patterned layers; tapered and sloped sidewalls via a staircase (z-discretized) layer approximation with convergence-vs-slice-count studies; and dispersive materials from five analytic models (Sellmeier, Cauchy, Lorentz, Drude, Drude-Lorentz) or tabulated n,k data, plus anisotropic (diagonal and in-plane-coupled) permittivity tensors for both uniform and patterned layers.</p>
-            <p>Every non-trivial formula was checked against a named, line-numbered source before being trusted: the vendored S4 C++ reference solver, an independent analytic solution (Fresnel/TMM), or a published benchmark such as Moharam &amp; Gaylord (1995). That discipline — validate before you trust a capability, not after — is documented as the project's core engineering principle.</p>
+            <p>Every non-trivial formula was checked against a named, line-numbered source before being trusted: the vendored S4 C++ reference solver, an independent analytic solution (Fresnel/TMM), or a published benchmark such as Moharam &amp; Gaylord (1995). That discipline of validating before trusting a capability, not after, is documented as the project's core engineering principle.</p>
           </div>
           <div>
             <h4>Beyond correctness</h4>
-            <p>I also treated the solver's numerical robustness as a deliverable in its own right: a documented failure contract covering every exception and warning condition, per-solve eigenvalue and mode-conditioning diagnostics, and a deterministic mode-ordering policy for near-degenerate eigenvalues — so a user can tell the difference between "the answer is right", "the answer is ill-conditioned", and "this input isn't supported yet".</p>
+            <p>I also treated the solver's numerical robustness as a deliverable in its own right: a documented failure contract covering every exception and warning condition, per-solve eigenvalue and mode-conditioning diagnostics, and a deterministic mode-ordering policy for near-degenerate eigenvalues, so a user can tell the difference between "the answer is right", "the answer is ill-conditioned", and "this input isn't supported yet".</p>
           </div>
           <div>
             <h4>Methods &amp; tools</h4>
             <ul class="stack-list">
-              <li>Python, NumPy — from-scratch S-matrix / eigenmode solver</li>
+              <li>Python, NumPy: from-scratch S-matrix / eigenmode solver</li>
               <li>Validation against the S4 reference implementation and analytic Fresnel/TMM</li>
               <li>Literature benchmarks (Moharam &amp; Gaylord 1995)</li>
               <li>pytest-driven regression and energy-conservation checks</li>
@@ -566,7 +576,7 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
     </div>
 
     <div class="tl-item" data-reveal>
-      <div class="tl-head"><span class="tl-badge">PhD</span><h3>PhD, Nanoengineering &amp; Nanoscience</h3><span class="tl-date">Feb 2026 to present · Taipei, Taiwan</span></div>
+      <div class="tl-head"><span class="tl-logo">NTU</span><span class="tl-badge">PhD</span><h3>PhD, Nanoengineering &amp; Nanoscience</h3><span class="tl-date">Feb 2026 to present · Taipei, Taiwan</span></div>
       <p class="tl-org">National Taiwan University · Precision Metrology Lab</p>
       <p class="desc">Doctoral research under Prof. Liang-Chia Chen on measuring semiconductor structures smaller than the wavelength used to inspect them, across both the optical bench and the computational side of the same problem. Expected completion 2031.</p>
       <ul>
@@ -579,21 +589,21 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
     </div>
 
     <div class="tl-item" style="border-left-color:var(--green)" data-reveal>
-      <div class="tl-head"><span class="tl-badge" style="color:var(--green);border-color:var(--green)">Chroma ATE</span><h3>Research Intern · RCWA Solver Development</h3><span class="tl-date">13 Jul – 11 Sep 2026 · Taiwan</span></div>
+      <div class="tl-head"><span class="tl-logo" style="background:var(--green)">CATE</span><span class="tl-badge" style="color:var(--green);border-color:var(--green)">Chroma ATE</span><h3>Research Intern · RCWA Solver Development</h3><span class="tl-date">13 Jul to 11 Sep 2026 · Taiwan</span></div>
       <p class="tl-org" style="color:var(--green)">Chroma ATE Inc.</p>
-      <p class="desc">Two-month industry internship building <code style="font-family:inherit">sougata_solver</code>, a from-scratch, pure-Python Rigorous Coupled-Wave Analysis (RCWA) solver for periodic electromagnetic structures — extending the same forward-model machinery behind my PhD metrology work into a validated, general-purpose engineering tool.</p>
+      <p class="desc">Two-month industry internship building <code style="font-family:inherit">sougata_solver</code>, a from-scratch, pure-Python Rigorous Coupled-Wave Analysis (RCWA) solver for periodic electromagnetic structures, extending the same forward-model machinery behind my PhD metrology work into a validated, general-purpose engineering tool.</p>
       <ul>
         <li>Implemented multilayer thin-film stacks, 1D-periodic lamellar gratings and general 2D-periodic patterned layers (via/pillar arrays, including elliptical and polygonal cross-sections), with numerically stable Redheffer star-product S-matrix cascading.</li>
         <li>Added dispersive materials (Sellmeier, Cauchy, Lorentz, Drude, Drude-Lorentz models plus tabulated n,k data) and anisotropic permittivity tensors (diagonal and in-plane-coupled, for both uniform and patterned layers).</li>
         <li>Built tapered/sloped-sidewall geometry via staircase (z-discretized) layer approximation, verified by convergence studies against slice count.</li>
-        <li>Validated every capability against an independent oracle — the vendored S4 C++ reference solver, analytic Fresnel/TMM solutions, or a published benchmark (Moharam &amp; Gaylord 1995) — before merging, and documented a formal numerical failure contract with eigenvalue/conditioning diagnostics.</li>
+        <li>Validated every capability against an independent oracle (the vendored S4 C++ reference solver, analytic Fresnel/TMM solutions, or a published benchmark from Moharam &amp; Gaylord 1995) before merging, and documented a formal numerical failure contract with eigenvalue/conditioning diagnostics.</li>
       </ul>
       <div class="pills"><span class="pill">RCWA</span><span class="pill">Python</span><span class="pill">Electromagnetics</span><span class="pill">Numerical validation</span></div>
       <div class="pills" style="margin-top:8px"><a class="pill" href="https://github.com/sougataresearch/solver_own" target="_blank" rel="noopener">View solver on GitHub →</a></div>
     </div>
 
     <div class="tl-item alt" data-reveal>
-      <div class="tl-head"><span class="tl-badge">TEEP</span><h3>Research Intern · TEEP Program</h3><span class="tl-date">Aug to Dec 2025 · Hsinchu, Taiwan</span></div>
+      <div class="tl-head"><span class="tl-logo" style="background:var(--teal)">NTHU</span><span class="tl-badge">TEEP</span><h3>Research Intern · TEEP Program</h3><span class="tl-date">Aug to Dec 2025 · Hsinchu, Taiwan</span></div>
       <p class="tl-org">NTHU · College of Semiconductor Research</p>
       <p class="desc">Five months with Prof. Sourav De on semiconductor synthesis and device process flows, taking structures from growth through patterning to electrical measurement. This internship led directly to my PhD position at NTU.</p>
       <ul>
@@ -606,7 +616,7 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
     </div>
 
     <div class="tl-item alt2" data-reveal>
-      <div class="tl-head"><span class="tl-badge">MSc</span><h3>M.Sc., Electronics Science</h3><span class="tl-date">2023 to 2025 · Kolkata, India</span></div>
+      <div class="tl-head"><span class="tl-logo" style="background:var(--amber)">JU</span><span class="tl-badge">MSc</span><h3>M.Sc., Electronics Science</h3><span class="tl-date">2023 to 2025 · Kolkata, India</span></div>
       <p class="tl-org">Jadavpur University · Department of Physics</p>
       <p class="desc">CGPA 7.72/10. Thesis under Prof. K. K. Chattopadhyay on lead-free high-entropy perovskite oxide nanomaterials, with coursework spanning quantum mechanics, device physics and nanoscale characterisation.</p>
       <ul>
@@ -619,7 +629,7 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
     </div>
 
     <div class="tl-item alt3" data-reveal>
-      <div class="tl-head"><span class="tl-badge">IITKGP</span><h3>INUP-i2i Hands-on Workshop</h3><span class="tl-date">Feb 2025 · Kharagpur, India</span></div>
+      <div class="tl-head"><span class="tl-logo" style="background:var(--green)">KGP</span><span class="tl-badge">IITKGP</span><h3>INUP-i2i Hands-on Workshop</h3><span class="tl-date">Feb 2025 · Kharagpur, India</span></div>
       <p class="tl-org">IIT Kharagpur · Indian Nanoelectronics Users Programme</p>
       <p class="desc">Ten-day national training in nanofabrication and characterisation inside IIT Kharagpur's cleanroom, one of the few routes by which an Indian M.Sc. student gets genuine hands-on time on this class of equipment.</p>
       <ul>
@@ -631,7 +641,7 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
     </div>
 
     <div class="tl-item alt3" data-reveal>
-      <div class="tl-head"><span class="tl-badge">IISc</span><h3>Winter School on Micro/Nanoelectronics</h3><span class="tl-date">Dec 2024 · Bangalore, India</span></div>
+      <div class="tl-head"><span class="tl-logo" style="background:var(--green)">IISc</span><span class="tl-badge">IISc</span><h3>Winter School on Micro/Nanoelectronics</h3><span class="tl-date">Dec 2024 · Bangalore, India</span></div>
       <p class="tl-org">IISc · Centre for Nano Science and Engineering</p>
       <p class="desc">Twelve-day intensive school at CeNSE on device physics and fabrication technology, taught by faculty and industry engineers working on production processes.</p>
       <ul>
@@ -643,7 +653,7 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
     </div>
 
     <div class="tl-item" data-reveal style="border-left-color:var(--text-mute)">
-      <div class="tl-head"><span class="tl-badge" style="color:var(--text-mute);border-color:var(--text-mute)">BSc</span><h3>B.Sc. (Hons.), Physics</h3><span class="tl-date">2020 to 2023 · Kolkata, India</span></div>
+      <div class="tl-head"><span class="tl-logo" style="background:var(--text-mute)">CU</span><span class="tl-badge" style="color:var(--text-mute);border-color:var(--text-mute)">BSc</span><h3>B.Sc. (Hons.), Physics</h3><span class="tl-date">2020 to 2023 · Kolkata, India</span></div>
       <p class="tl-org" style="color:var(--text-mute)">St. Paul's Cathedral Mission College · University of Calcutta</p>
       <p class="desc">CGPA 7.5/10. A regular undergraduate college, not a famous one, which is worth stating plainly: the foundation matters more than the letterhead.</p>
       <ul>
@@ -673,7 +683,7 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
     <div class="section-head" data-reveal>
       <p class="eyebrow">Written record</p>
       <h2>Publications &amp; Theses</h2>
-      <p>No journal publications yet — I began my PhD in February 2026 and my first manuscript is in preparation. What exists so far is the written record below. This section will be updated as work is submitted.</p>
+      <p>No journal publications yet. I began my PhD in February 2026 and my first manuscript is in preparation. What exists so far is the written record below. This section will be updated as work is submitted.</p>
       <div class="pub-links">
         <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener">Google Scholar</a>
         <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener">ORCID</a>
@@ -719,8 +729,8 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
       <p class="eyebrow">Spoken record</p>
       <h2 style="font-size:clamp(22px,2.6vw,28px)">Talks &amp; Posters</h2>
     </div>
-    <div class="talk-row"><span class="talk-date">2025</span><span class="talk-title">Semiconductor synthesis and device process flow — internship review presentation</span><span class="talk-where">NTHU, Hsinchu</span></div>
-    <div class="talk-row"><span class="talk-date" style="color:var(--amber)">2025</span><span class="talk-title">Lead-free high-entropy perovskite oxides — M.Sc. thesis defence</span><span class="talk-where">Jadavpur University, Kolkata</span></div>
+    <div class="talk-row"><span class="talk-date">2025</span><span class="talk-title">Semiconductor synthesis and device process flow: internship review presentation</span><span class="talk-where">NTHU, Hsinchu</span></div>
+    <div class="talk-row"><span class="talk-date" style="color:var(--amber)">2025</span><span class="talk-title">Lead-free high-entropy perovskite oxides: M.Sc. thesis defence</span><span class="talk-where">Jadavpur University, Kolkata</span></div>
     <div class="talk-row"><span class="talk-date" style="color:var(--text-mute)">2023</span><span class="talk-title">Undergraduate project presentation, inter-college science exhibition</span><span class="talk-where">University of Calcutta</span></div>
 
     <div class="section-head" data-reveal style="margin-top:56px">
