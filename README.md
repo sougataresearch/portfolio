@@ -1,13 +1,7 @@
-#s
+# Sougata Bhunia: personal academic site
 
-## About
+PhD researcher in optical critical dimension metrology at National Taiwan University's Precision Metrology Lab.
 
-This portfolio repository is maintained with help from Claude Code.
+Live site: https://sougataresearch.github.io/portfolio/
 
-## Status
-
-Actively maintained.
-
-## Contributors
-
-Thanks to everyone who has contributed to this project.
+The site is a single self-contained `index.html` with no build step. Open it in a browser to preview.
