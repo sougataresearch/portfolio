@@ -239,7 +239,8 @@ a.simple-card:hover{border-color:var(--accent)}
 /* gallery */
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
 .gallery-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
-.gallery-thumb{height:150px;background:linear-gradient(145deg,var(--accent-soft),var(--bg-alt));display:flex;align-items:center;justify-content:center;color:var(--text-mute);font-size:11px;letter-spacing:.08em;text-align:center;padding:0 14px}
+.gallery-thumb{aspect-ratio:4/3;background:var(--bg-alt);overflow:hidden}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .gallery-body{padding:14px 16px}
 .gallery-tag{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block}
 .gallery-body p{font-size:13px;color:var(--text-soft);line-height:1.6}
@@ -295,7 +296,6 @@ footer.site{border-top:1px solid var(--border);background:var(--bg-alt)}
   .guide-item summary{padding:16px 18px;font-size:14.5px;gap:12px}
   .guide-body{padding:0 18px 20px 18px}
   .contact-link{padding:14px 16px}
-  .gallery-thumb{height:120px}
   .footer-inner{justify-content:center;text-align:center}
 }
 
@@ -707,13 +707,12 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-20
     <div class="section-head" data-reveal style="margin-top:56px;margin-bottom:22px">
       <p class="eyebrow">Photographs</p>
       <h2 style="font-size:clamp(20px,2.4vw,24px)">In the Lab &amp; Field</h2>
-      <p>Lab and instrument time, cleanroom workshops, talks, and the campuses this work has run between.</p>
+      <p>Cleanroom time, industry work, and the campus this research runs from.</p>
     </div>
     <div class="gallery-grid" data-reveal>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/bench-1.jpg</div><div class="gallery-body"><span class="gallery-tag">Lab &amp; instruments</span><p>Optical bench at NTU's Precision Metrology Lab, where the diffraction measurements are made.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/cleanroom-1.jpg</div><div class="gallery-body"><span class="gallery-tag" style="color:var(--green)">Cleanroom &amp; workshops</span><p>Cleanroom time during the INUP-i2i workshop at IIT Kharagpur.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/talk-1.jpg</div><div class="gallery-body"><span class="gallery-tag" style="color:var(--amber)">Seminars &amp; talks</span><p>Presenting current work.</p></div></div>
-      <div class="gallery-card"><div class="gallery-thumb">assets/gallery/ntu-campus.jpg</div><div class="gallery-body"><span class="gallery-tag">Taiwan &amp; travel</span><p>National Taiwan University campus, Taipei.</p></div></div>
+      <div class="gallery-card"><div class="gallery-thumb"><img src="images/gallery/ntu-cleanroom.jpg" alt="Sougata Bhunia in cleanroom gear at a photolithography wet bench" loading="lazy" width="960" height="720"></div><div class="gallery-body"><span class="gallery-tag" style="color:var(--green)">Cleanroom</span><p>Photolithography bay, National Taiwan University, April 2026: wet-bench development and etch under yellow light.</p></div></div>
+      <div class="gallery-card"><div class="gallery-thumb"><img src="images/gallery/chroma-taoyuan.jpg" alt="Chroma ATE logo on the lobby wall" loading="lazy" width="960" height="720"></div><div class="gallery-body"><span class="gallery-tag" style="color:var(--amber)">Industry</span><p>Chroma ATE, Taoyuan. RCWA algorithm intern, Optical Inspection Solution BU, Jul to Sep 2026.</p></div></div>
+      <div class="gallery-card"><div class="gallery-thumb"><img src="images/gallery/ntu-library.jpg" alt="National Taiwan University main library at night" loading="lazy" width="960" height="720"></div><div class="gallery-body"><span class="gallery-tag">Taiwan</span><p>National Taiwan University main library, Taipei.</p></div></div>
     </div>
   </div>
 </section>
